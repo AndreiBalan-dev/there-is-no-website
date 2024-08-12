@@ -14,7 +14,6 @@ import {
   Render as RenderType,
   Engine as EngineType,
   Mouse as MouseType,
-  World as WorldType
 } from "matter-js";
 
 const MatterComponent: React.FC = () => {
