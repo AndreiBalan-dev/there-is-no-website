@@ -35,13 +35,17 @@ const MatterComponent: React.FC = () => {
     });
 
     let lastTimestamp = performance.now();
+    let frames = 0;
 
     const updateFps = () => {
       const currentTimestamp = performance.now();
-      const delta = currentTimestamp - lastTimestamp;
-      lastTimestamp = currentTimestamp;
-      const currentFps = Math.round(1000 / delta);
-      setFps(currentFps);
+      frames++;
+      if (currentTimestamp - lastTimestamp >= 1000){
+        const currentFps = Math.round(frames * 1000 / (currentTimestamp - lastTimestamp));
+        setFps(currentFps);
+        lastTimestamp = currentTimestamp;
+        frames = 0;
+      }
     };
 
     Matter.Events.on(render, "beforeRender", updateFps);
@@ -103,7 +107,7 @@ const MatterComponent: React.FC = () => {
   return (
     <>
       <div ref={sceneRef}>
-        <div className="flex justify-end">FPS: {fps.toFixed(2)}</div>
+        <div className="flex justify-end">FPS: {fps.toFixed(0)}</div>
       </div>
     </>
   );
