@@ -10,21 +10,23 @@ import Matter, {
   Composite,
   Runner,
 } from "matter-js";
-
-interface RenderWithMouse extends Render {
-  mouse?: Matter.Mouse;
-}
+import {
+  Render as RenderType,
+  Engine as EngineType,
+  Mouse as MouseType,
+  World as WorldType
+} from "matter-js";
 
 const MatterComponent: React.FC = () => {
   const [fps, setFps] = React.useState(0);
   const sceneRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const engine = Engine.create();
+    const engine: EngineType = Engine.create();
     const { world } = engine;
-    world.gravity.y = 0.1;
+    engine.gravity.y = 0.1;
 
-    const render: RenderWithMouse = Render.create({
+    const render: RenderType = Render.create({
       element: sceneRef.current!,
       engine: engine,
       options: {
@@ -74,7 +76,7 @@ const MatterComponent: React.FC = () => {
       stack,
     ]);
 
-    const mouse = Mouse.create(render.canvas);
+    const mouse: MouseType = Mouse.create(render.canvas);
     const mouseConstraint = MouseConstraint.create(engine, {
       mouse: mouse,
       // @ts-ignore
@@ -92,7 +94,7 @@ const MatterComponent: React.FC = () => {
 
     render.mouse = mouse;
 
-    Engine.run(engine);
+    Runner.run(engine);
     Render.run(render);
 
     return () => {
