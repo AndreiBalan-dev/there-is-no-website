@@ -1,11 +1,13 @@
-import "./App.css";
+import React from "react";
+import MatterComponent from "./components/WorldEntity";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <p className="text-blue-600">Hey</p>
-    </>
+    <div className="flex">
+      <h1>Matter.js with React and TypeScript</h1>
+      <MatterComponent />
+    </div>
   );
-}
+};
 
 export default App;
