@@ -16,11 +16,13 @@ interface RenderWithMouse extends Render {
 }
 
 const MatterComponent: React.FC = () => {
+  const [fps, setFps] = React.useState(0);
   const sceneRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const engine = Engine.create();
     const { world } = engine;
+    world.gravity.y = 0.1;
 
     const render: RenderWithMouse = Render.create({
       element: sceneRef.current!,
@@ -32,6 +34,18 @@ const MatterComponent: React.FC = () => {
       },
     });
 
+    let lastTimestamp = performance.now();
+
+    const updateFps = () => {
+      const currentTimestamp = performance.now();
+      const delta = currentTimestamp - lastTimestamp;
+      lastTimestamp = currentTimestamp;
+      const currentFps = Math.round(1000 / delta);
+      setFps(currentFps);
+    };
+
+    Matter.Events.on(render, "beforeRender", updateFps);
+
     var stack = Composites.stack(
       100,
       600 - 21 - 20 * 20,
@@ -40,7 +54,11 @@ const MatterComponent: React.FC = () => {
       20,
       0,
       function (x: number, y: number) {
-        return Bodies.circle(x, y, 20);
+        return Bodies.circle(x, y, 20, {
+          friction: 0.1,
+          frictionAir: 0.01,
+          frictionStatic: 0.5,
+        });
       }
     );
     // @ts-ignore
@@ -68,15 +86,12 @@ const MatterComponent: React.FC = () => {
 
     World.add(world, mouseConstraint);
 
-    // Assign the mouse to render
     render.mouse = mouse;
 
-    // Run the engine and renderer
     Engine.run(engine);
     Render.run(render);
 
     return () => {
-      // Cleanup the Matter.js engine and renderer
       Render.stop(render);
       Engine.clear(engine);
       World.clear(world, false);
@@ -85,7 +100,13 @@ const MatterComponent: React.FC = () => {
     };
   }, []);
 
-  return <div ref={sceneRef}></div>;
+  return (
+    <>
+      <div ref={sceneRef}>
+        <div className="flex justify-end">FPS: {fps.toFixed(2)}</div>
+      </div>
+    </>
+  );
 };
 
 export default MatterComponent;
