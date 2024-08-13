@@ -7,7 +7,6 @@ const MatterComponent: React.FC = () => {
 	const [fps, setFps] = React.useState(0);
 	const sceneRef = useRef<HTMLDivElement>(null);
 	const engineRef = useRef<EngineType>(Engine.create());
-	const videoPlayerBoxRef = useRef<VideoPlayerBox | null>(null);
 
 	useEffect(() => {
 		const engine = engineRef.current;
@@ -42,7 +41,7 @@ const MatterComponent: React.FC = () => {
 
 		Matter.Events.on(render, "beforeRender", updateFps);
 
-		videoPlayerBoxRef.current = new VideoPlayerBox({
+		const videoPlayerBox = new VideoPlayerBox({
 			world,
 			renderWidth: render.options.width || window.innerWidth,
 			renderHeight: render.options.height || window.innerHeight,
@@ -72,7 +71,7 @@ const MatterComponent: React.FC = () => {
 			render.options.height = window.innerHeight;
 			Render.setPixelRatio(render, window.devicePixelRatio || 1);
 
-			videoPlayerBoxRef.current?.resize(
+			videoPlayerBox.resize(
 				world,
 				render.options.width,
 				render.options.height
