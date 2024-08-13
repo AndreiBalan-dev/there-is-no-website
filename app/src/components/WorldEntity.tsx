@@ -23,11 +23,10 @@ const MatterComponent: React.FC = () => {
   const renderRef = useRef<RenderType | null>(null);
 
   useEffect(() => {
-    console.log(window.innerHeight);
-    console.log(window.innerWidth);
     const engine = engineRef.current;
     const { world } = engine;
-    world.gravity.y = 0.025;
+    engine.gravity.scale = 0.025;
+    engine.gravity.y = 0; // this inverts gravity
 
     const render: RenderType = Render.create({
       element: sceneRef.current!,
@@ -46,10 +45,9 @@ const MatterComponent: React.FC = () => {
       const currentTimestamp = performance.now();
       frames++;
       if (currentTimestamp - lastTimestamp >= 1000) {
-        const currentFps = Math.round(
-          (frames * 1000) / (currentTimestamp - lastTimestamp)
+        setFps(
+          Math.round((frames * 1000) / (currentTimestamp - lastTimestamp))
         );
-        setFps(currentFps);
         lastTimestamp = currentTimestamp;
         frames = 0;
       }
@@ -57,34 +55,31 @@ const MatterComponent: React.FC = () => {
 
     Matter.Events.on(render, "beforeRender", updateFps);
 
-    var stack = Composites.stack(
+    const stack = Composites.stack(
       100,
       600 - 21 - 20 * 20,
       10,
       10,
       20,
       0,
-      function (x: number, y: number) {
-        return Bodies.circle(x, y, 20, {
+      (x: number, y: number) =>
+        Bodies.circle(x, y, 20, {
           friction: 0.1,
           frictionAir: 0.01,
           frictionStatic: 0.5,
-        });
-      }
+        })
     );
-    // @ts-ignore
     Composite.add(world, [
-      Bodies.rectangle(400, 0, 800, 50, { isStatic: true }), // up
+      Bodies.rectangle(400, 0, 800, 50, { isStatic: true }),
       Bodies.rectangle(400, 600, 800, 50, { isStatic: true }),
       Bodies.rectangle(800, 300, 50, 600, { isStatic: true }),
-      Bodies.rectangle(0, 300, 50, 600, { isStatic: true }), // Left
+      Bodies.rectangle(0, 300, 50, 600, { isStatic: true }),
       stack,
     ]);
 
-    const mouse: MouseType = Mouse.create(render.canvas);
+    const mouse = Mouse.create(render.canvas);
     const mouseConstraint = MouseConstraint.create(engine, {
-      mouse: mouse,
-      // @ts-ignore
+      mouse,
       constraint: {
         stiffness: 0.2,
         render: {
@@ -96,12 +91,10 @@ const MatterComponent: React.FC = () => {
     });
 
     World.add(world, mouseConstraint);
-
-    //@ts-ignore
-
     render.mouse = mouse;
 
-    Runner.run(engine);
+    const runner = Runner.create();
+    Runner.run(runner, engine);
     Render.run(render);
 
     const handleResize = () => {
@@ -110,8 +103,12 @@ const MatterComponent: React.FC = () => {
       Render.setPixelRatio(render, window.devicePixelRatio || 1);
     };
 
+    window.addEventListener("resize", handleResize);
+
     return () => {
+      Matter.Events.off(render, "beforeRender", updateFps);
       Render.stop(render);
+      Runner.stop(runner);
       Engine.clear(engine);
       World.clear(world, false);
       render.canvas.remove();
