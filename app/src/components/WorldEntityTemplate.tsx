@@ -19,22 +19,18 @@ import {
 const MatterComponent: React.FC = () => {
   const [fps, setFps] = React.useState(0);
   const sceneRef = useRef<HTMLDivElement>(null);
-  const engineRef = useRef<EngineType>(Engine.create());
-  const renderRef = useRef<RenderType | null>(null);
 
   useEffect(() => {
-    console.log(window.innerHeight);
-    console.log(window.innerWidth);
-    const engine = engineRef.current;
+    const engine: EngineType = Engine.create();
     const { world } = engine;
-    world.gravity.y = 0.025;
+    world.gravity.y = 0.1;
 
     const render: RenderType = Render.create({
       element: sceneRef.current!,
       engine: engine,
       options: {
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: 800,
+        height: 600,
         wireframes: true,
       },
     });
@@ -74,10 +70,10 @@ const MatterComponent: React.FC = () => {
     );
     // @ts-ignore
     Composite.add(world, [
-      Bodies.rectangle(400, 0, 800, 50, { isStatic: true }), // up
+      Bodies.rectangle(400, 0, 800, 50, { isStatic: true }),
       Bodies.rectangle(400, 600, 800, 50, { isStatic: true }),
       Bodies.rectangle(800, 300, 50, 600, { isStatic: true }),
-      Bodies.rectangle(0, 300, 50, 600, { isStatic: true }), // Left
+      Bodies.rectangle(0, 300, 50, 600, { isStatic: true }),
       stack,
     ]);
 
@@ -88,7 +84,7 @@ const MatterComponent: React.FC = () => {
       constraint: {
         stiffness: 0.2,
         render: {
-          visible: true,
+          visible: false,
           lineWidth: 1,
           strokeStyle: "#ffffff",
         },
@@ -104,28 +100,19 @@ const MatterComponent: React.FC = () => {
     Runner.run(engine);
     Render.run(render);
 
-    const handleResize = () => {
-      render.options.width = window.innerWidth;
-      render.options.height = window.innerHeight;
-      Render.setPixelRatio(render, window.devicePixelRatio || 1);
-    };
-
     return () => {
       Render.stop(render);
       Engine.clear(engine);
       World.clear(world, false);
       render.canvas.remove();
       render.textures = {};
-      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <>
-      <div ref={sceneRef} className="w-full h-screen relative">
-        <div className="absolute top-2 right-2 text-white">
-          FPS: {fps.toFixed(0)}
-        </div>
+      <div ref={sceneRef}>
+        <div className="flex justify-end">FPS: {fps.toFixed(0)}</div>
       </div>
     </>
   );
