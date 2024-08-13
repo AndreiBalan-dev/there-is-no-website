@@ -70,12 +70,24 @@ const MatterComponent: React.FC = () => {
         })
     );
     Composite.add(world, [
-      Bodies.rectangle(400, 0, 800, 50, { isStatic: true }),
-      Bodies.rectangle(400, 600, 800, 50, { isStatic: true }),
-      Bodies.rectangle(800, 300, 50, 600, { isStatic: true }),
-      Bodies.rectangle(0, 300, 50, 600, { isStatic: true }),
-      stack,
+      Bodies.rectangle(window.innerWidth / 2, window.innerHeight / 2, window.innerWidth - 1500, window.innerHeight - 600, {
+        isStatic: true,
+        // turn off collisions
+        collisionFilter : {
+          'group': -1,
+          'category': 2,
+          'mask': 0,
+        }
+      })
+
     ]);
+
+    //Youtube Play button
+    Composite.add(world, [
+      Bodies.polygon(window.innerWidth / 2, window.innerHeight / 2, 3, 35, {
+        isStatic: false,
+      } )
+    ]) 
 
     const mouse = Mouse.create(render.canvas);
     const mouseConstraint = MouseConstraint.create(engine, {
