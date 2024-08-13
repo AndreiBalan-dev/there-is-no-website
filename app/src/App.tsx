@@ -1,11 +1,13 @@
-import "./App.css";
+import React from "react";
+import MatterComponentTemplate from "./components/WorldEntityTemplate";
+import MatterComponent from "./components/WorldEntity";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <p className="text-blue-600">Hey</p>
-    </>
+    <div className="flex justify-center">
+      <MatterComponent />
+    </div>
   );
-}
+};
 
 export default App;

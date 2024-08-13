@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/matter-js": "^0.19.7",
     "autoprefixer": "^10.4.20",
+    "matter-js": "^0.20.0",
     "postcss": "^8.4.41",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
