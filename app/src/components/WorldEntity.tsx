@@ -15,6 +15,7 @@ import {
   Engine as EngineType,
   Mouse as MouseType,
 } from "matter-js";
+import { resize, calculateSizeReductionScale } from "../utils/resize";
 
 const MatterComponent: React.FC = () => {
   const [fps, setFps] = React.useState(0);
@@ -55,26 +56,17 @@ const MatterComponent: React.FC = () => {
 
     Matter.Events.on(render, "beforeRender", updateFps);
 
-    const stack = Composites.stack(
-      100,
-      600 - 21 - 20 * 20,
-      10,
-      10,
-      20,
-      0,
-      (x: number, y: number) =>
-        Bodies.circle(x, y, 20, {
-          friction: 0.1,
-          frictionAir: 0.01,
-          frictionStatic: 0.5,
-        })
-    );
+    const renderViewportWidth = render.options.width || window.innerWidth;
+    const renderViewportHeight = render.options.height || window.innerHeight;
+    const sizeReductionScale = calculateSizeReductionScale(renderViewportWidth, renderViewportHeight);
+  
+    const { width, height } = resize(renderViewportWidth / sizeReductionScale, renderViewportHeight / sizeReductionScale); 
+    let videoPlayerBox = Bodies.rectangle(renderViewportWidth / 2, renderViewportHeight / 2, width, height, {
+      isStatic: true,
+    });
+
     Composite.add(world, [
-      Bodies.rectangle(400, 0, 800, 50, { isStatic: true }),
-      Bodies.rectangle(400, 600, 800, 50, { isStatic: true }),
-      Bodies.rectangle(800, 300, 50, 600, { isStatic: true }),
-      Bodies.rectangle(0, 300, 50, 600, { isStatic: true }),
-      stack,
+      videoPlayerBox
     ]);
 
     const mouse = Mouse.create(render.canvas);
@@ -101,6 +93,15 @@ const MatterComponent: React.FC = () => {
       render.options.width = window.innerWidth;
       render.options.height = window.innerHeight;
       Render.setPixelRatio(render, window.devicePixelRatio || 1);
+
+      const newSizeReductionScale = calculateSizeReductionScale(render.options.width, render.options.height);
+      const newVideoPlayerBoxSize = resize(render.options.width / newSizeReductionScale, render.options.height / newSizeReductionScale);
+      Composite.remove(world, videoPlayerBox);
+
+      videoPlayerBox = Bodies.rectangle(render.options.width / 2, render.options.height / 2, newVideoPlayerBoxSize.width, newVideoPlayerBoxSize.height, {
+        isStatic: true,
+      });
+      Composite.add(world, videoPlayerBox);
     };
 
     window.addEventListener("resize", handleResize);
