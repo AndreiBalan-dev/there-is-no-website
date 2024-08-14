@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import Matter, { Engine, Render, World, Mouse, MouseConstraint, Runner, Composite, Bodies } from "matter-js";
+import Matter, { Engine, Render, World, Mouse, MouseConstraint, Runner } from "matter-js";
 import { Render as RenderType, Engine as EngineType } from "matter-js";
 import { VideoPlayerBox } from "./(video-player)/VideoPlayerBox";
+import { VideoPlayButton } from "./(video-player)/VideoPlayButton";
+import { VideoHamburgerMenu } from "./(video-player)/VideoHamburgerMenu";
 
 const MatterComponent: React.FC = () => {
 	const [fps, setFps] = React.useState(0);
@@ -9,6 +11,7 @@ const MatterComponent: React.FC = () => {
 	const engineRef = useRef<EngineType>(Engine.create());
 
 	useEffect(() => {
+		// Initialiazation
 		const engine = engineRef.current;
 		const { world } = engine;
 		engine.gravity.scale = 0.025;
@@ -23,10 +26,12 @@ const MatterComponent: React.FC = () => {
 				wireframes: true,
 			},
 		});
+		
 
+		// FPS Updates
 		let lastTimestamp = performance.now();
 		let frames = 0;
-
+		
 		const updateFps = () => {
 			const currentTimestamp = performance.now();
 			frames++;
@@ -38,15 +43,29 @@ const MatterComponent: React.FC = () => {
 				frames = 0;
 			}
 		};
-
+		
 		Matter.Events.on(render, "beforeRender", updateFps);
 
+
+		// Entities
 		const videoPlayerBox = new VideoPlayerBox({
 			world,
 			renderWidth: render.options.width || window.innerWidth,
 			renderHeight: render.options.height || window.innerHeight,
 		});
+		const videoPlayButton = new VideoPlayButton({
+			world,
+			renderWidth: render.options.width || window.innerWidth,
+			renderHeight: render.options.height || window.innerHeight
+		})
+		const videoHamburgerMenu = new VideoHamburgerMenu({
+			world,
+			renderWidth: videoPlayerBox.box.bounds.max.x,
+			renderHeight: videoPlayerBox.box.bounds.min.y
+		})
 
+
+		// Mouse
 		const mouse = Mouse.create(render.canvas);
 		const mouseConstraint = MouseConstraint.create(engine, {
 			mouse,
@@ -60,70 +79,41 @@ const MatterComponent: React.FC = () => {
 			},
 		});
 
-		//Create Youtube Playbutton:
-		Composite.add(world, [
-			Bodies.polygon(window.innerWidth / 2, window.innerHeight / 2, 3, 35, {
-				isStatic: false,
-				//Turn off collision:
-				collisionFilter: {
-					'group': -1,
-					'category': 2,
-					'mask': 0,
-				}
-			})
-		])
-
-		//Create the three lines of the Youtube video:
-		Composite.add(world, [
-			//top line:
-			Bodies.rectangle(window.innerWidth / 1.45, window.innerWidth / 8.5, 30, 10, {
-				isStatic: false,
-				collisionFilter: {
-					'group': -1,
-					'category': 2,
-					'mask': 0,
-				}
-			}),
-			//middle line:
-			Bodies.rectangle(window.innerWidth / 1.45, window.innerWidth / 8.1, 30, 10, {
-				isStatic: false,
-				collisionFilter: {
-					'group': -1,
-					'category': 2,
-					'mask': 0,
-				}
-			}),
-			Bodies.rectangle(window.innerWidth / 1.45, window.innerWidth / 7.8, 30, 10, {
-				isStatic: false,
-				collisionFilter: {
-					'group': -1,
-					'category': 2,
-					'mask': 0,
-				}
-			})
-		])
 		World.add(world, mouseConstraint);
 		render.mouse = mouse;
-
-		const runner = Runner.create();
-		Runner.run(runner, engine);
-
+		
+		
+		// Resize Handlers
 		const handleResize = () => {
 			render.options.width = window.innerWidth;
 			render.options.height = window.innerHeight;
 			Render.setPixelRatio(render, window.devicePixelRatio || 1);
-
+			
 			videoPlayerBox.resize(
 				world,
 				render.options.width,
 				render.options.height
 			);
+			videoPlayButton.resize(
+				world,
+				render.options.width,
+				render.options.height
+			)
+			videoHamburgerMenu.resize(
+				world,
+				videoPlayerBox.box.bounds.max.x,
+				videoPlayerBox.box.bounds.min.y
+			)
 		};
-
+		
 		window.addEventListener("resize", handleResize);
 
-		Render.run(render);
 
+		// Run
+		const runner = Runner.create();
+		Runner.run(runner, engine);
+		Render.run(render);
+		
 		return () => {
 			Matter.Events.off(render, "beforeRender", updateFps);
 			Render.stop(render);
