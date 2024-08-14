@@ -8,20 +8,11 @@ export interface VideoPlayerBoxProps {
 }
 
 export class VideoPlayerBox {
-	public box: Body;
+	public walls: Body[];
 
 	constructor({ world, renderWidth, renderHeight }: VideoPlayerBoxProps) {
-		const { width, height } = this.getDimensions(renderWidth, renderHeight);
-		this.box = Bodies.rectangle(
-			renderWidth / 2,
-			renderHeight / 2,
-			width,
-			height,
-			{
-				isStatic: true,
-			}
-		);
-		Composite.add(world, this.box);
+		this.walls = this.createWalls(renderWidth, renderHeight);
+		Composite.add(world, this.walls);
 	}
 
 	private getDimensions(renderWidth: number, renderHeight: number) {
@@ -32,18 +23,45 @@ export class VideoPlayerBox {
 		);
 	}
 
-	public resize(world: World, renderWidth: number, renderHeight: number) {
-		Composite.remove(world, this.box);
+	private createWalls(renderWidth: number, renderHeight: number): Body[] {
 		const { width, height } = this.getDimensions(renderWidth, renderHeight);
-		this.box = Bodies.rectangle(
-			renderWidth / 2,
-			renderHeight / 2,
-			width,
-			height,
-			{
-				isStatic: true,
+		const thickness = 1;
+
+		const topWall = Bodies.rectangle(renderWidth / 2, (renderHeight - height) / 2, width, thickness, {
+			isStatic: true,
+			collisionFilter: {
+				group: 0,
+				category: 2
 			}
-		);
-		Composite.add(world, this.box);
+		});
+		const bottomWall = Bodies.rectangle(renderWidth / 2, (renderHeight + height) / 2, width, thickness, {
+			isStatic: true,
+			collisionFilter: {
+				group: 0,
+				category: 2
+			}
+		});
+		const leftWall = Bodies.rectangle((renderWidth - width) / 2, renderHeight / 2, thickness, height, {
+			isStatic: true,
+			collisionFilter: {
+				group: 0,
+				category: 2
+			}
+		});
+		const rightWall = Bodies.rectangle((renderWidth + width) / 2, renderHeight / 2, thickness, height, {
+			isStatic: true,
+			collisionFilter: {
+				group: 0,
+				category: 2
+			}
+		});
+
+		return [topWall, bottomWall, leftWall, rightWall];
+	}
+
+	public resize(world: World, renderWidth: number, renderHeight: number) {
+		Composite.remove(world, this.walls);
+		this.walls = this.createWalls(renderWidth, renderHeight);
+		Composite.add(world, this.walls);
 	}
 }

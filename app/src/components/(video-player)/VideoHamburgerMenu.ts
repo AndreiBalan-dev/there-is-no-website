@@ -47,11 +47,11 @@ export class VideoHamburgerMenu {
 				lineWidth,
 				lineHeight,
 				{
-					isStatic: true,
+					isStatic: false,
 					collisionFilter: {
-						group: -1,
-						category: 2,
-						mask: 0,
+						group: 1,
+						category: 3,
+						mask: 2 | 3
 					},
 				}
 			)
