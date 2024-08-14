@@ -16,7 +16,7 @@ export const resize = (width: number, height: number, ratio: number = 16/9): { w
     return { width, height }
 }
 
-export const calculateSizeReductionScale = (width: number, height: number): number => {
+export const calculateSizeReductionScale = (width: number): number => {
 	if (width <= 600) {
 		return 1.2;
 	} else if (width <= 800) {
