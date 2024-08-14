@@ -8,7 +8,7 @@ export interface VideoPlayerBoxProps {
 }
 
 export class VideoPlayerBox {
-	private box: Body;
+	public box: Body;
 
 	constructor({ world, renderWidth, renderHeight }: VideoPlayerBoxProps) {
 		const { width, height } = this.getDimensions(renderWidth, renderHeight);
@@ -25,10 +25,7 @@ export class VideoPlayerBox {
 	}
 
 	private getDimensions(renderWidth: number, renderHeight: number) {
-		const sizeReductionScale = calculateSizeReductionScale(
-			renderWidth,
-			renderHeight
-		);
+		const sizeReductionScale = calculateSizeReductionScale(renderWidth);
 		return resize(
 			renderWidth / sizeReductionScale,
 			renderHeight / sizeReductionScale
