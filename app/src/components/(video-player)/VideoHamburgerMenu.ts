@@ -26,7 +26,7 @@ export class VideoHamburgerMenu {
 
 	private getScaledSizes(renderWidth: number) {
 		let scale = calculateSizeReductionScale(renderWidth);
-        scale = scale === 1.5? scale : 2;
+        scale = scale === 1.5 ? scale : 2;
 		return {
 			padding: this.padding / scale,
 			lineWidth: this.lineWidth / scale,
