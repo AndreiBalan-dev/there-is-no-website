@@ -30,9 +30,9 @@ export class VideoPlayButton {
 		return Bodies.polygon(renderWidth / 2, renderHeight / 2, 3, size, {
 			isStatic: false,
 			collisionFilter: {
-				group: -1,
-				category: 2,
-				mask: 0,
+				group: 1,
+				category: 3,
+				mask: 2 | 3,
 			},
 			angle: Math.PI,
 		});
