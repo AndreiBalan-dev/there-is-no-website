@@ -60,8 +60,8 @@ const MatterComponent: React.FC = () => {
 		})
 		const videoHamburgerMenu = new VideoHamburgerMenu({
 			world,
-			renderWidth: videoPlayerBox.box.bounds.max.x,
-			renderHeight: videoPlayerBox.box.bounds.min.y
+			renderWidth: videoPlayerBox.walls[3].bounds.min.x,
+			renderHeight: videoPlayerBox.walls[0].bounds.max.y
 		})
 
 
@@ -82,7 +82,6 @@ const MatterComponent: React.FC = () => {
 		World.add(world, mouseConstraint);
 		render.mouse = mouse;
 		
-		
 		// Resize Handlers
 		const handleResize = () => {
 			render.options.width = window.innerWidth;
@@ -101,8 +100,8 @@ const MatterComponent: React.FC = () => {
 			)
 			videoHamburgerMenu.resize(
 				world,
-				videoPlayerBox.box.bounds.max.x,
-				videoPlayerBox.box.bounds.min.y
+				videoPlayerBox.walls[3].bounds.min.x,
+				videoPlayerBox.walls[0].bounds.max.y
 			)
 		};
 		
