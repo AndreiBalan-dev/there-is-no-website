@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Matter, { Engine, Render, World, Mouse, MouseConstraint, Runner } from "matter-js";
+import Matter, { Engine, Render, World, Mouse, MouseConstraint, Runner, Composite, Bodies } from "matter-js";
 import { Render as RenderType, Engine as EngineType } from "matter-js";
 import { VideoPlayerBox } from "./(video-player)/VideoPlayerBox";
 
@@ -60,6 +60,48 @@ const MatterComponent: React.FC = () => {
 			},
 		});
 
+		//Create Youtube Playbutton:
+		Composite.add(world, [
+			Bodies.polygon(window.innerWidth / 2, window.innerHeight / 2, 3, 35, {
+				isStatic: false,
+				//Turn off collision:
+				collisionFilter: {
+					'group': -1,
+					'category': 2,
+					'mask': 0,
+				}
+			})
+		])
+
+		//Create the three lines of the Youtube video:
+		Composite.add(world, [
+			//top line:
+			Bodies.rectangle(window.innerWidth / 1.45, window.innerWidth / 8.5, 30, 10, {
+				isStatic: false,
+				collisionFilter: {
+					'group': -1,
+					'category': 2,
+					'mask': 0,
+				}
+			}),
+			//middle line:
+			Bodies.rectangle(window.innerWidth / 1.45, window.innerWidth / 8.1, 30, 10, {
+				isStatic: false,
+				collisionFilter: {
+					'group': -1,
+					'category': 2,
+					'mask': 0,
+				}
+			}),
+			Bodies.rectangle(window.innerWidth / 1.45, window.innerWidth / 7.8, 30, 10, {
+				isStatic: false,
+				collisionFilter: {
+					'group': -1,
+					'category': 2,
+					'mask': 0,
+				}
+			})
+		])
 		World.add(world, mouseConstraint);
 		render.mouse = mouse;
 
