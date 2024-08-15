@@ -71,6 +71,11 @@ const MatterComponent: React.FC = () => {
       renderHeight: videoPlayerBox.walls[0].bounds.min.y,
     });
 
+    Matter.Body.setStatic(videoPlayButton.body, true);
+    videoHamburgerMenu.bodies.forEach((body) => {
+      Matter.Body.setStatic(body, true);
+    });
+
     // Mouse
     const mouse = Mouse.create(render.canvas);
     const mouseConstraint = MouseConstraint.create(engine, {
@@ -92,11 +97,31 @@ const MatterComponent: React.FC = () => {
     const runner = Runner.create();
     Runner.run(runner, engine);
     Render.run(render);
-    Matter.Events.on(runner, "tick", (event) => {
+
+    // an example of using mouse events on a mouse
+    Events.on(mouseConstraint, "mousedown", function (event) {
+      var mousePosition = event.mouse.position;
+      console.log("mousedown at " + mousePosition.x + " " + mousePosition.y);
       if (mouseConstraint.body && mouseConstraint.body.isStatic) {
-        Matter.Body.setStatic(mouseConstraint.body, false);
-        console.log("A");
+        const body = mouseConstraint.body;
+        Matter.Body.setStatic(body, !mouseConstraint.body.isStatic);
       }
+    });
+
+    // an example of using mouse events on a mouse
+    Events.on(mouseConstraint, "mouseup", function (event) {
+      var mousePosition = event.mouse.position;
+      console.log("mouseup at " + mousePosition.x + " " + mousePosition.y);
+    });
+
+    // an example of using mouse events on a mouse
+    Events.on(mouseConstraint, "startdrag", function (event) {
+      console.log("startdrag", event);
+    });
+
+    // an example of using mouse events on a mouse
+    Events.on(mouseConstraint, "enddrag", function (event) {
+      console.log("enddrag", event);
     });
 
     return () => {

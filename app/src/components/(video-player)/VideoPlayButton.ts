@@ -8,12 +8,12 @@ export interface VideoPlayButtonProps {
 }
 
 export class VideoPlayButton {
-  private button: Body;
+  public body: Body;
 
   constructor({ world, renderWidth, renderHeight }: VideoPlayButtonProps) {
     const size = this.getSize(renderWidth);
-    this.button = this.createButton(renderWidth, renderHeight, size);
-    Composite.add(world, this.button);
+    this.body = this.createButton(renderWidth, renderHeight, size);
+    Composite.add(world, this.body);
   }
 
   private getSize(renderWidth: number): number {
@@ -28,11 +28,11 @@ export class VideoPlayButton {
     size: number
   ): Body {
     return Bodies.polygon(renderWidth / 2, renderHeight / 2, 3, size, {
-      isStatic: true,
+      isStatic: false,
       collisionFilter: {
-        group: 1,
-        category: 3,
-        mask: 4 | 5,
+        group: 2,
+        category: 2,
+        mask: 1,
       },
       render: {
         fillStyle: "red",
@@ -44,9 +44,9 @@ export class VideoPlayButton {
   }
 
   public resize(world: World, renderWidth: number, renderHeight: number) {
-    Composite.remove(world, this.button);
+    Composite.remove(world, this.body);
     const size = this.getSize(renderWidth);
-    this.button = this.createButton(renderWidth, renderHeight, size);
-    Composite.add(world, this.button);
+    this.body = this.createButton(renderWidth, renderHeight, size);
+    Composite.add(world, this.body);
   }
 }

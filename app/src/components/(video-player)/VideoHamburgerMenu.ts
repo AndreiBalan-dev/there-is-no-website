@@ -8,7 +8,7 @@ export interface VideoHamburgerMenuProps {
 }
 
 export class VideoHamburgerMenu {
-  private lines: Body[];
+  public bodies: Body[];
   private padding: number;
   private lineWidth: number;
   private lineHeight: number;
@@ -20,8 +20,8 @@ export class VideoHamburgerMenu {
     this.lineHeight = 5;
     this.spacing = 8;
 
-    this.lines = this.createHamburgerMenu(renderWidth, renderHeight);
-    Composite.add(world, this.lines);
+    this.bodies = this.createHamburgerMenu(renderWidth, renderHeight);
+    Composite.add(world, this.bodies);
   }
 
   private getScaledSizes(renderWidth: number) {
@@ -68,8 +68,8 @@ export class VideoHamburgerMenu {
   }
 
   public resize(world: World, renderWidth: number, renderHeight: number) {
-    Composite.remove(world, this.lines);
-    this.lines = this.createHamburgerMenu(renderWidth, renderHeight);
-    Composite.add(world, this.lines);
+    Composite.remove(world, this.bodies);
+    this.bodies = this.createHamburgerMenu(renderWidth, renderHeight);
+    Composite.add(world, this.bodies);
   }
 }
