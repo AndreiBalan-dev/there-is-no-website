@@ -22,7 +22,7 @@ import zeroImg from "../../assets/0.png";
 import oneImg from "../../assets/1.png";
 import twoImg from "../../assets/2.png";
 import threeImg from "../../assets/3.png";
-import colonImg from "../../assets/colon.png"; // Placeholder for ':'
+import colonImg from "../../assets/colon.png";
 
 const letterTextures: { [key: string]: string } = {
   f: fImg,
@@ -131,10 +131,19 @@ export class VideoPlayerBox {
 
   private createTitle(renderWidth: number, renderHeight: number): Body[] {
     const title = "funny cat video.mp4";
-    const letterWidth = 15;
-    const letterHeight = 20;
-    const paddingX = 30;
-    const paddingY = 30;
+    let letterWidth = 15;
+    let letterHeight = 20;
+    let paddingX = 30;
+    let paddingY = 30;
+    let spacing = 2;
+
+    if (renderWidth < 600) {
+      letterWidth = 8;
+      letterHeight = 13;
+      spacing = 6;
+      paddingX = 20;
+      paddingY = 20;
+    }
 
     const bodies: Body[] = [];
     let startX =
@@ -150,7 +159,7 @@ export class VideoPlayerBox {
           assignY += 3;
         }
         const letterBody = Bodies.rectangle(
-          startX + i * (letterWidth + 2),
+          startX + i * (letterWidth + spacing),
           startY + assignY,
           letterWidth,
           letterHeight,
