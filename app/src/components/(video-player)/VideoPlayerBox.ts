@@ -240,12 +240,12 @@ export class VideoPlayerBox {
 
   private createTimeDisplay(renderWidth: number, renderHeight: number): Body[] {
     const { width, height } = this.getDimensions(renderWidth);
-    const timeWidth = 15; // Width of each character in the time display
-    const timeHeight = 20; // Height of each character in the time display
+    const timeWidth = 15;
+    const timeHeight = 20;
     const paddingLeft = 15;
     const paddingBottom = 20;
 
-    const timeText = "01:23"; // Example time to display (each character will be a separate image)
+    const timeText = "01:23";
     const bodies: Body[] = [];
     let startX = renderWidth / 2 - width / 2 + paddingLeft;
     const startY = renderHeight / 2 + height / 2 - paddingBottom + 5;
