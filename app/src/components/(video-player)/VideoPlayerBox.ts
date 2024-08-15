@@ -1,6 +1,6 @@
 import { Bodies, Composite, World, Body } from "matter-js";
 import { resize, calculateSizeReductionScale } from "../../utils/resize";
-import cat from "../../assets/smallSizedCatImage.jpg";
+import cat from "../../assets/smallSizedCatImageShadow.png";
 
 export interface VideoPlayerBoxProps {
   world: World;
