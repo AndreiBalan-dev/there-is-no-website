@@ -35,11 +35,11 @@ export class VideoPlayerBox {
       width,
       thickness,
       {
-        isStatic: true,
+        isStatic: false,
         collisionFilter: {
           group: -1,
           category: 2,
-          mask: 0,
+          mask: 1,
         },
         render: {
           sprite: {

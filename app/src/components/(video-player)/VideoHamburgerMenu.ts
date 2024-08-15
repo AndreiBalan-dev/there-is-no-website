@@ -53,9 +53,9 @@ export class VideoHamburgerMenu {
         {
           isStatic: false,
           collisionFilter: {
-            group: 1,
-            category: 3,
-            mask: 2 | 3,
+            group: 2,
+            category: 2,
+            mask: 2,
           },
           render: {
             fillStyle: "white",

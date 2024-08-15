@@ -70,10 +70,22 @@ const MatterComponent: React.FC = () => {
       renderWidth: videoPlayerBox.walls[0].bounds.max.x,
       renderHeight: videoPlayerBox.walls[0].bounds.min.y,
     });
+    console.log(videoPlayerBox);
 
     Matter.Body.setStatic(videoPlayButton.body, true);
-    videoHamburgerMenu.bodies.forEach((body) => {
-      Matter.Body.setStatic(body, true);
+    Matter.Body.setStatic(videoPlayerBox.walls[0], true);
+    // videoHamburgerMenu.bodies.forEach((body) => {
+    //   Matter.Body.setStatic(body, true);
+    // });
+
+    Events.on(engine, "beforeUpdate", function () {
+      var gravity = engine.gravity;
+      videoHamburgerMenu.bodies.forEach((body) => {
+        Matter.Body.applyForce(body, body.position, {
+          x: -gravity.x * gravity.scale * body.mass,
+          y: -gravity.y * gravity.scale * body.mass,
+        });
+      });
     });
 
     // Mouse
