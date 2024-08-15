@@ -1,5 +1,6 @@
 import { Bodies, Composite, World, Body } from "matter-js";
 import { resize, calculateSizeReductionScale } from "../../utils/resize";
+// @ts-ignore
 import cat from "../../assets/smallSizedCatImageShadow.png";
 
 export interface VideoPlayerBoxProps {
@@ -33,7 +34,7 @@ export class VideoPlayerBox {
       renderWidth / 2,
       renderHeight / 2,
       width,
-      thickness,
+      Math.min(height, thickness),
       {
         isStatic: false,
         collisionFilter: {
@@ -44,8 +45,8 @@ export class VideoPlayerBox {
         render: {
           sprite: {
             texture: cat,
-            xScale: width / 300,
-            yScale: height / 140,
+            xScale: width / 320,
+            yScale: height / 180,
           },
         },
       }
