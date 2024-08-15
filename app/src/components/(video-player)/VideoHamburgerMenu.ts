@@ -18,7 +18,7 @@ export class VideoHamburgerMenu {
     this.padding = 50;
     this.lineWidth = 5;
     this.lineHeight = 5;
-    this.spacing = 8;
+    this.spacing = 30;
 
     this.bodies = this.createHamburgerMenu(renderWidth, renderHeight);
     Composite.add(world, this.bodies);
@@ -45,25 +45,19 @@ export class VideoHamburgerMenu {
     const y = renderHeight + padding + lineHeight / 2;
 
     return [0, 1, 2].map((i) =>
-      Bodies.rectangle(
-        x,
-        y + i * (lineHeight + spacing),
-        lineWidth,
-        lineHeight,
-        {
-          isStatic: false,
-          collisionFilter: {
-            group: 2,
-            category: 2,
-            mask: 2,
-          },
-          render: {
-            fillStyle: "white",
-            strokeStyle: "black",
-            lineWidth: 1,
-          },
-        }
-      )
+      Bodies.circle(x, y + i * (lineHeight + spacing), 7, {
+        isStatic: false,
+        collisionFilter: {
+          group: 2,
+          category: 2,
+          mask: 2,
+        },
+        render: {
+          fillStyle: "white",
+          strokeStyle: "black",
+          lineWidth: 1,
+        },
+      })
     );
   }
 
