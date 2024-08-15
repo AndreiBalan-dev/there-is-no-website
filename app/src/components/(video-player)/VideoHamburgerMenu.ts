@@ -9,16 +9,20 @@ export interface VideoHamburgerMenuProps {
 
 export class VideoHamburgerMenu {
   public bodies: Body[];
-  private padding: number;
+  private paddingX: number;
+  private paddingY: number;
   private lineWidth: number;
   private lineHeight: number;
   private spacing: number;
+  private radius: number;
 
   constructor({ world, renderWidth, renderHeight }: VideoHamburgerMenuProps) {
-    this.padding = 50;
+    this.paddingX = 65;
+    this.paddingY = 70;
     this.lineWidth = 5;
     this.lineHeight = 5;
-    this.spacing = 30;
+    this.spacing = 12;
+    this.radius = 5;
 
     this.bodies = this.createHamburgerMenu(renderWidth, renderHeight);
     Composite.add(world, this.bodies);
@@ -26,12 +30,15 @@ export class VideoHamburgerMenu {
 
   private getScaledSizes(renderWidth: number) {
     let scale = calculateSizeReductionScale(renderWidth);
-    scale = scale === 1.5 ? scale : 2;
+    scale = scale === 1.2 ? 2.5 : scale;
+    this.paddingY = scale === 2 ? this.paddingY - 50 : this.paddingY
     return {
-      padding: this.padding / scale,
+      paddingX: this.paddingX / scale,
+      paddingY: this.paddingY / scale,
       lineWidth: this.lineWidth / scale,
       lineHeight: this.lineHeight / scale,
       spacing: this.spacing / scale,
+      radius: this.radius / scale
     };
   }
 
@@ -39,13 +46,13 @@ export class VideoHamburgerMenu {
     renderWidth: number,
     renderHeight: number
   ): Body[] {
-    const { padding, lineWidth, lineHeight, spacing } =
+    const { paddingX, paddingY, lineWidth, lineHeight, spacing, radius } =
       this.getScaledSizes(renderWidth);
-    const x = renderWidth - padding - lineWidth / 2;
-    const y = renderHeight + padding + lineHeight / 2;
+    const x = renderWidth - paddingX - lineWidth / 2;
+    const y = renderHeight + paddingY + lineHeight / 2;
 
     return [0, 1, 2].map((i) =>
-      Bodies.circle(x, y + i * (lineHeight + spacing), 7, {
+      Bodies.circle(x, y + i * (lineHeight + spacing), radius, {
         isStatic: false,
         collisionFilter: {
           group: 2,
