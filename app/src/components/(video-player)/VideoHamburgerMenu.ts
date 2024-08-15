@@ -31,14 +31,14 @@ export class VideoHamburgerMenu {
   private getScaledSizes(renderWidth: number) {
     let scale = calculateSizeReductionScale(renderWidth);
     scale = scale === 1.2 ? 2.5 : scale;
-    this.paddingY = scale === 2 ? this.paddingY - 50 : this.paddingY
+    this.paddingY = scale === 2 ? this.paddingY - 50 : this.paddingY;
     return {
       paddingX: this.paddingX / scale,
       paddingY: this.paddingY / scale,
       lineWidth: this.lineWidth / scale,
       lineHeight: this.lineHeight / scale,
       spacing: this.spacing / scale,
-      radius: this.radius / scale
+      radius: this.radius / scale,
     };
   }
 
@@ -48,8 +48,18 @@ export class VideoHamburgerMenu {
   ): Body[] {
     const { paddingX, paddingY, lineWidth, lineHeight, spacing, radius } =
       this.getScaledSizes(renderWidth);
-    const x = renderWidth - paddingX - lineWidth / 2;
-    const y = renderHeight + paddingY + lineHeight / 2;
+    let x;
+    let y;
+    if (renderWidth >= 600 && renderWidth < 800) {
+      x = renderWidth - paddingX - lineWidth / 2 + 30;
+      y = renderHeight + paddingY + lineHeight / 2 - 30;
+    } else if (renderWidth < 600) {
+      x = renderWidth - paddingX - lineWidth / 2 + 10;
+      y = renderHeight + paddingY + lineHeight / 2 - 10;
+    } else {
+      x = renderWidth - paddingX - lineWidth / 2 + 10;
+      y = renderHeight + paddingY + lineHeight / 2 + 10;
+    }
 
     return [0, 1, 2].map((i) =>
       Bodies.circle(x, y + i * (lineHeight + spacing), radius, {
@@ -57,7 +67,7 @@ export class VideoHamburgerMenu {
         collisionFilter: {
           group: 2,
           category: 2,
-          mask: 2,
+          mask: 1,
         },
         render: {
           fillStyle: "white",

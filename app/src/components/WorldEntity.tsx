@@ -7,6 +7,7 @@ import Matter, {
   MouseConstraint,
   Runner,
   Events,
+  Bodies,
 } from "matter-js";
 import { Render as RenderType, Engine as EngineType } from "matter-js";
 import { VideoPlayerBox } from "./(video-player)/VideoPlayerBox";
@@ -35,6 +36,46 @@ const MatterComponent: React.FC = () => {
         wireframes: false,
       },
     });
+
+    const wallThickness = 50; // Thickness of the website box
+    const width = render.options.width;
+    const height = render.options.height;
+    if (!width || !height) {
+      return console.log("ERROR no render width or length");
+    }
+
+    const walls = [
+      Bodies.rectangle(width / 2, -wallThickness / 2, width, wallThickness, {
+        isStatic: true,
+        render: { visible: false },
+      }), // Top wall
+      Bodies.rectangle(
+        width / 2,
+        height + wallThickness / 2,
+        width,
+        wallThickness,
+        {
+          isStatic: true,
+          render: { visible: false },
+        }
+      ), // Bottom wall
+      Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height, {
+        isStatic: true,
+        render: { visible: false },
+      }), // Left wall
+      Bodies.rectangle(
+        width + wallThickness / 2,
+        height / 2,
+        wallThickness,
+        height,
+        {
+          isStatic: true,
+          render: { visible: false },
+        }
+      ), // Right wall
+    ];
+
+    World.add(world, walls);
 
     // FPS Updates
     let lastTimestamp = performance.now();
@@ -72,15 +113,39 @@ const MatterComponent: React.FC = () => {
     });
     console.log(videoPlayerBox);
 
-    Matter.Body.setStatic(videoPlayButton.body, true);
-    Matter.Body.setStatic(videoPlayerBox.walls[0], true);
-    // videoHamburgerMenu.bodies.forEach((body) => {
-    //   Matter.Body.setStatic(body, true);
-    // });
+    const bodiesWithCustomForce = new Set<Matter.Body>();
+
+    // Add all bodies to the set initially
+    videoPlayerBox.titleBodies.forEach((body) =>
+      bodiesWithCustomForce.add(body)
+    );
+    videoPlayerBox.walls.forEach((body) => bodiesWithCustomForce.add(body));
+    videoPlayerBox.progressBarBox.forEach((body) =>
+      bodiesWithCustomForce.add(body)
+    );
+    videoPlayerBox.progressBar.forEach((body) =>
+      bodiesWithCustomForce.add(body)
+    );
+    videoPlayerBox.timeDisplay.forEach((body) =>
+      bodiesWithCustomForce.add(body)
+    );
+    videoHamburgerMenu.bodies.forEach((body) =>
+      bodiesWithCustomForce.add(body)
+    );
+    bodiesWithCustomForce.add(videoPlayButton.body);
+
+    // Collision event handler
+    Events.on(engine, "collisionStart", (event) => {
+      event.pairs.forEach((pair) => {
+        bodiesWithCustomForce.delete(pair.bodyA);
+        bodiesWithCustomForce.delete(pair.bodyB);
+      });
+    });
 
     Events.on(engine, "beforeUpdate", function () {
       var gravity = engine.gravity;
-      videoHamburgerMenu.bodies.forEach((body) => {
+
+      bodiesWithCustomForce.forEach((body) => {
         Matter.Body.applyForce(body, body.position, {
           x: -gravity.x * gravity.scale * body.mass,
           y: -gravity.y * gravity.scale * body.mass,
