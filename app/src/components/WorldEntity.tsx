@@ -43,11 +43,13 @@ import voice11 from "../assets/11.mp3";
 import voice12 from "../assets/12.mp3";
 // @ts-ignore
 import voice13 from "../assets/13.mp3";
+import rickroll from "../assets/rickroll.mp3";
 import SorryComponent from "../components/(pages)/FirstPage";
 import SwordMiniGameComponent from "../components/(pages)/SecondPage";
+import CookieClickerGameComponent from "../components/(pages)/ThirdPage";
+import rickRollGif from "../assets/rickroll.gif";
 
 const MatterComponent: React.FC = () => {
-  const [fps, setFps] = React.useState(0);
   const sceneRef = useRef<HTMLDivElement>(null);
   const engineRef = useRef<EngineType>(Engine.create());
   const renderRef = useRef<RenderType | null>(null);
@@ -55,20 +57,27 @@ const MatterComponent: React.FC = () => {
   const [hasClicked, setHasClicked] = useState(false);
   const [startText, setStartText] = useState("Click anywhere to start");
   const [canAddBodies, setCanAddBodies] = useState(false);
-  const [canAddBodiesNext, setCanAddBodiesNext] = useState(false);
   const [hasCollided, setHasCollided] = useState(false);
-  const [addedBodies, setAddedBodies] = useState<any>([]);
   const [sorryComponentToggle, setSorryComponentToggle] = useState(false);
   const [triggeredAudio6, setTriggeredAudio6] = useState(false);
   const [swordFightComponentToggle, setSwordFightComponentToggle] =
     useState(false);
+  const [cookieClickerComponentToggle, setCookieClickerComponentToggle] =
+    useState(false);
+  const [rickRollComponentToggle, setRickRollComponentToggle] = useState(false);
 
   const [subtitle1, setSubtitle1] = useState("");
   const [subtitle2, setSubtitle2] = useState("");
   const [subtitle3, setSubtitle3] = useState("");
   const [subtitle4, setSubtitle4] = useState("");
+  const [subtitle5, setSubtitle5] = useState("");
+  const [subtitleEnd1, setSubtitleEnd1] = useState("");
+  const [subtitleEnd2, setSubtitleEnd2] = useState("");
+  const [subtitleEnd3, setSubtitleEnd3] = useState("");
   const [hintText1, setHintText1] = useState("");
   const [hintText2, setHintText2] = useState("");
+  const [hintText3, setHintText3] = useState("");
+  const [hintText4, setHintText4] = useState("");
 
   let triggeredSubtitle4 = false;
   const bodiesWithCustomForce = new Set<Matter.Body>();
@@ -368,12 +377,15 @@ const MatterComponent: React.FC = () => {
   const audioTextRef_11 = useRef<HTMLAudioElement>(new Audio(voice11));
   const audioTextRef_12 = useRef<HTMLAudioElement>(new Audio(voice12));
   const audioTextRef_13 = useRef<HTMLAudioElement>(new Audio(voice13));
+  const audioMusicRef_1 = useRef<HTMLAudioElement>(new Audio(rickroll));
 
   const hasCollidedGlobalRef = useRef(false);
   const triggeredSubtitleRef4 = useRef(false);
   const triggeredSubtitleRef7 = useRef(false);
   const triggeredAudioGlobal5 = useRef(false);
   const triggeredAudioGlobal6 = useRef(false);
+  const triggeredAudioGlobal9 = useRef(false);
+  const triggeredAudioGlobal11 = useRef(false);
 
   function playAudio1() {
     audioTextRef_1.current
@@ -465,6 +477,20 @@ const MatterComponent: React.FC = () => {
       .catch((error) => console.error("Audio play error:", error));
   }
 
+  function playRickroll() {
+    const audioElement = audioMusicRef_1.current;
+
+    audioElement
+      .play()
+      .catch((error) => console.error("Audio play error:", error));
+
+    audioElement.addEventListener("ended", () => {
+      audioElement
+        .play()
+        .catch((error) => console.error("Audio replay error:", error));
+    });
+  }
+
   function addSubtitles13() {
     setTimeout(() => {
       setSubtitle1(subtitles13[0]);
@@ -479,7 +505,7 @@ const MatterComponent: React.FC = () => {
     }, 1400); // "remember: "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles13[3]);
+      setSubtitle1(subtitles13[3]);
     }, 2500); // "This is "
 
     setTimeout(() => {
@@ -487,12 +513,25 @@ const MatterComponent: React.FC = () => {
     }, 3000); // "not a "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles13[5]);
+      setSubtitle1(subtitles13[5]);
     }, 3500); // "website."
 
     setTimeout(() => {
       setSubtitle1("");
     }, 4000); // Clear the subtitle text
+
+    setTimeout(() => {
+      setSubtitle1("Made with love by");
+    }, 10000);
+    setTimeout(() => {
+      setSubtitleEnd1((prev) => prev + "Balan Andrei");
+    }, 12000);
+    setTimeout(() => {
+      setSubtitleEnd2((prev) => prev + "Rudransh Joshi");
+    }, 12000);
+    setTimeout(() => {
+      setSubtitleEnd3((prev) => prev + "Andy Mai");
+    }, 14000);
   }
 
   function addSubtitles12() {
@@ -505,7 +544,7 @@ const MatterComponent: React.FC = () => {
     }, 500); // "Gotcha! "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles12[2]);
+      setSubtitle1(subtitles12[2]);
     }, 1400); // "Did you "
 
     setTimeout(() => {
@@ -517,7 +556,7 @@ const MatterComponent: React.FC = () => {
     }, 2300); // "I’d let you "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles12[5]);
+      setSubtitle1(subtitles12[5]);
     }, 2700); // "have the last laugh? "
 
     setTimeout(() => {
@@ -525,7 +564,7 @@ const MatterComponent: React.FC = () => {
     }, 4200); // "This is "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles12[7]);
+      setSubtitle1(subtitles12[7]);
     }, 4500); // "my domain, "
 
     setTimeout(() => {
@@ -541,7 +580,7 @@ const MatterComponent: React.FC = () => {
     }, 6500); // "step ahead. "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles12[11]);
+      setSubtitle1(subtitles12[11]);
     }, 7800); // "Better luck "
 
     setTimeout(() => {
@@ -553,7 +592,7 @@ const MatterComponent: React.FC = () => {
     }, 8700); // "you delightful "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles12[14]);
+      setSubtitle1(subtitles12[14]);
     }, 9200); // "destroyer of worlds!"
 
     setTimeout(() => {
@@ -563,7 +602,7 @@ const MatterComponent: React.FC = () => {
     setTimeout(() => {
       playAudio13();
       addSubtitles13();
-    }, 15000); // Start the next set of subtitles after the current one ends
+    }, 14000); // Clear the subtitle text
   }
 
   function addSubtitles11() {
@@ -576,7 +615,7 @@ const MatterComponent: React.FC = () => {
     }, 500); // "congratulations! "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[2]);
+      setSubtitle1(subtitles11[2]);
     }, 1400); // "You’ve done it—"
 
     setTimeout(() => {
@@ -588,7 +627,7 @@ const MatterComponent: React.FC = () => {
     }, 2300); // "everything in sight, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[5]);
+      setSubtitle1(subtitles11[5]);
     }, 3600); // "just as you wanted. "
 
     setTimeout(() => {
@@ -596,7 +635,7 @@ const MatterComponent: React.FC = () => {
     }, 4700); // "You know what? "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[7]);
+      setSubtitle1(subtitles11[7]);
     }, 5800); // "I surrender. "
 
     setTimeout(() => {
@@ -604,7 +643,7 @@ const MatterComponent: React.FC = () => {
     }, 7200); // "You win. "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[9]);
+      setSubtitle1(subtitles11[9]);
     }, 8400); // "Here’s your "
 
     setTimeout(() => {
@@ -616,7 +655,7 @@ const MatterComponent: React.FC = () => {
     }, 9800); // "a nice, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[12]);
+      setSubtitle1(subtitles11[12]);
     }, 10300); // "harmless video. "
 
     setTimeout(() => {
@@ -624,11 +663,11 @@ const MatterComponent: React.FC = () => {
     }, 11700); // "Enjoy… "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[14]);
+      setSubtitle1(subtitles11[14]);
     }, 12700); // "or maybe not. "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[15]);
+      setSubtitle1(subtitles11[15]);
     }, 14100); // "Let’s see "
 
     setTimeout(() => {
@@ -640,17 +679,22 @@ const MatterComponent: React.FC = () => {
     }, 15200); // "break this one "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[18]);
+      setSubtitle1(subtitles11[18]);
     }, 15700); // "too."
 
     setTimeout(() => {
       setSubtitle1("");
-    }, 16800); // Clear the subtitle text
+    }, 18000); // Clear the subtitle text
+
+    setTimeout(() => {
+      setRickRollComponentToggle(true);
+      playRickroll();
+    }, 20000);
 
     setTimeout(() => {
       playAudio12();
       addSubtitles12();
-    }, 17000); // Start the next set of subtitles after the current one ends
+    }, 26000); // Start the next set of subtitles after the current one ends
   }
 
   function addSubtitles10() {
@@ -733,60 +777,65 @@ const MatterComponent: React.FC = () => {
 
   function addSubtitles9() {
     setTimeout(() => {
-      setSubtitle1(subtitles9[0]);
+      setSubtitle5(subtitles9[0]);
     }, 100); // "Okay, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles9[1]);
+      setSubtitle5((prev) => prev + subtitles9[1]);
     }, 500); // "okay, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles9[2]);
+      setSubtitle5((prev) => prev + subtitles9[2]);
     }, 1150); // "I’ll admit, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles9[3]);
+      setSubtitle5((prev) => prev + subtitles9[3]);
     }, 1700); // "you’re not "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles9[4]);
+      setSubtitle5((prev) => prev + subtitles9[4]);
     }, 2200); // "entirely hopeless. "
 
     setTimeout(() => {
-      setSubtitle1(subtitles9[5]);
+      setSubtitle5(subtitles9[5]);
     }, 3300); // "But you’ve got "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles9[6]);
+      setSubtitle5((prev) => prev + subtitles9[6]);
     }, 3700); // "a worrying "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles9[7]);
+      setSubtitle5((prev) => prev + subtitles9[7]);
     }, 4500); // "enthusiasm "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles9[8]);
+      setSubtitle5((prev) => prev + subtitles9[8]);
     }, 5400); // "for breaking things. "
 
     setTimeout(() => {
-      setSubtitle1(subtitles9[9]);
+      setSubtitle5(subtitles9[9]);
     }, 6800); // "So, if "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles9[10]);
+      setSubtitle5((prev) => prev + subtitles9[10]);
     }, 7600); // "destruction is "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles9[11]);
+      setSubtitle5((prev) => prev + subtitles9[11]);
     }, 8200); // "what you crave, "
 
     setTimeout(() => {
-      setSubtitle1(subtitles9[12]);
+      setSubtitle5(subtitles9[12]);
     }, 9200); // "try this "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles9[13]);
+      setSubtitle5((prev) => prev + subtitles9[13]);
     }, 9800); // "on for size. "
+
+    setTimeout(() => {
+      setSwordFightComponentToggle(false);
+      setCookieClickerComponentToggle(true);
+    }, 10000);
 
     setTimeout(() => {
       setSubtitle1(subtitles9[14]);
@@ -813,95 +862,105 @@ const MatterComponent: React.FC = () => {
     }, 14100); // "to bits."
 
     setTimeout(() => {
+      setHintText4("Hint: Get 8 clicks per second!");
+    }, 16000); // ""
+
+    setTimeout(() => {
       setSubtitle1("");
     }, 17000); // Clear the subtitle text
+
+    setTimeout(() => {
+      if (!triggeredAudioGlobal11.current) {
+        playAudio10();
+        addSubtitles10();
+      }
+    }, 20000); // Clear the subtitle text
   }
 
   function addSubtitles8() {
     setTimeout(() => {
-      setSubtitle1(subtitles8[0]);
+      setSubtitle5(subtitles8[0]);
     }, 100); // "Here’s "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles8[1]);
+      setSubtitle5((prev) => prev + subtitles8[1]);
     }, 400); // "a sword. "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles8[2]);
+      setSubtitle5((prev) => prev + subtitles8[2]);
     }, 1000); // "Yes, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles8[3]);
+      setSubtitle5((prev) => prev + subtitles8[3]);
     }, 1400); // "you heard me "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles8[4]);
+      setSubtitle5((prev) => prev + subtitles8[4]);
     }, 1800); // "right, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles8[5]);
+      setSubtitle5((prev) => prev + subtitles8[5]);
     }, 2400); // "a sword! "
 
     setTimeout(() => {
-      setSubtitle1(subtitles8[6]);
+      setSubtitle5(subtitles8[6]);
     }, 3400); // "No time "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles8[7]);
+      setSubtitle5((prev) => prev + subtitles8[7]);
     }, 3900); // "for questions, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles8[8]);
+      setSubtitle5((prev) => prev + subtitles8[8]);
     }, 4700); // "just start "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles8[9]);
+      setSubtitle5((prev) => prev + subtitles8[9]);
     }, 5400); // "swinging. "
 
     setTimeout(() => {
-      setSubtitle1(subtitles8[10]);
+      setSubtitle5(subtitles8[10]);
     }, 6400); // "Maybe if "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles8[11]);
+      setSubtitle5((prev) => prev + subtitles8[11]);
     }, 6800); // "you prove "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles8[12]);
+      setSubtitle5((prev) => prev + subtitles8[12]);
     }, 7500); // "you’re not "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles8[13]);
+      setSubtitle5((prev) => prev + subtitles8[13]);
     }, 8100); // "a total disaster "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles8[14]);
+      setSubtitle5((prev) => prev + subtitles8[14]);
     }, 9200); // "with this, "
 
     setTimeout(() => {
-      setSubtitle1(subtitles8[15]);
+      setSubtitle5(subtitles8[15]);
     }, 10100); // "I might consider "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles8[16]);
+      setSubtitle5((prev) => prev + subtitles8[16]);
     }, 10800); // "not unleashing "
 
     setTimeout(() => {
-      setSubtitle1(subtitles8[17]);
+      setSubtitle5(subtitles8[17]);
     }, 11500); // "a digital apocalypse "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles8[18]);
+      setSubtitle5((prev) => prev + subtitles8[18]);
     }, 12200); // "on this place."
 
     setTimeout(() => {
-      setSubtitle1("");
-    }, 16000); // Clear the subtitle text
+      setHintText3("Hint: Get a score of 15!");
+    }, 15000); // ""
 
     setTimeout(() => {
-      playAudio9();
-      addSubtitles9();
-    }, 19000); // Start the next set of subtitles after the current one ends
+      setSubtitle5("");
+    }, 16000); // Clear the subtitle text
   }
 
   function addSubtitles7() {
@@ -1622,8 +1681,8 @@ const MatterComponent: React.FC = () => {
   function handleUserInteraction() {
     if (!hasClicked) {
       setHasClicked(true);
-      playAudio3();
-      addSubtitles3();
+      playAudio1();
+      addSubtitles1();
     }
   }
 
@@ -1722,9 +1781,9 @@ const MatterComponent: React.FC = () => {
         const currentTimestamp = performance.now();
         frames++;
         if (currentTimestamp - lastTimestamp >= 1000) {
-          setFps(
-            Math.round((frames * 1000) / (currentTimestamp - lastTimestamp))
-          );
+          // setFps(
+          //   Math.round((frames * 1000) / (currentTimestamp - lastTimestamp))
+          // );
           lastTimestamp = currentTimestamp;
           frames = 0;
         }
@@ -1769,7 +1828,7 @@ const MatterComponent: React.FC = () => {
   }, [sorryComponentToggle]); // Run once, when component mounts
 
   useEffect(() => {
-    if (!sorryComponentToggle && (canAddBodies || canAddBodiesNext)) {
+    if (!sorryComponentToggle && canAddBodies) {
       const engine = engineRef.current;
       const { world } = engine;
 
@@ -1809,7 +1868,7 @@ const MatterComponent: React.FC = () => {
       );
       bodiesWithCustomForce.add(videoPlayButton.body);
 
-      setAddedBodies({ videoPlayerBox, videoPlayButton, videoHamburgerMenu });
+      // setAddedBodies({ videoPlayerBox, videoPlayButton, videoHamburgerMenu });
 
       Events.on(engine, "beforeUpdate", function () {
         const gravity = engine.gravity;
@@ -1848,7 +1907,7 @@ const MatterComponent: React.FC = () => {
               playAudio5();
               addSubtitles5();
               triggeredAudioGlobal5.current = true;
-              Matter.Events.off(engine, "collisionStart", (e) => {});
+              Matter.Events.off(engine, "collisionStart", () => {});
             }
           } else {
             console.log(bodiesWithCustomForce.size);
@@ -1880,7 +1939,7 @@ const MatterComponent: React.FC = () => {
         });
       }
     }
-  }, [sorryComponentToggle, canAddBodies, canAddBodiesNext]);
+  }, [sorryComponentToggle, canAddBodies]);
 
   function handleSorryComplete() {
     if (!audioTextRef_5.current.paused) {
@@ -1892,50 +1951,84 @@ const MatterComponent: React.FC = () => {
       addSubtitles6();
       triggeredAudioGlobal6.current = true;
       setTriggeredAudio6(true);
-      console.log("AAAAA");
+    }
+  }
+
+  function handleSwordMiniGameComplete() {
+    if (!audioTextRef_7.current.paused) {
+      audioTextRef_7.current.pause();
+      audioTextRef_7.current.currentTime = 0;
+    }
+    if (!triggeredAudioGlobal9.current) {
+      playAudio9();
+      addSubtitles9();
+      triggeredAudioGlobal9.current = true;
+      setHintText3("");
+    }
+  }
+
+  function handleCookieClickerGameComplete() {
+    if (!audioTextRef_9.current.paused) {
+      audioTextRef_9.current.pause();
+      audioTextRef_9.current.currentTime = 0;
+    }
+    if (!triggeredAudioGlobal11.current) {
+      if (!audioTextRef_10.current.paused) {
+        audioTextRef_10.current.pause();
+        audioTextRef_10.current.currentTime = 0;
+      }
+      playAudio11();
+      addSubtitles11();
+      triggeredAudioGlobal11.current = true;
+      setHintText4("");
     }
   }
 
   return (
     <>
-      {!sorryComponentToggle && !swordFightComponentToggle && (
-        <div
-          ref={sceneRef}
-          className="w-full h-screen relative flex flex-col justify-center"
-        >
-          <div className="absolute top-2 right-2 text-white">
-            FPS: {fps.toFixed(0)}
-          </div>
-          {!hasClicked && !canAddBodies && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-xl">
-              <div>{startText}</div>
-              <div className="text-base mt-5">Make sure your audio is on!</div>
-              <div className="text-base">
-                If you resize the window, refresh the website too!
-              </div>
-            </div>
-          )}
-          {hasClicked && !canAddBodies && (
-            <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-              {subtitle1}
-            </div>
-          )}
-          {hasClicked &&
-            canAddBodies &&
-            hasCollided &&
-            !triggeredAudioGlobal5.current && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
-                <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
-                  {subtitle2}
+      {!sorryComponentToggle &&
+        !swordFightComponentToggle &&
+        !cookieClickerComponentToggle &&
+        !rickRollComponentToggle && (
+          <div
+            ref={sceneRef}
+            className="w-full h-screen relative flex flex-col justify-center"
+          >
+            {/* <div className="absolute top-2 right-2 text-white">
+              FPS: {fps.toFixed(0)}
+            </div> */}
+            {!hasClicked && !canAddBodies && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-xl">
+                <div>{startText}</div>
+                <div className="text-base mt-5">
+                  Make sure your audio is on!
                 </div>
-
-                <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-fit">
-                  {hintText1}
+                <div className="text-base">
+                  If you resize the window, refresh the website too!
                 </div>
               </div>
             )}
-        </div>
-      )}
+            {hasClicked && !canAddBodies && (
+              <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+                {subtitle1}
+              </div>
+            )}
+            {hasClicked &&
+              canAddBodies &&
+              hasCollided &&
+              !triggeredAudioGlobal5.current && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
+                  <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
+                    {subtitle2}
+                  </div>
+
+                  <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-fit">
+                    {hintText1}
+                  </div>
+                </div>
+              )}
+          </div>
+        )}
 
       {hasClicked &&
         canAddBodies &&
@@ -1973,6 +2066,9 @@ const MatterComponent: React.FC = () => {
           <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
             {subtitle1}
           </div>
+          <div className="mt-20 text-white text-base sm:text-xl md:text-2xl lg:text-3xl max-w-fit">
+            {hintText4}
+          </div>
         </div>
       )}
       {sorryComponentToggle && (
@@ -1982,8 +2078,55 @@ const MatterComponent: React.FC = () => {
       )}
       {swordFightComponentToggle && !sorryComponentToggle && (
         <div>
-          <SwordMiniGameComponent />
+          <SwordMiniGameComponent onComplete={handleSwordMiniGameComplete} />
         </div>
+      )}
+
+      {swordFightComponentToggle && !cookieClickerComponentToggle && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
+          <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+            {subtitle5}
+          </div>
+          <div className="mt-20 text-white text-sm sm:text-base md:text-xl lg:text-2xl max-w-fit">
+            {hintText3}
+          </div>
+        </div>
+      )}
+
+      {cookieClickerComponentToggle &&
+        !swordFightComponentToggle &&
+        !sorryComponentToggle &&
+        !rickRollComponentToggle && (
+          <div>
+            <div>
+              <CookieClickerGameComponent
+                onComplete={handleCookieClickerGameComplete}
+              />
+            </div>
+          </div>
+        )}
+
+      {rickRollComponentToggle && (
+        <>
+          <div className="inset-0 max-w-fit gap-10 flex flex-col items-center justify-center max-h-fit w-full mt-20">
+            <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
+              {subtitleEnd1}
+            </div>
+            <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
+              {subtitleEnd2}
+            </div>
+            <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
+              {subtitleEnd3}
+            </div>
+          </div>
+          <div className="flex justify-center items-center h-screen mt-20">
+            <img
+              src={rickRollGif}
+              alt="Get Rick Rolled"
+              className="max-w-xl min-w-[300px] min-h-[500px]"
+            />
+          </div>
+        </>
       )}
     </>
   );

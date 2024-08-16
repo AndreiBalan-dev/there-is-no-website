@@ -1,13 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-interface SorryTyperComponentProps {
-  onComplete: () => void; // Define the type of the onComplete prop
+interface SorryComponentProps {
+  onComplete: () => void;
 }
 
-const SorryTyperComponent: React.FC<SorryTyperComponentProps> = ({ onComplete }) => {
+const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
-  const [isComplete, setIsComplete] = useState(false);
   const correctKeys = "I AM REALLY SORRY".split("");
 
   const handleKeyPress = (event: KeyboardEvent) => {
@@ -15,8 +14,7 @@ const SorryTyperComponent: React.FC<SorryTyperComponentProps> = ({ onComplete })
     if (key === correctKeys[progress]) {
       setProgress(progress + 1);
       if (progress === correctKeys.length - 1) {
-        setIsComplete(true);
-        onComplete(); // Call the callback function when complete
+        onComplete();
       }
     } else {
       setProgress(0);
@@ -51,11 +49,6 @@ const SorryTyperComponent: React.FC<SorryTyperComponentProps> = ({ onComplete })
             </span>
           ))}
         </h1>
-        {isComplete && (
-          <div className="rounded-md bg-primary px-4 py-2 text-primary-foreground font-bold">
-            Don't Go Breaking Things Again!
-          </div>
-        )}
       </div>
     </div>
   );

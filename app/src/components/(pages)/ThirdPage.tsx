@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const CookieClickerComponent = () => {
+interface CookieClickerComponentProps {
+  onComplete: () => void;
+}
+
+const CookieClickerComponent: React.FC<CookieClickerComponentProps> = ({
+  onComplete,
+}) => {
   const [clicks, setClicks] = useState(0);
   const [cps, setCps] = useState(0);
   const [isVictory, setIsVictory] = useState(false);
@@ -11,7 +17,9 @@ const CookieClickerComponent = () => {
   useEffect(() => {
     if (isRunning) {
       const interval = setInterval(() => {
-        if (isVictory) { return };
+        if (isVictory) {
+          return;
+        }
         const currentTime = Date.now();
 
         clickTimes.current = clickTimes.current.filter(
@@ -27,6 +35,7 @@ const CookieClickerComponent = () => {
             clearInterval(interval);
             if (cps >= 8) {
               setIsVictory(true);
+              onComplete();
             } else {
               resetGame();
             }
@@ -76,15 +85,25 @@ const CookieClickerComponent = () => {
         <>
           <div className="bg-card p-8 rounded-lg shadow-lg">
             <div className="flex flex-col items-center">
-              <button className="text-9xl font-bold" onClick={handleClick} disabled={isVictory}>
+              <button
+                className="text-9xl font-bold"
+                onClick={handleClick}
+                disabled={isVictory}
+              >
                 🍪
               </button>
-              <div className="text-3xl font-bold text-card-foreground mt-4">{clicks} clicks</div>
-              <div className="text-lg text-muted-foreground mt-2">{cps.toFixed(2)} CPS</div>
+              <div className="text-3xl font-bold text-card-foreground mt-4">
+                {clicks} clicks
+              </div>
+              <div className="text-lg text-muted-foreground mt-2">
+                {cps.toFixed(2)} CPS
+              </div>
             </div>
           </div>
           <div className="text-muted-foreground text-center text-sm mt-4">
-            {isRunning ? `Time left: ${timeLeft}s` : "Can you keep up with the pace of 8 clicks per second, annoying brat?"}
+            {isRunning
+              ? `Time left: ${timeLeft}s`
+              : "Think you've got the speed to keep up with 8 clicks per second? Go on, give it a whirl! Just remember, I’m watching... and quietly judging."}
           </div>
         </>
       )}
