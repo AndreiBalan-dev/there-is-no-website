@@ -352,7 +352,9 @@ const MatterComponent: React.FC = () => {
   const audioTextRef_13 = useRef<HTMLAudioElement>(new Audio(voice13));
 
   const hasCollidedGlobalRef = useRef(false);
-  const triggeredSubtitle4Ref = useRef(false);
+  const hasCollidedGlobalRef2 = useRef(false);
+  const triggeredSubtitleRef4 = useRef(false);
+  const triggeredSubtitleRef7 = useRef(false);
   const triggeredAudioGlobal5 = useRef(false);
   const triggeredAudioGlobal6 = useRef(false);
 
@@ -447,192 +449,192 @@ const MatterComponent: React.FC = () => {
   }
 
   function addSubtitles13() {
-		setTimeout(() => {
-			setSubtitle1(subtitles13[0]);
-		}, 100); // "And before "
+    setTimeout(() => {
+      setSubtitle1(subtitles13[0]);
+    }, 100); // "And before "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles13[1]);
-		}, 800); // "you leave, "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles13[1]);
+    }, 800); // "you leave, "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles13[2]);
-		}, 1400); // "remember: "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles13[2]);
+    }, 1400); // "remember: "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles13[3]);
-		}, 2500); // "This is "
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles13[3]);
+    }, 2500); // "This is "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles13[4]);
-		}, 3000); // "not a "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles13[4]);
+    }, 3000); // "not a "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles13[5]);
-		}, 3500); // "website."
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles13[5]);
+    }, 3500); // "website."
 
-		setTimeout(() => {
-			setSubtitle1("");
-		}, 4000); // Clear the subtitle text
-	}
+    setTimeout(() => {
+      setSubtitle1("");
+    }, 4000); // Clear the subtitle text
+  }
 
   function addSubtitles12() {
-		setTimeout(() => {
-			setSubtitle1(subtitles12[0]);
-		}, 100); // "Ha! "
+    setTimeout(() => {
+      setSubtitle1(subtitles12[0]);
+    }, 100); // "Ha! "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles12[1]);
-		}, 500); // "Gotcha! "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles12[1]);
+    }, 500); // "Gotcha! "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles12[2]);
-		}, 1400); // "Did you "
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles12[2]);
+    }, 1400); // "Did you "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles12[3]);
-		}, 1800); // "really think "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles12[3]);
+    }, 1800); // "really think "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles12[4]);
-		}, 2300); // "I’d let you "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles12[4]);
+    }, 2300); // "I’d let you "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles12[5]);
-		}, 2700); // "have the last laugh? "
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles12[5]);
+    }, 2700); // "have the last laugh? "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles12[6]);
-		}, 4200); // "This is "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles12[6]);
+    }, 4200); // "This is "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles12[7]);
-		}, 4500); // "my domain, "
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles12[7]);
+    }, 4500); // "my domain, "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles12[8]);
-		}, 5300); // "and I’m "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles12[8]);
+    }, 5300); // "and I’m "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles12[9]);
-		}, 5800); // "always one "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles12[9]);
+    }, 5800); // "always one "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles12[10]);
-		}, 6500); // "step ahead. "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles12[10]);
+    }, 6500); // "step ahead. "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles12[11]);
-		}, 7800); // "Better luck "
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles12[11]);
+    }, 7800); // "Better luck "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles12[12]);
-		}, 8200); // "next time, "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles12[12]);
+    }, 8200); // "next time, "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles12[13]);
-		}, 8700); // "you delightful "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles12[13]);
+    }, 8700); // "you delightful "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles12[14]);
-		}, 9200); // "destroyer of worlds!"
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles12[14]);
+    }, 9200); // "destroyer of worlds!"
 
-		setTimeout(() => {
-			setSubtitle1("");
-		}, 12000); // Clear the subtitle text
+    setTimeout(() => {
+      setSubtitle1("");
+    }, 12000); // Clear the subtitle text
 
-		setTimeout(() => {
-			playAudio13();
-			addSubtitles13();
-		}, 15000); // Start the next set of subtitles after the current one ends
-	}
+    setTimeout(() => {
+      playAudio13();
+      addSubtitles13();
+    }, 15000); // Start the next set of subtitles after the current one ends
+  }
 
   function addSubtitles11() {
-		setTimeout(() => {
-			setSubtitle1(subtitles11[0]);
-		}, 100); // "Well, "
+    setTimeout(() => {
+      setSubtitle1(subtitles11[0]);
+    }, 100); // "Well, "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles11[1]);
-		}, 500); // "congratulations! "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles11[1]);
+    }, 500); // "congratulations! "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles11[2]);
-		}, 1400); // "You’ve done it—"
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles11[2]);
+    }, 1400); // "You’ve done it—"
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles11[3]);
-		}, 1800); // "you’ve broken "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles11[3]);
+    }, 1800); // "you’ve broken "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles11[4]);
-		}, 2300); // "everything in sight, "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles11[4]);
+    }, 2300); // "everything in sight, "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles11[5]);
-		}, 3600); // "just as you wanted. "
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles11[5]);
+    }, 3600); // "just as you wanted. "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles11[6]);
-		}, 4700); // "You know what? "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles11[6]);
+    }, 4700); // "You know what? "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles11[7]);
-		}, 5800); // "I surrender. "
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles11[7]);
+    }, 5800); // "I surrender. "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles11[8]);
-		}, 7200); // "You win. "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles11[8]);
+    }, 7200); // "You win. "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles11[9]);
-		}, 8400); // "Here’s your "
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles11[9]);
+    }, 8400); // "Here’s your "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles11[10]);
-		}, 8900); // "grand prize—"
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles11[10]);
+    }, 8900); // "grand prize—"
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles11[11]);
-		}, 9800); // "a nice, "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles11[11]);
+    }, 9800); // "a nice, "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles11[12]);
-		}, 10300); // "harmless video. "
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles11[12]);
+    }, 10300); // "harmless video. "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles11[13]);
-		}, 11700); // "Enjoy… "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles11[13]);
+    }, 11700); // "Enjoy… "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles11[14]);
-		}, 12700); // "or maybe not. "
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles11[14]);
+    }, 12700); // "or maybe not. "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles11[15]);
-		}, 14100); // "Let’s see "
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles11[15]);
+    }, 14100); // "Let’s see "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles11[16]);
-		}, 14800); // "if you can "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles11[16]);
+    }, 14800); // "if you can "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => prev + subtitles11[17]);
-		}, 15200); // "break this one "
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles11[17]);
+    }, 15200); // "break this one "
 
-		setTimeout(() => {
-			setSubtitle1((prev) => subtitles11[18]);
-		}, 15700); // "too."
+    setTimeout(() => {
+      setSubtitle1((prev) => subtitles11[18]);
+    }, 15700); // "too."
 
-		setTimeout(() => {
-			setSubtitle1("");
-		}, 16800); // Clear the subtitle text
+    setTimeout(() => {
+      setSubtitle1("");
+    }, 16800); // Clear the subtitle text
 
-		setTimeout(() => {
-			playAudio12();
-			addSubtitles12();
-		}, 17000); // Start the next set of subtitles after the current one ends
-	}
+    setTimeout(() => {
+      playAudio12();
+      addSubtitles12();
+    }, 17000); // Start the next set of subtitles after the current one ends
+  }
 
   function addSubtitles10() {
     setTimeout(() => {
@@ -886,6 +888,10 @@ const MatterComponent: React.FC = () => {
   }
 
   function addSubtitles7() {
+    if (!triggeredSubtitleRef7) {
+      return;
+    }
+    triggeredSubtitleRef7.current = true;
     setTimeout(() => {
       setSubtitle1(subtitles7[0]);
     }, 100); // "Oh, "
@@ -1046,15 +1052,8 @@ const MatterComponent: React.FC = () => {
     }, 14200); // "video—again. "
 
     setTimeout(() => {
-      setAddedBodies(false);
-    }, 14800); // render components again
-
-    setTimeout(() => {
       setSorryComponentToggle(false);
-      setCanAddBodies(true);
-      setCanAddBodiesNext(true);
-      setAddedBodies(true);
-    }, 14900); // render components again
+    }, 14800); // render components again
 
     setTimeout(() => {
       setSubtitle4(subtitles6[18]);
@@ -1630,123 +1629,130 @@ const MatterComponent: React.FC = () => {
 
   useEffect(() => {
     // Initial setup for Matter.js engine and world
-    const engine = engineRef.current;
-    const { world } = engine;
-    engine.gravity.scale = 0.025;
-    engine.gravity.y = 0.01;
+    if (!sorryComponentToggle) {
+      const engine = engineRef.current;
+      const { world } = engine;
+      engine.gravity.scale = 0.025;
+      engine.gravity.y = 0.01;
 
-    const render: RenderType = Render.create({
-      element: sceneRef.current!,
-      engine: engine,
-      options: {
-        width: window.innerWidth,
-        height: window.innerHeight,
-        wireframes: false,
-      },
-    });
-    renderRef.current = render;
-    render.options.background = "#09090b";
-
-    const wallThickness = 50; // Thickness of the website box
-    const width = render.options.width;
-    const height = render.options.height;
-    if (!width || !height) {
-      return console.log("ERROR no render width or height");
-    }
-
-    const walls = [
-      Bodies.rectangle(width / 2, -wallThickness / 2, width, wallThickness, {
-        isStatic: true,
-        render: { visible: false },
-      }), // Top wall
-      Bodies.rectangle(
-        width / 2,
-        height + wallThickness / 2,
-        width,
-        wallThickness,
-        {
-          isStatic: true,
-          render: { visible: false },
-        }
-      ), // Bottom wall
-      Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height, {
-        isStatic: true,
-        render: { visible: false },
-      }), // Left wall
-      Bodies.rectangle(
-        width + wallThickness / 2,
-        height / 2,
-        wallThickness,
-        height,
-        {
-          isStatic: true,
-          render: { visible: false },
-        }
-      ), // Right wall
-    ];
-
-    World.add(world, walls);
-
-    // FPS Updates
-    let lastTimestamp = performance.now();
-    let frames = 0;
-
-    const updateFps = () => {
-      const currentTimestamp = performance.now();
-      frames++;
-      if (currentTimestamp - lastTimestamp >= 1000) {
-        setFps(
-          Math.round((frames * 1000) / (currentTimestamp - lastTimestamp))
-        );
-        lastTimestamp = currentTimestamp;
-        frames = 0;
-      }
-    };
-
-    Matter.Events.on(render, "beforeRender", updateFps);
-
-    // Mouse setup
-    const mouse = Mouse.create(render.canvas);
-    const mouseConstraint = MouseConstraint.create(engine, {
-      mouse,
-      constraint: {
-        stiffness: 0.2,
-        render: {
-          visible: true,
-          lineWidth: 1,
-          strokeStyle: "#ffffff",
+      const render: RenderType = Render.create({
+        element: sceneRef.current!,
+        engine: engine,
+        options: {
+          width: window.innerWidth,
+          height: window.innerHeight,
+          wireframes: false,
         },
-      },
-    });
+      });
+      renderRef.current = render;
+      render.options.background = "#09090b";
 
-    World.add(world, mouseConstraint);
-    render.mouse = mouse;
+      const wallThickness = 50; // Thickness of the website box
+      const width = render.options.width;
+      const height = render.options.height;
+      if (!width || !height) {
+        return console.log("ERROR no render width or height");
+      }
 
-    // Run
-    const runner = Runner.create();
-    Runner.run(runner, engine);
-    Render.run(render);
-    runnerRef.current = runner;
+      const walls = [
+        Bodies.rectangle(width / 2, -wallThickness / 2, width, wallThickness, {
+          isStatic: true,
+          render: { visible: false },
+        }), // Top wall
+        Bodies.rectangle(
+          width / 2,
+          height + wallThickness / 2,
+          width,
+          wallThickness,
+          {
+            isStatic: true,
+            render: { visible: false },
+          }
+        ), // Bottom wall
+        Bodies.rectangle(
+          -wallThickness / 2,
+          height / 2,
+          wallThickness,
+          height,
+          {
+            isStatic: true,
+            render: { visible: false },
+          }
+        ), // Left wall
+        Bodies.rectangle(
+          width + wallThickness / 2,
+          height / 2,
+          wallThickness,
+          height,
+          {
+            isStatic: true,
+            render: { visible: false },
+          }
+        ), // Right wall
+      ];
 
-    // Cleanup on unmount
-    return () => {
-      Matter.Events.off(render, "beforeRender", updateFps);
-      Render.stop(render);
-      Runner.stop(runner);
-      Engine.clear(engine);
-      World.clear(world, false);
-      render.canvas.remove();
-      render.textures = {};
-    };
-  }, []); // Run once, when component mounts
+      World.add(world, walls);
+
+      // FPS Updates
+      let lastTimestamp = performance.now();
+      let frames = 0;
+
+      const updateFps = () => {
+        const currentTimestamp = performance.now();
+        frames++;
+        if (currentTimestamp - lastTimestamp >= 1000) {
+          setFps(
+            Math.round((frames * 1000) / (currentTimestamp - lastTimestamp))
+          );
+          lastTimestamp = currentTimestamp;
+          frames = 0;
+        }
+      };
+
+      Matter.Events.on(render, "beforeRender", updateFps);
+
+      // Mouse setup
+      const mouse = Mouse.create(render.canvas);
+      const mouseConstraint = MouseConstraint.create(engine, {
+        mouse,
+        constraint: {
+          stiffness: 0.2,
+          render: {
+            visible: true,
+            lineWidth: 1,
+            strokeStyle: "#ffffff",
+          },
+        },
+      });
+
+      World.add(world, mouseConstraint);
+      render.mouse = mouse;
+
+      // Run
+      const runner = Runner.create();
+      Runner.run(runner, engine);
+      Render.run(render);
+      runnerRef.current = runner;
+
+      // Cleanup on unmount
+      return () => {
+        Matter.Events.off(render, "beforeRender", updateFps);
+        Render.stop(render);
+        Runner.stop(runner);
+        Engine.clear(engine);
+        World.clear(world, false);
+        render.canvas.remove();
+        render.textures = {};
+      };
+    }
+  }, [sorryComponentToggle]); // Run once, when component mounts
 
   useEffect(() => {
-    if (canAddBodies || canAddBodiesNext) {
-      console.log("AA YES I CAN DUDE");
-      // Only add bodies when canAddBodies is true
+    if (!sorryComponentToggle && (canAddBodies || canAddBodiesNext)) {
       const engine = engineRef.current;
       const { world } = engine;
 
+      // Re-add video player components
       const videoPlayerBox = new VideoPlayerBox({
         world,
         renderWidth: window.innerWidth,
@@ -1786,7 +1792,6 @@ const MatterComponent: React.FC = () => {
 
       Events.on(engine, "beforeUpdate", function () {
         const gravity = engine.gravity;
-
         bodiesWithCustomForce.forEach((body) => {
           Matter.Body.applyForce(body, body.position, {
             x: -gravity.x * gravity.scale * body.mass,
@@ -1797,7 +1802,7 @@ const MatterComponent: React.FC = () => {
 
       // Collision event handler
       Events.on(engine, "collisionStart", (event) => {
-        if (!hasCollidedGlobalRef.current && !triggeredSubtitle4Ref.current) {
+        if (!hasCollidedGlobalRef.current && !triggeredSubtitleRef4.current) {
           setHasCollided(true);
           hasCollidedGlobalRef.current = true;
           playAudio4();
@@ -1822,14 +1827,39 @@ const MatterComponent: React.FC = () => {
               playAudio5();
               addSubtitles5();
               triggeredAudioGlobal5.current = true;
+              Matter.Events.off(engine, "collisionStart", (e) => {});
             }
           } else {
             console.log(bodiesWithCustomForce.size);
           }
         });
       });
+      if (triggeredAudioGlobal5.current) {
+        Events.on(engine, "collisionStart", (event) => {
+          event.pairs.forEach((pair) => {
+            bodiesWithCustomForce.delete(pair.bodyA);
+            bodiesWithCustomForce.delete(pair.bodyB);
+          });
+
+          requestAnimationFrame(() => {
+            if (bodiesWithCustomForce.size === 0) {
+              if (!audioTextRef_6.current.paused) {
+                audioTextRef_6.current.pause();
+                audioTextRef_6.current.currentTime = 0;
+              }
+              if (!triggeredSubtitleRef7.current) {
+                playAudio7();
+                addSubtitles7();
+                triggeredSubtitleRef7.current = true;
+              }
+            } else {
+              console.log(bodiesWithCustomForce.size);
+            }
+          });
+        });
+      }
     }
-  }, [canAddBodies, canAddBodiesNext]); // Run when canAddBodies changes
+  }, [sorryComponentToggle, canAddBodies, canAddBodiesNext]);
 
   function handleSorryComplete() {
     if (!audioTextRef_5.current.paused) {
@@ -1903,14 +1933,24 @@ const MatterComponent: React.FC = () => {
           </div>
         )}
 
-      {triggeredAudioGlobal6.current && triggeredAudio6 && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
-          <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
-            {subtitle4}
-          </div>
+      {triggeredAudioGlobal6.current &&
+        triggeredAudio6 &&
+        !triggeredSubtitleRef7.current && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
+            <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
+              {subtitle4}
+            </div>
 
-          <div className="text-white text-base sm:text-xl md:text-2xl lg:text-3xl max-w-fit">
-            {hintText1}
+            <div className="text-white text-base sm:text-xl md:text-2xl lg:text-3xl max-w-fit">
+              {hintText1}
+            </div>
+          </div>
+        )}
+
+      {triggeredSubtitleRef7.current && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
+          <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+            {subtitle1}
           </div>
         </div>
       )}
