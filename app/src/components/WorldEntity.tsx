@@ -29,6 +29,7 @@ import voice11 from "../assets/11.mp3";
 import voice12 from "../assets/12.mp3";
 import voice13 from "../assets/13.mp3";
 import SorryComponent from "../components/(pages)/FirstPage";
+import SwordMiniGameComponent from "../components/(pages)/SecondPage";
 
 const MatterComponent: React.FC = () => {
   const [fps, setFps] = React.useState(0);
@@ -44,6 +45,8 @@ const MatterComponent: React.FC = () => {
   const [addedBodies, setAddedBodies] = useState<any>([]);
   const [sorryComponentToggle, setSorryComponentToggle] = useState(false);
   const [triggeredAudio6, setTriggeredAudio6] = useState(false);
+  const [swordFightComponentToggle, setSwordFightComponentToggle] =
+    useState(false);
 
   const [subtitle1, setSubtitle1] = useState("");
   const [subtitle2, setSubtitle2] = useState("");
@@ -352,7 +355,6 @@ const MatterComponent: React.FC = () => {
   const audioTextRef_13 = useRef<HTMLAudioElement>(new Audio(voice13));
 
   const hasCollidedGlobalRef = useRef(false);
-  const hasCollidedGlobalRef2 = useRef(false);
   const triggeredSubtitleRef4 = useRef(false);
   const triggeredSubtitleRef7 = useRef(false);
   const triggeredAudioGlobal5 = useRef(false);
@@ -974,7 +976,11 @@ const MatterComponent: React.FC = () => {
 
     setTimeout(() => {
       setSubtitle1("");
-    }, 18000); // Clear the subtitle text
+      setSwordFightComponentToggle(true);
+      setSorryComponentToggle(false);
+      playAudio8();
+      addSubtitles8();
+    }, 17000); // Clear the subtitle text
   }
 
   function addSubtitles6() {
@@ -1028,7 +1034,7 @@ const MatterComponent: React.FC = () => {
     }, 8600); // "still on "
 
     setTimeout(() => {
-      setSubtitle4((prev) => prev + subtitles6[12]);
+      setSubtitle4(subtitles6[12]);
     }, 9400); // "very thin ice! "
 
     setTimeout(() => {
@@ -1877,7 +1883,7 @@ const MatterComponent: React.FC = () => {
 
   return (
     <>
-      {!sorryComponentToggle && (
+      {!sorryComponentToggle && !swordFightComponentToggle && (
         <div
           ref={sceneRef}
           className="w-full h-screen relative flex flex-col justify-center"
@@ -1947,7 +1953,7 @@ const MatterComponent: React.FC = () => {
           </div>
         )}
 
-      {triggeredSubtitleRef7.current && (
+      {triggeredSubtitleRef7.current && !swordFightComponentToggle && (
         <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
           <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
             {subtitle1}
@@ -1957,6 +1963,11 @@ const MatterComponent: React.FC = () => {
       {sorryComponentToggle && (
         <div>
           <SorryComponent onComplete={handleSorryComplete} />
+        </div>
+      )}
+      {swordFightComponentToggle && !sorryComponentToggle && (
+        <div>
+          <SwordMiniGameComponent />
         </div>
       )}
     </>
