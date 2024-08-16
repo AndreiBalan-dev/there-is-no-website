@@ -2011,7 +2011,7 @@ const MatterComponent: React.FC = () => {
                 </div>
               )}
               {hasClicked && !canAddBodies && (
-                <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+                <div className="absolute inset-0 flex items-center justify-center text-white text-lg sm:text-xl md:text-2xl lg:text-3xl">
                   {subtitle1}
                 </div>
               )}
@@ -2019,7 +2019,7 @@ const MatterComponent: React.FC = () => {
                 canAddBodies &&
                 hasCollided &&
                 !triggeredAudioGlobal5.current && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full">
                     <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
                       {subtitle2}
                     </div>
@@ -2038,8 +2038,8 @@ const MatterComponent: React.FC = () => {
           triggeredAudioGlobal5.current &&
           !triggeredAudioGlobal6.current &&
           !triggeredAudio6 && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
-              <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
+            <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full">
+              <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-fit">
                 {subtitle3}
               </div>
 
@@ -2052,8 +2052,8 @@ const MatterComponent: React.FC = () => {
         {triggeredAudioGlobal6.current &&
           triggeredAudio6 &&
           !triggeredSubtitleRef7.current && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
-              <div className="text-white text-2xl sm:text-2xl md:text-4xl lg:text-5xl max-w-fit">
+            <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 lg:mt-20">
+              <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl  max-w-fit">
                 {subtitle4}
               </div>
 
@@ -2064,11 +2064,11 @@ const MatterComponent: React.FC = () => {
           )}
 
         {triggeredSubtitleRef7.current && !swordFightComponentToggle && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
-            <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 lg:mt-20">
+            <div className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl ">
               {triggeredAudioGlobal11 ? subtitle1 : subtitle6}
             </div>
-            <div className="mt-20 text-white text-base sm:text-xl md:text-2xl lg:text-3xl max-w-fit">
+            <div className="lg:mt-20 mt-4 text-white text-base sm:text-xl md:text-2xl lg:text-3xl max-w-fit">
               {hintText4}
             </div>
           </div>
@@ -2086,7 +2086,7 @@ const MatterComponent: React.FC = () => {
 
         {swordFightComponentToggle && !cookieClickerComponentToggle && (
           <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
-            <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+            <div className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl ">
               {subtitle5}
             </div>
             <div className="mt-2 text-white text-sm sm:text-base md:text-xl lg:text-2xl max-w-fit">
@@ -2112,13 +2112,13 @@ const MatterComponent: React.FC = () => {
           <>
             <div className="flex flex-col items-center justify-center min-h-screen">
               <div className="text-center">
-                <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+                <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl lg:mt-2 md:mt-4 mt-8">
                   {subtitleEnd1}
                 </div>
-                <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-2">
+                <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl">
                   {subtitleEnd2}
                 </div>
-                <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-2">
+                <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl">
                   {subtitleEnd3}
                 </div>
               </div>
