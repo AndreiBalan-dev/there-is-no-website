@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-export default function Component() {
+const SorryTyperComponent = () => {
 	const [progress, setProgress] = useState(0);
 	const [isComplete, setIsComplete] = useState(false);
 	const correctKeys = "I AM REALLY SORRY".split("");
@@ -48,3 +48,5 @@ export default function Component() {
 		</div>
 	);
 }
+
+export default SorryTyperComponent;
