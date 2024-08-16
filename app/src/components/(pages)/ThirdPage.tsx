@@ -82,7 +82,7 @@ const CookieClickerComponent = () => {
               <div className="text-lg text-muted-foreground mt-2">{cps.toFixed(2)} CPS</div>
             </div>
           </div>
-          <div className="text-muted-foreground text-sm mt-4">
+          <div className="text-muted-foreground text-center text-sm mt-4">
             {isRunning ? `Time left: ${timeLeft}s` : "Can you keep up with the pace of 8 clicks per second, annoying brat?"}
           </div>
         </>
