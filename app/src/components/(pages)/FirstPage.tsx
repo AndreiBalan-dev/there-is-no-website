@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 interface SorryComponentProps {
-  onComplete: () => void; // Define the type of the onComplete prop
+  onComplete: () => void;
 }
 
 const SorryComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
@@ -15,7 +15,7 @@ const SorryComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
       setProgress(progress + 1);
       if (progress === correctKeys.length - 1) {
         setIsComplete(true);
-        onComplete(); // Call the callback function when complete
+        onComplete();
       }
     } else {
       setProgress(0);
@@ -50,11 +50,6 @@ const SorryComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
             </span>
           ))}
         </h1>
-        {isComplete && (
-          <div className="rounded-md bg-primary px-4 py-2 text-primary-foreground font-bold">
-            Don't Go Breaking Things Again!
-          </div>
-        )}
       </div>
     </div>
   );

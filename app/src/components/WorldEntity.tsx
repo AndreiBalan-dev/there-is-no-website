@@ -45,6 +45,7 @@ const MatterComponent: React.FC = () => {
   const [addedBodies, setAddedBodies] = useState<any>([]);
   const [sorryComponentToggle, setSorryComponentToggle] = useState(false);
   const [triggeredAudio6, setTriggeredAudio6] = useState(false);
+  const [triggeredAudio9, setTriggeredAudio9] = useState(false);
   const [swordFightComponentToggle, setSwordFightComponentToggle] =
     useState(false);
 
@@ -359,6 +360,7 @@ const MatterComponent: React.FC = () => {
   const triggeredSubtitleRef7 = useRef(false);
   const triggeredAudioGlobal5 = useRef(false);
   const triggeredAudioGlobal6 = useRef(false);
+  const triggeredAudioGlobal9 = useRef(false);
 
   function playAudio1() {
     audioTextRef_1.current
@@ -464,7 +466,7 @@ const MatterComponent: React.FC = () => {
     }, 1400); // "remember: "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles13[3]);
+      setSubtitle1(subtitles13[3]);
     }, 2500); // "This is "
 
     setTimeout(() => {
@@ -472,7 +474,7 @@ const MatterComponent: React.FC = () => {
     }, 3000); // "not a "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles13[5]);
+      setSubtitle1(subtitles13[5]);
     }, 3500); // "website."
 
     setTimeout(() => {
@@ -490,7 +492,7 @@ const MatterComponent: React.FC = () => {
     }, 500); // "Gotcha! "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles12[2]);
+      setSubtitle1(subtitles12[2]);
     }, 1400); // "Did you "
 
     setTimeout(() => {
@@ -502,7 +504,7 @@ const MatterComponent: React.FC = () => {
     }, 2300); // "I’d let you "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles12[5]);
+      setSubtitle1(subtitles12[5]);
     }, 2700); // "have the last laugh? "
 
     setTimeout(() => {
@@ -510,7 +512,7 @@ const MatterComponent: React.FC = () => {
     }, 4200); // "This is "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles12[7]);
+      setSubtitle1(subtitles12[7]);
     }, 4500); // "my domain, "
 
     setTimeout(() => {
@@ -526,7 +528,7 @@ const MatterComponent: React.FC = () => {
     }, 6500); // "step ahead. "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles12[11]);
+      setSubtitle1(subtitles12[11]);
     }, 7800); // "Better luck "
 
     setTimeout(() => {
@@ -538,17 +540,12 @@ const MatterComponent: React.FC = () => {
     }, 8700); // "you delightful "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles12[14]);
+      setSubtitle1(subtitles12[14]);
     }, 9200); // "destroyer of worlds!"
 
     setTimeout(() => {
       setSubtitle1("");
     }, 12000); // Clear the subtitle text
-
-    setTimeout(() => {
-      playAudio13();
-      addSubtitles13();
-    }, 15000); // Start the next set of subtitles after the current one ends
   }
 
   function addSubtitles11() {
@@ -561,7 +558,7 @@ const MatterComponent: React.FC = () => {
     }, 500); // "congratulations! "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[2]);
+      setSubtitle1(subtitles11[2]);
     }, 1400); // "You’ve done it—"
 
     setTimeout(() => {
@@ -573,7 +570,7 @@ const MatterComponent: React.FC = () => {
     }, 2300); // "everything in sight, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[5]);
+      setSubtitle1(subtitles11[5]);
     }, 3600); // "just as you wanted. "
 
     setTimeout(() => {
@@ -581,7 +578,7 @@ const MatterComponent: React.FC = () => {
     }, 4700); // "You know what? "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[7]);
+      setSubtitle1(subtitles11[7]);
     }, 5800); // "I surrender. "
 
     setTimeout(() => {
@@ -589,7 +586,7 @@ const MatterComponent: React.FC = () => {
     }, 7200); // "You win. "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[9]);
+      setSubtitle1(subtitles11[9]);
     }, 8400); // "Here’s your "
 
     setTimeout(() => {
@@ -601,7 +598,7 @@ const MatterComponent: React.FC = () => {
     }, 9800); // "a nice, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[12]);
+      setSubtitle1(subtitles11[12]);
     }, 10300); // "harmless video. "
 
     setTimeout(() => {
@@ -609,11 +606,11 @@ const MatterComponent: React.FC = () => {
     }, 11700); // "Enjoy… "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[14]);
+      setSubtitle1(subtitles11[14]);
     }, 12700); // "or maybe not. "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[15]);
+      setSubtitle1(subtitles11[15]);
     }, 14100); // "Let’s see "
 
     setTimeout(() => {
@@ -625,7 +622,7 @@ const MatterComponent: React.FC = () => {
     }, 15200); // "break this one "
 
     setTimeout(() => {
-      setSubtitle1((prev) => subtitles11[18]);
+      setSubtitle1(subtitles11[18]);
     }, 15700); // "too."
 
     setTimeout(() => {
@@ -882,11 +879,6 @@ const MatterComponent: React.FC = () => {
     setTimeout(() => {
       setSubtitle1("");
     }, 16000); // Clear the subtitle text
-
-    setTimeout(() => {
-      playAudio9();
-      addSubtitles9();
-    }, 19000); // Start the next set of subtitles after the current one ends
   }
 
   function addSubtitles7() {
@@ -1877,7 +1869,19 @@ const MatterComponent: React.FC = () => {
       addSubtitles6();
       triggeredAudioGlobal6.current = true;
       setTriggeredAudio6(true);
-      console.log("AAAAA");
+    }
+  }
+
+  function handleSwordMiniGameComplete() {
+    if (!audioTextRef_7.current.paused) {
+      audioTextRef_7.current.pause();
+      audioTextRef_7.current.currentTime = 0;
+    }
+    if (!triggeredAudioGlobal6.current) {
+      playAudio9();
+      addSubtitles9();
+      triggeredAudioGlobal9.current = true;
+      setTriggeredAudio9(true);
     }
   }
 
@@ -1967,7 +1971,7 @@ const MatterComponent: React.FC = () => {
       )}
       {swordFightComponentToggle && !sorryComponentToggle && (
         <div>
-          <SwordMiniGameComponent />
+          <SwordMiniGameComponent onComplete={handleSwordMiniGameComplete} />
         </div>
       )}
     </>
