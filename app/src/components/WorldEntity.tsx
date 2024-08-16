@@ -30,6 +30,7 @@ import voice12 from "../assets/12.mp3";
 import voice13 from "../assets/13.mp3";
 import SorryComponent from "../components/(pages)/FirstPage";
 import SwordMiniGameComponent from "../components/(pages)/SecondPage";
+import CookieClickerGameComponent from "../components/(pages)/ThirdPage";
 
 const MatterComponent: React.FC = () => {
   const [fps, setFps] = React.useState(0);
@@ -46,7 +47,11 @@ const MatterComponent: React.FC = () => {
   const [sorryComponentToggle, setSorryComponentToggle] = useState(false);
   const [triggeredAudio6, setTriggeredAudio6] = useState(false);
   const [triggeredAudio9, setTriggeredAudio9] = useState(false);
+  const [triggeredAudio11, setTriggeredAudio11] = useState(false);
   const [swordFightComponentToggle, setSwordFightComponentToggle] =
+    useState(false);
+
+  const [cookieClickerComponentToggle, setCookieClickerComponentToggle] =
     useState(false);
 
   const [subtitle1, setSubtitle1] = useState("");
@@ -361,6 +366,7 @@ const MatterComponent: React.FC = () => {
   const triggeredAudioGlobal5 = useRef(false);
   const triggeredAudioGlobal6 = useRef(false);
   const triggeredAudioGlobal9 = useRef(false);
+  const triggeredAudioGlobal11 = useRef(false);
 
   function playAudio1() {
     audioTextRef_1.current
@@ -769,6 +775,11 @@ const MatterComponent: React.FC = () => {
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles9[13]);
     }, 9800); // "on for size. "
+
+    setTimeout(() => {
+      setSwordFightComponentToggle(false);
+      setCookieClickerComponentToggle(true);
+    }, 10000);
 
     setTimeout(() => {
       setSubtitle1(subtitles9[14]);
@@ -1877,11 +1888,24 @@ const MatterComponent: React.FC = () => {
       audioTextRef_7.current.pause();
       audioTextRef_7.current.currentTime = 0;
     }
-    if (!triggeredAudioGlobal6.current) {
+    if (!triggeredAudioGlobal9.current) {
       playAudio9();
       addSubtitles9();
       triggeredAudioGlobal9.current = true;
       setTriggeredAudio9(true);
+    }
+  }
+
+  function handleCookieClickerGameComplete() {
+    if (!audioTextRef_9.current.paused) {
+      audioTextRef_9.current.pause();
+      audioTextRef_9.current.currentTime = 0;
+    }
+    if (!triggeredAudioGlobal11.current) {
+      playAudio11();
+      addSubtitles11();
+      triggeredAudioGlobal11.current = true;
+      setTriggeredAudio11(true);
     }
   }
 
@@ -1974,6 +1998,16 @@ const MatterComponent: React.FC = () => {
           <SwordMiniGameComponent onComplete={handleSwordMiniGameComplete} />
         </div>
       )}
+
+      {cookieClickerComponentToggle &&
+        !swordFightComponentToggle &&
+        !sorryComponentToggle && (
+          <div>
+            <CookieClickerGameComponent
+              onComplete={handleCookieClickerGameComplete}
+            />
+          </div>
+        )}
     </>
   );
 };
