@@ -71,6 +71,7 @@ const MatterComponent: React.FC = () => {
   const [subtitle3, setSubtitle3] = useState("");
   const [subtitle4, setSubtitle4] = useState("");
   const [subtitle5, setSubtitle5] = useState("");
+  const [subtitle6, setSubtitle6] = useState("");
   const [subtitleEnd1, setSubtitleEnd1] = useState("");
   const [subtitleEnd2, setSubtitleEnd2] = useState("");
   const [subtitleEnd3, setSubtitleEnd3] = useState("");
@@ -699,79 +700,79 @@ const MatterComponent: React.FC = () => {
 
   function addSubtitles10() {
     setTimeout(() => {
-      setSubtitle1(subtitles10[0]);
+      setSubtitle6(subtitles10[0]);
     }, 100); // "Yes, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles10[1]);
+      setSubtitle6((prev) => prev + subtitles10[1]);
     }, 500); // "really, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles10[2]);
+      setSubtitle6((prev) => prev + subtitles10[2]);
     }, 1000); // "a cookie. "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles10[3]);
+      setSubtitle6((prev) => prev + subtitles10[3]);
     }, 1500); // "What? "
 
     setTimeout(() => {
-      setSubtitle1(subtitles10[4]);
+      setSubtitle6(subtitles10[4]);
     }, 2200); // "Were you "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles10[5]);
+      setSubtitle6((prev) => prev + subtitles10[5]);
     }, 2620); // "expecting something "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles10[6]);
+      setSubtitle6((prev) => prev + subtitles10[6]);
     }, 3200); // "more, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles10[7]);
+      setSubtitle6((prev) => prev + subtitles10[7]);
     }, 3700); // "I don’t know, "
 
     setTimeout(() => {
-      setSubtitle1(subtitles10[8]);
+      setSubtitle6(subtitles10[8]);
     }, 4200); // "earth-shattering? "
 
     setTimeout(() => {
-      setSubtitle1(subtitles10[9]);
+      setSubtitle6(subtitles10[9]);
     }, 5400); // "This is "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles10[10]);
+      setSubtitle6((prev) => prev + subtitles10[10]);
     }, 6000); // "your final shot "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles10[11]);
+      setSubtitle6((prev) => prev + subtitles10[11]);
     }, 7000); // "to prove "
 
     setTimeout(() => {
-      setSubtitle1(subtitles10[12]);
+      setSubtitle6(subtitles10[12]);
     }, 7700); // "you can handle "
 
     setTimeout(() => {
-      setSubtitle1(subtitles10[13]);
+      setSubtitle6(subtitles10[13]);
     }, 8200); // "anything without "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles10[14]);
+      setSubtitle6((prev) => prev + subtitles10[14]);
     }, 9000); // "triggering Armageddon. "
 
     setTimeout(() => {
-      setSubtitle1(subtitles10[15]);
+      setSubtitle6(subtitles10[15]);
     }, 10600); // "Now click away, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles10[16]);
+      setSubtitle6((prev) => prev + subtitles10[16]);
     }, 11900); // "and don’t "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles10[17]);
+      setSubtitle6((prev) => prev + subtitles10[17]);
     }, 12100); // "hold back!"
 
     setTimeout(() => {
-      setSubtitle1("");
+      setSubtitle6("");
     }, 15000); // Clear the subtitle text
   }
 
@@ -1986,148 +1987,152 @@ const MatterComponent: React.FC = () => {
 
   return (
     <>
-      {!sorryComponentToggle &&
-        !swordFightComponentToggle &&
-        !cookieClickerComponentToggle &&
-        !rickRollComponentToggle && (
-          <div
-            ref={sceneRef}
-            className="w-full h-screen relative flex flex-col justify-center"
-          >
-            {/* <div className="absolute top-2 right-2 text-white">
+      <div className="select-none">
+        {!sorryComponentToggle &&
+          !swordFightComponentToggle &&
+          !cookieClickerComponentToggle &&
+          !rickRollComponentToggle && (
+            <div
+              ref={sceneRef}
+              className="w-full h-screen relative flex flex-col justify-center"
+            >
+              {/* <div className="absolute top-2 right-2 text-white">
               FPS: {fps.toFixed(0)}
             </div> */}
-            {!hasClicked && !canAddBodies && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-xl">
-                <div>{startText}</div>
-                <div className="text-base mt-5">
-                  Make sure your audio is on!
-                </div>
-                <div className="text-base">
-                  If you resize the window, refresh the website too!
-                </div>
-              </div>
-            )}
-            {hasClicked && !canAddBodies && (
-              <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-                {subtitle1}
-              </div>
-            )}
-            {hasClicked &&
-              canAddBodies &&
-              hasCollided &&
-              !triggeredAudioGlobal5.current && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
-                  <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
-                    {subtitle2}
+              {!hasClicked && !canAddBodies && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-xl">
+                  <div>{startText}</div>
+                  <div className="text-base mt-5">
+                    Make sure your audio is on!
                   </div>
-
-                  <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-fit">
-                    {hintText1}
+                  <div className="text-base">
+                    If you resize the window, refresh the website too!
                   </div>
                 </div>
               )}
-          </div>
-        )}
+              {hasClicked && !canAddBodies && (
+                <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+                  {subtitle1}
+                </div>
+              )}
+              {hasClicked &&
+                canAddBodies &&
+                hasCollided &&
+                !triggeredAudioGlobal5.current && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
+                    <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
+                      {subtitle2}
+                    </div>
 
-      {hasClicked &&
-        canAddBodies &&
-        hasCollided &&
-        triggeredAudioGlobal5.current &&
-        !triggeredAudioGlobal6.current &&
-        !triggeredAudio6 && (
+                    <div className="text-white mt-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-fit">
+                      {hintText1}
+                    </div>
+                  </div>
+                )}
+            </div>
+          )}
+
+        {hasClicked &&
+          canAddBodies &&
+          hasCollided &&
+          triggeredAudioGlobal5.current &&
+          !triggeredAudioGlobal6.current &&
+          !triggeredAudio6 && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
+              <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
+                {subtitle3}
+              </div>
+
+              <div className="text-white text-base sm:text-xl md:text-2xl lg:text-2xl max-w-fit">
+                {hintText2}
+              </div>
+            </div>
+          )}
+
+        {triggeredAudioGlobal6.current &&
+          triggeredAudio6 &&
+          !triggeredSubtitleRef7.current && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
+              <div className="text-white text-2xl sm:text-2xl md:text-4xl lg:text-5xl max-w-fit">
+                {subtitle4}
+              </div>
+
+              <div className="text-white text-base sm:text-xl md:text-2xl lg:text-2xl max-w-fit">
+                {hintText1}
+              </div>
+            </div>
+          )}
+
+        {triggeredSubtitleRef7.current && !swordFightComponentToggle && (
           <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
-            <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
-              {subtitle3}
+            <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+              {triggeredAudioGlobal11 ? subtitle1 : subtitle6}
             </div>
-
-            <div className="text-white text-base sm:text-xl md:text-2xl lg:text-3xl max-w-fit">
-              {hintText2}
-            </div>
-          </div>
-        )}
-
-      {triggeredAudioGlobal6.current &&
-        triggeredAudio6 &&
-        !triggeredSubtitleRef7.current && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
-            <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
-              {subtitle4}
-            </div>
-
-            <div className="text-white text-base sm:text-xl md:text-2xl lg:text-3xl max-w-fit">
-              {hintText1}
+            <div className="mt-20 text-white text-base sm:text-xl md:text-2xl lg:text-3xl max-w-fit">
+              {hintText4}
             </div>
           </div>
         )}
-
-      {triggeredSubtitleRef7.current && !swordFightComponentToggle && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
-          <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-            {subtitle1}
-          </div>
-          <div className="mt-20 text-white text-base sm:text-xl md:text-2xl lg:text-3xl max-w-fit">
-            {hintText4}
-          </div>
-        </div>
-      )}
-      {sorryComponentToggle && (
-        <div>
-          <SorryComponent onComplete={handleSorryComplete} />
-        </div>
-      )}
-      {swordFightComponentToggle && !sorryComponentToggle && (
-        <div>
-          <SwordMiniGameComponent onComplete={handleSwordMiniGameComplete} />
-        </div>
-      )}
-
-      {swordFightComponentToggle && !cookieClickerComponentToggle && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
-          <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-            {subtitle5}
-          </div>
-          <div className="mt-20 text-white text-sm sm:text-base md:text-xl lg:text-2xl max-w-fit">
-            {hintText3}
-          </div>
-        </div>
-      )}
-
-      {cookieClickerComponentToggle &&
-        !swordFightComponentToggle &&
-        !sorryComponentToggle &&
-        !rickRollComponentToggle && (
+        {sorryComponentToggle && (
           <div>
-            <div>
-              <CookieClickerGameComponent
-                onComplete={handleCookieClickerGameComplete}
-              />
+            <SorryComponent onComplete={handleSorryComplete} />
+          </div>
+        )}
+        {swordFightComponentToggle && !sorryComponentToggle && (
+          <div>
+            <SwordMiniGameComponent onComplete={handleSwordMiniGameComplete} />
+          </div>
+        )}
+
+        {swordFightComponentToggle && !cookieClickerComponentToggle && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
+            <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+              {subtitle5}
+            </div>
+            <div className="mt-2 text-white text-sm sm:text-base md:text-xl lg:text-2xl max-w-fit">
+              {hintText3}
             </div>
           </div>
         )}
 
-      {rickRollComponentToggle && (
-        <>
-          <div className="inset-0 max-w-fit gap-10 flex flex-col items-center justify-center max-h-fit w-full mt-20">
-            <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
-              {subtitleEnd1}
+        {cookieClickerComponentToggle &&
+          !swordFightComponentToggle &&
+          !sorryComponentToggle &&
+          !rickRollComponentToggle && (
+            <div>
+              <div>
+                <CookieClickerGameComponent
+                  onComplete={handleCookieClickerGameComplete}
+                />
+              </div>
             </div>
-            <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
-              {subtitleEnd2}
+          )}
+
+        {rickRollComponentToggle && (
+          <>
+            <div className="flex flex-col items-center justify-center min-h-screen">
+              <div className="text-center">
+                <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+                  {subtitleEnd1}
+                </div>
+                <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-2">
+                  {subtitleEnd2}
+                </div>
+                <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-2">
+                  {subtitleEnd3}
+                </div>
+              </div>
+              <div className="mt-8 flex justify-center">
+                <img
+                  src={rickRollGif}
+                  alt="Get Rick Rolled"
+                  className="w-full max-w-xl h-auto rounded-lg"
+                />
+              </div>
             </div>
-            <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
-              {subtitleEnd3}
-            </div>
-          </div>
-          <div className="flex justify-center items-center h-screen mt-20">
-            <img
-              src={rickRollGif}
-              alt="Get Rick Rolled"
-              className="max-w-xl min-w-[300px] min-h-[500px]"
-            />
-          </div>
-        </>
-      )}
+          </>
+        )}
+      </div>
     </>
   );
 };
