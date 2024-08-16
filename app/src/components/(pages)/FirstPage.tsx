@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 
 interface SorryComponentProps {
   onComplete: () => void;
 }
 
-const SorryComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
+const SorryTyperComponent: React.FC<SorryTyperComponentProps> = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
   const correctKeys = "I AM REALLY SORRY".split("");
 
@@ -53,4 +54,4 @@ const SorryComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
   );
 };
 
-export default SorryComponent;
+export default SorryTyperComponent;
