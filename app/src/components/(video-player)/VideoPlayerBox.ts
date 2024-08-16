@@ -221,7 +221,7 @@ export class VideoPlayerBox {
   ): Body[] {
     const { width } = this.getDimensions(renderWidth);
     const barWidth = width;
-    const barHeight = 30;
+    const barHeight = 32;
     const paddingBottom = 15;
 
     const progressBar = Bodies.rectangle(
