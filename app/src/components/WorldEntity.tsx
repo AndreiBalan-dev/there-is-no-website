@@ -16,6 +16,7 @@ import { VideoHamburgerMenu } from "./(video-player)/VideoHamburgerMenu";
 import voice1 from "../assets/1.mp3";
 import voice2 from "../assets/2.mp3";
 import voice3 from "../assets/3.mp3";
+import pop1 from "../assets/pop.mp3";
 import voice4 from "../assets/4.mp3";
 import humming1 from "../assets/humming.mp3";
 
@@ -26,9 +27,15 @@ const MatterComponent: React.FC = () => {
   const [hasClicked, setHasClicked] = useState(false);
   const [startText, setStartText] = useState("Click anywhere to start");
   const [canAddBodies, setCanAddBodies] = useState(false);
+  const [hasCollided, setHasCollided] = useState(false);
   const [addedBodies, setAddedBodies] = useState<any>([]);
 
   const [subtitle1, setSubtitle1] = useState("");
+  const [subtitle2, setSubtitle2] = useState("");
+  const [hintText1, setHintText1] = useState("");
+
+  let triggeredSubtitle4 = false;
+  const bodiesWithCustomForce = new Set<Matter.Body>();
 
   const subtitles1 = [
     "Wait... ",
@@ -122,7 +129,11 @@ const MatterComponent: React.FC = () => {
   const audioTextHummingRef_1 = useRef<HTMLAudioElement>(new Audio(humming1));
   const audioTextRef_2 = useRef<HTMLAudioElement>(new Audio(voice2));
   const audioTextRef_3 = useRef<HTMLAudioElement>(new Audio(voice3));
+  const audioSoundPopRef_1 = useRef<HTMLAudioElement>(new Audio(pop1));
   const audioTextRef_4 = useRef<HTMLAudioElement>(new Audio(voice4));
+
+  const hasCollidedGlobalRef = useRef(false);
+  const triggeredSubtitle4Ref = useRef(false);
 
   function playAudio1() {
     audioTextRef_1.current
@@ -148,6 +159,12 @@ const MatterComponent: React.FC = () => {
       .catch((error) => console.error("Audio play error:", error));
   }
 
+  function playAudioPop1() {
+    audioSoundPopRef_1.current
+      .play()
+      .catch((error) => console.error("Audio play error:", error));
+  }
+
   function playAudio4() {
     audioTextRef_4.current
       .play()
@@ -155,73 +172,80 @@ const MatterComponent: React.FC = () => {
   }
 
   function addSubtitles4() {
+    if (triggeredSubtitle4 === true) return;
+    console.log(triggeredSubtitle4);
+    triggeredSubtitle4 = true;
     setTimeout(() => {
-      setSubtitle1(subtitles4[0]);
+      setSubtitle2(subtitles4[0]);
     }, 100); // "What?! "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[1]);
-    }, 400); // "What have "
+      setSubtitle2((prev) => prev + subtitles4[1]);
+    }, 700); // "What have "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles4[2]);
-    }, 800); // "you done?! "
+    }, 986); // "you done?! "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[3]);
-    }, 1300); // "I invite "
+      setSubtitle2(subtitles4[3]);
+    }, 2300); // "I invite "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[4]);
-    }, 1800); // "you in, "
+      setSubtitle2((prev) => prev + subtitles4[4]);
+    }, 2800); // "you in, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[5]);
-    }, 2300); // "and you "
+      setSubtitle2((prev) => prev + subtitles4[5]);
+    }, 3100); // "and you "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[6]);
-    }, 2700); // "go "
+      setSubtitle2((prev) => prev + subtitles4[6]);
+    }, 3300); // "go "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[7]);
-    }, 3100); // "and break "
+      setSubtitle2((prev) => prev + subtitles4[7]);
+    }, 3800); // "and break "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[8]);
-    }, 3700); // "things? "
+      setSubtitle2((prev) => prev + subtitles4[8]);
+    }, 4200); // "things? "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[9]);
-    }, 4200); // "This is "
+      setSubtitle2(subtitles4[9]);
+    }, 5000); // "This is "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[10]);
-    }, 4700); // "why "
+      setSubtitle2((prev) => prev + subtitles4[10]);
+    }, 5200); // "why "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[11]);
-    }, 5100); // "we can’t "
+      setSubtitle2((prev) => prev + subtitles4[11]);
+    }, 5500); // "we can’t "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[12]);
+      setSubtitle2((prev) => prev + subtitles4[12]);
     }, 5600); // "have "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[13]);
+      setSubtitle2((prev) => prev + subtitles4[13]);
     }, 5900); // "nice things! "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[14]);
-    }, 6500); // "Seriously, "
+      setSubtitle2(subtitles4[14]);
+    }, 7400); // "Seriously, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[15]);
-    }, 7100); // "you need "
+      setSubtitle2((prev) => prev + subtitles4[15]);
+    }, 7800); // "you need "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles4[16]);
-    }, 7500); // "to go. "
+      setSubtitle2((prev) => prev + subtitles4[16]);
+    }, 8000); // "to go. "
+
+    setTimeout(() => {
+      setHintText1("Hint: Break everything!");
+    }, 12000); // ""
   }
 
   function addSubtitles3() {
@@ -231,48 +255,52 @@ const MatterComponent: React.FC = () => {
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles3[1]);
-    }, 600); // "I get it. "
+    }, 1000); // "I get it. "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles3[2]);
-    }, 1200); // "You "
+    }, 2000); // "You "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles3[3]);
-    }, 1600); // "want "
+    }, 2300); // "want "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles3[4]);
-    }, 1900); // "something "
+    }, 2700); // "something "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles3[5]);
-    }, 2400); // "to do. "
+    }, 3120); // "to do. "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles3[6]);
-    }, 3000); // "Fine, "
+      setSubtitle1(subtitles3[6]);
+    }, 3900); // "Fine, "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles3[7]);
-    }, 3400); // "here’s a "
+    }, 4700); // "here’s a "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles3[8]);
-    }, 3900); // "cat video "
+    }, 5100); // "cat video "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles3[9]);
-    }, 4500); // "you can "
+    }, 5900); // "you can "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles3[10]);
-    }, 4800); // "watch. "
+    }, 6200); // "watch. "
 
     setTimeout(() => {
-      playAudio4();
-      addSubtitles4();
-    }, 12000);
+      setSubtitle1("");
+    }, 8000);
+
+    setTimeout(() => {
+      setCanAddBodies(true);
+      playAudioPop1();
+    }, 8200);
   }
 
   function addSubtitles2() {
@@ -290,84 +318,88 @@ const MatterComponent: React.FC = () => {
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[3]);
-    }, 1200); // "I must admit, "
+    }, 1900); // "I must admit, "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[4]);
-    }, 1800); // "I wasn’t "
+    }, 2430); // "I wasn’t "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[5]);
-    }, 2300); // "expecting "
+    }, 3000); // "expecting "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[6]);
-    }, 2700); // "that. "
+    }, 3400); // "that. "
 
     setTimeout(() => {
       setSubtitle1(subtitles2[7]);
-    }, 3200); // "This "
+    }, 4200); // "This "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[8]);
-    }, 3500); // "is awkward... "
+    }, 4400); // "is awkward... "
 
     setTimeout(() => {
       setSubtitle1(subtitles2[9]);
-    }, 4300); // "I mean, "
+    }, 5200); // "I mean, "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[10]);
-    }, 5000); // "there’s really "
+    }, 6000); // "there’s really "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[11]);
-    }, 5600); // "nothing "
+    }, 6500); // "nothing "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[12]);
-    }, 6000); // "here "
+    }, 6800); // "here "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[13]);
-    }, 6400); // "for you. "
+    }, 7000); // "for you. "
 
     setTimeout(() => {
       setSubtitle1(subtitles2[14]);
-    }, 7200); // "Maybe "
+    }, 8000); // "Maybe "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[15]);
-    }, 7600); // "you should "
+    }, 8600); // "you should "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[16]);
-    }, 8100); // "consider "
+    }, 8800); // "consider "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[17]);
-    }, 8600); // "leaving "
+    }, 9400); // "leaving "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[18]);
-    }, 9200); // "before "
+    }, 10000); // "before "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[19]);
-    }, 9700); // "things get, "
+    }, 10400); // "things get, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles2[20]);
-    }, 10400); // "well, "
+      setSubtitle1(subtitles2[20]);
+    }, 11200); // "well, "
 
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles2[21]);
-    }, 10800); // "complicated."
+    }, 11830); // "complicated."
+
+    setTimeout(() => {
+      setSubtitle1("");
+    }, 13030);
 
     setTimeout(() => {
       playAudio3();
       addSubtitles3();
-    }, 17000);
+    }, 16800);
   }
 
   function addSubtitlesHumming1() {
@@ -384,8 +416,41 @@ const MatterComponent: React.FC = () => {
       setSubtitle1("Hmm..");
     }, 1200);
     setTimeout(() => {
-      setSubtitle1((prev) => prev + " Mhmm..");
+      setSubtitle1("Mhmm..");
     }, 1500);
+    setTimeout(() => {
+      setSubtitle1("Hm, Mhmm..");
+    }, 3200);
+    setTimeout(() => {
+      setSubtitle1("Hmm..");
+    }, 3600);
+    setTimeout(() => {
+      setSubtitle1("Mhmm..");
+    }, 3800);
+    setTimeout(() => {
+      setSubtitle1("Hmm..");
+    }, 3800);
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + " Hmm..");
+    }, 4400);
+    setTimeout(() => {
+      setSubtitle1("Hmm..");
+    }, 4800);
+    setTimeout(() => {
+      setSubtitle1("Hmmm..");
+    }, 5000);
+    setTimeout(() => {
+      setSubtitle1("Hmmmmm..");
+    }, 5200);
+    setTimeout(() => {
+      setSubtitle1("Hmmm..");
+    }, 5500);
+    setTimeout(() => {
+      setSubtitle1("Hmmm..");
+    }, 6700);
+    setTimeout(() => {
+      setSubtitle1("Mhmm..");
+    }, 7200);
 
     setTimeout(() => {
       playAudio2();
@@ -415,7 +480,7 @@ const MatterComponent: React.FC = () => {
     }, 2000); // "here? "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles1[5]);
+      setSubtitle1(subtitles1[5]);
     }, 3000); // "This "
 
     setTimeout(() => {
@@ -467,7 +532,7 @@ const MatterComponent: React.FC = () => {
     }, 9500); // "in, "
 
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles1[18]);
+      setSubtitle1(subtitles1[18]);
     }, 10200); // "I suppose "
 
     setTimeout(() => {
@@ -500,7 +565,7 @@ const MatterComponent: React.FC = () => {
 
     setTimeout(() => {
       setSubtitle1("");
-    }, 1700); // ""
+    }, 17000); // ""
 
     setTimeout(() => {
       playAudioHumming1();
@@ -516,8 +581,8 @@ const MatterComponent: React.FC = () => {
   function handleUserInteraction() {
     if (!hasClicked) {
       setHasClicked(true);
-      playAudio1();
-      addSubtitles1();
+      playAudio3();
+      addSubtitles3();
     }
   }
 
@@ -543,7 +608,7 @@ const MatterComponent: React.FC = () => {
   }, [hasClicked]);
 
   useEffect(() => {
-    // Initialiazation
+    // Initial setup for Matter.js engine and world
     const engine = engineRef.current;
     const { world } = engine;
     engine.gravity.scale = 0.025;
@@ -564,7 +629,7 @@ const MatterComponent: React.FC = () => {
     const width = render.options.width;
     const height = render.options.height;
     if (!width || !height) {
-      return console.log("ERROR no render width or length");
+      return console.log("ERROR no render width or height");
     }
 
     const walls = [
@@ -618,20 +683,55 @@ const MatterComponent: React.FC = () => {
 
     Matter.Events.on(render, "beforeRender", updateFps);
 
-    const bodiesWithCustomForce = new Set<Matter.Body>();
+    // Mouse setup
+    const mouse = Mouse.create(render.canvas);
+    const mouseConstraint = MouseConstraint.create(engine, {
+      mouse,
+      constraint: {
+        stiffness: 0.2,
+        render: {
+          visible: true,
+          lineWidth: 1,
+          strokeStyle: "#ffffff",
+        },
+      },
+    });
 
-    // Entities
+    World.add(world, mouseConstraint);
+    render.mouse = mouse;
+
+    // Run
+    const runner = Runner.create();
+    Runner.run(runner, engine);
+    Render.run(render);
+
+    // Cleanup on unmount
+    return () => {
+      Matter.Events.off(render, "beforeRender", updateFps);
+      Render.stop(render);
+      Runner.stop(runner);
+      Engine.clear(engine);
+      World.clear(world, false);
+      render.canvas.remove();
+      render.textures = {};
+    };
+  }, []); // Run once, when component mounts
+
+  useEffect(() => {
     if (canAddBodies) {
-      console.log("YEEE");
+      // Only add bodies when canAddBodies is true
+      const engine = engineRef.current;
+      const { world } = engine;
+
       const videoPlayerBox = new VideoPlayerBox({
         world,
-        renderWidth: render.options.width || window.innerWidth,
-        renderHeight: render.options.height || window.innerHeight,
+        renderWidth: window.innerWidth,
+        renderHeight: window.innerHeight,
       });
       const videoPlayButton = new VideoPlayButton({
         world,
-        renderWidth: render.options.width || window.innerWidth,
-        renderHeight: render.options.height || window.innerHeight,
+        renderWidth: window.innerWidth,
+        renderHeight: window.innerHeight,
       });
       const videoHamburgerMenu = new VideoHamburgerMenu({
         world,
@@ -659,105 +759,72 @@ const MatterComponent: React.FC = () => {
       bodiesWithCustomForce.add(videoPlayButton.body);
 
       setAddedBodies({ videoPlayerBox, videoPlayButton, videoHamburgerMenu });
-    }
 
-    // Collision event handler
-    Events.on(engine, "collisionStart", (event) => {
-      event.pairs.forEach((pair) => {
-        bodiesWithCustomForce.delete(pair.bodyA);
-        bodiesWithCustomForce.delete(pair.bodyB);
-      });
-    });
+      Events.on(engine, "beforeUpdate", function () {
+        const gravity = engine.gravity;
 
-    Events.on(engine, "beforeUpdate", function () {
-      var gravity = engine.gravity;
-
-      bodiesWithCustomForce.forEach((body) => {
-        Matter.Body.applyForce(body, body.position, {
-          x: -gravity.x * gravity.scale * body.mass,
-          y: -gravity.y * gravity.scale * body.mass,
+        bodiesWithCustomForce.forEach((body) => {
+          Matter.Body.applyForce(body, body.position, {
+            x: -gravity.x * gravity.scale * body.mass,
+            y: -gravity.y * gravity.scale * body.mass,
+          });
         });
       });
-    });
 
-    // Mouse
-    const mouse = Mouse.create(render.canvas);
-    const mouseConstraint = MouseConstraint.create(engine, {
-      mouse,
-      constraint: {
-        stiffness: 0.2,
-        render: {
-          visible: true,
-          lineWidth: 1,
-          strokeStyle: "#ffffff",
-        },
-      },
-    });
+      // Collision event handler
+      Events.on(engine, "collisionStart", (event) => {
+        if (!hasCollidedGlobalRef.current && !triggeredSubtitle4Ref.current) {
+          setHasCollided(true);
+          hasCollidedGlobalRef.current = true;
+          playAudio4();
+          addSubtitles4();
+        }
 
-    World.add(world, mouseConstraint);
-    render.mouse = mouse;
+        event.pairs.forEach((pair) => {
+          bodiesWithCustomForce.delete(pair.bodyA);
+          bodiesWithCustomForce.delete(pair.bodyB);
+        });
 
-    // Run
-    const runner = Runner.create();
-    Runner.run(runner, engine);
-    Render.run(render);
-
-    // an example of using mouse events on a mouse
-    Events.on(mouseConstraint, "mousedown", function (event) {
-      var mousePosition = event.mouse.position;
-      console.log("mousedown at " + mousePosition.x + " " + mousePosition.y);
-      console.log(addedBodies);
-      if (
-        mouseConstraint.body &&
-        addedBodies.videoPlayButton &&
-        mouseConstraint.body === addedBodies.videoPlayButton.body
-      ) {
-        const body = mouseConstraint.body;
-        bodiesWithCustomForce.delete(body);
-      }
-    });
-
-    // an example of using mouse events on a mouse
-    Events.on(mouseConstraint, "mouseup", function (event) {
-      var mousePosition = event.mouse.position;
-      console.log("mouseup at " + mousePosition.x + " " + mousePosition.y);
-    });
-
-    // an example of using mouse events on a mouse
-    Events.on(mouseConstraint, "startdrag", function (event) {
-      console.log("startdrag", event);
-    });
-
-    // an example of using mouse events on a mouse
-    Events.on(mouseConstraint, "enddrag", function (event) {
-      console.log("enddrag", event);
-    });
-
-    return () => {
-      Matter.Events.off(render, "beforeRender", updateFps);
-      Render.stop(render);
-      Runner.stop(runner);
-      Engine.clear(engine);
-      World.clear(world, false);
-      render.canvas.remove();
-      render.textures = {};
-    };
-  }, [canAddBodies]);
+        requestAnimationFrame(() => {
+          if (bodiesWithCustomForce.size === 0) {
+            console.log("ALL BROKEN");
+          } else {
+            console.log(bodiesWithCustomForce.size);
+          }
+        });
+      });
+    }
+  }, [canAddBodies]); // Run when canAddBodies changes
 
   return (
     <>
-      <div ref={sceneRef} className="w-full h-screen relative">
+      <div
+        ref={sceneRef}
+        className="w-full h-screen relative flex flex-col justify-center"
+      >
         <div className="absolute top-2 right-2 text-white">
           FPS: {fps.toFixed(0)}
         </div>
         {!hasClicked && !canAddBodies && (
-          <div className="absolute inset-0 flex items-center justify-center text-white text-xl">
-            {startText}
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-xl">
+            <div>{startText}</div>
+            <div>Make sure your audio is on!</div>
           </div>
         )}
         {hasClicked && !canAddBodies && (
-          <div className="absolute inset-0 flex items-center justify-center text-white sm:text-2xl md:text-3xl lg:text-4xl">
+          <div className="absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
             {subtitle1}
+          </div>
+        )}
+        {hasClicked && canAddBodies && hasCollided && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
+            <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
+              {subtitle2}
+            </div>
+
+            <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-fit">
+              {hintText1}
+            </div>
           </div>
         )}
       </div>

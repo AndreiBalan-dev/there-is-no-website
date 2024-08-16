@@ -6,9 +6,9 @@ import SwordMiniGameComponent from "./components/(pages)/SecondPage";
 const App: React.FC = () => {
   return (
     <div className="dark flex justify-center dark:bg-background">
-      {/* <MatterComponent /> */}
+      <MatterComponent />
       {/* <SorryComponent /> */}
-      <SwordMiniGameComponent />
+      {/* <SwordMiniGameComponent /> */}
     </div>
   );
 };
