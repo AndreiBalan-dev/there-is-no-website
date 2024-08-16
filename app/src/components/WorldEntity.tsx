@@ -13,20 +13,35 @@ import { Render as RenderType, Engine as EngineType } from "matter-js";
 import { VideoPlayerBox } from "./(video-player)/VideoPlayerBox";
 import { VideoPlayButton } from "./(video-player)/VideoPlayButton";
 import { VideoHamburgerMenu } from "./(video-player)/VideoHamburgerMenu";
+// @ts-ignore
 import voice1 from "../assets/1.mp3";
+// @ts-ignore
 import voice2 from "../assets/2.mp3";
+// @ts-ignore
 import voice3 from "../assets/3.mp3";
+// @ts-ignore
 import pop1 from "../assets/pop.mp3";
+// @ts-ignore
 import voice4 from "../assets/4.mp3";
+// @ts-ignore
 import humming1 from "../assets/humming.mp3";
+// @ts-ignore
 import voice5 from "../assets/5.mp3";
+// @ts-ignore
 import voice6 from "../assets/6.mp3";
+// @ts-ignore
 import voice7 from "../assets/7.mp3";
+// @ts-ignore
 import voice8 from "../assets/8.mp3";
+// @ts-ignore
 import voice9 from "../assets/9.mp3";
+// @ts-ignore
 import voice10 from "../assets/10.mp3";
+// @ts-ignore
 import voice11 from "../assets/11.mp3";
+// @ts-ignore
 import voice12 from "../assets/12.mp3";
+// @ts-ignore
 import voice13 from "../assets/13.mp3";
 import SorryComponent from "../components/(pages)/FirstPage";
 import SwordMiniGameComponent from "../components/(pages)/SecondPage";
