@@ -529,10 +529,10 @@ const MatterComponent: React.FC = () => {
     }, 12000);
     setTimeout(() => {
       setSubtitleEnd2((prev) => prev + "Rudransh Joshi");
-    }, 12000);
+    }, 14000);
     setTimeout(() => {
       setSubtitleEnd3((prev) => prev + "Andy Mai");
-    }, 14000);
+    }, 16000);
   }
 
   function addSubtitles12() {
@@ -956,12 +956,12 @@ const MatterComponent: React.FC = () => {
     }, 12200); // "on this place."
 
     setTimeout(() => {
-      setHintText3("Hint: Get a score of 15!");
-    }, 15000); // ""
-
-    setTimeout(() => {
       setSubtitle5("");
     }, 16000); // Clear the subtitle text
+
+    setTimeout(() => {
+      setHintText3("Hint: Get a score of 15!");
+    }, 17000); // ""
   }
 
   function addSubtitles7() {
