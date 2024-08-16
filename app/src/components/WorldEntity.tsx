@@ -13,7 +13,12 @@ import { Render as RenderType, Engine as EngineType } from "matter-js";
 import { VideoPlayerBox } from "./(video-player)/VideoPlayerBox";
 import { VideoPlayButton } from "./(video-player)/VideoPlayButton";
 import { VideoHamburgerMenu } from "./(video-player)/VideoHamburgerMenu";
-import audioFile from "../assets/1.mp3";
+import voice1 from "../assets/1.mp3";
+import voice2 from "../assets/2.mp3";
+import voice3 from "../assets/3.mp3";
+import voice4 from "../assets/4.mp3";
+import humming1 from "../assets/humming.mp3";
+
 const MatterComponent: React.FC = () => {
   const [fps, setFps] = React.useState(0);
   const sceneRef = useRef<HTMLDivElement>(null);
@@ -54,101 +59,464 @@ const MatterComponent: React.FC = () => {
     "okay?",
   ];
 
-  const audioRef = useRef<HTMLAudioElement>(new Audio(audioFile));
+  const subtitles2 = [
+    "You're ",
+    "still ",
+    "here? ",
+    "I must admit, ",
+    "I wasn’t ",
+    "expecting ",
+    "that. ",
+    "This ",
+    "is awkward... ",
+    "I mean, ",
+    "there’s really ",
+    "nothing ",
+    "here ",
+    "for you. ",
+    "Maybe ",
+    "you should ",
+    "consider ",
+    "leaving ",
+    "before ",
+    "things get, ",
+    "well, ",
+    "complicated.",
+  ];
 
-  function playAudio() {
-    audioRef.current
+  const subtitles3 = [
+    "Alright, ",
+    "I get it. ",
+    "You ",
+    "want ",
+    "something ",
+    "to do. ",
+    "Fine, ",
+    "here’s a ",
+    "cat video ",
+    "you can ",
+    "watch. ",
+  ];
+
+  const subtitles4 = [
+    "What?! ",
+    "What have ",
+    "you done?! ",
+    "I invite ",
+    "you in, ",
+    "and you ",
+    "go ",
+    "and break ",
+    "things? ",
+    "This is ",
+    "why ",
+    "we can’t ",
+    "have ",
+    "nice things! ",
+    "Seriously, ",
+    "you need ",
+    "to go. ",
+  ];
+
+  const audioTextRef_1 = useRef<HTMLAudioElement>(new Audio(voice1));
+  const audioTextHummingRef_1 = useRef<HTMLAudioElement>(new Audio(humming1));
+  const audioTextRef_2 = useRef<HTMLAudioElement>(new Audio(voice2));
+  const audioTextRef_3 = useRef<HTMLAudioElement>(new Audio(voice3));
+  const audioTextRef_4 = useRef<HTMLAudioElement>(new Audio(voice4));
+
+  function playAudio1() {
+    audioTextRef_1.current
       .play()
       .catch((error) => console.error("Audio play error:", error));
+  }
+
+  function playAudioHumming1() {
+    audioTextHummingRef_1.current
+      .play()
+      .catch((error) => console.error("Audio play error:", error));
+  }
+
+  function playAudio2() {
+    audioTextRef_2.current
+      .play()
+      .catch((error) => console.error("Audio play error:", error));
+  }
+
+  function playAudio3() {
+    audioTextRef_3.current
+      .play()
+      .catch((error) => console.error("Audio play error:", error));
+  }
+
+  function playAudio4() {
+    audioTextRef_4.current
+      .play()
+      .catch((error) => console.error("Audio play error:", error));
+  }
+
+  function addSubtitles4() {
+    setTimeout(() => {
+      setSubtitle1(subtitles4[0]);
+    }, 100); // "What?! "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[1]);
+    }, 400); // "What have "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[2]);
+    }, 800); // "you done?! "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[3]);
+    }, 1300); // "I invite "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[4]);
+    }, 1800); // "you in, "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[5]);
+    }, 2300); // "and you "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[6]);
+    }, 2700); // "go "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[7]);
+    }, 3100); // "and break "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[8]);
+    }, 3700); // "things? "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[9]);
+    }, 4200); // "This is "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[10]);
+    }, 4700); // "why "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[11]);
+    }, 5100); // "we can’t "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[12]);
+    }, 5600); // "have "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[13]);
+    }, 5900); // "nice things! "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[14]);
+    }, 6500); // "Seriously, "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[15]);
+    }, 7100); // "you need "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles4[16]);
+    }, 7500); // "to go. "
+  }
+
+  function addSubtitles3() {
+    setTimeout(() => {
+      setSubtitle1(subtitles3[0]);
+    }, 100); // "Alright,"
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles3[1]);
+    }, 600); // "I get it. "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles3[2]);
+    }, 1200); // "You "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles3[3]);
+    }, 1600); // "want "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles3[4]);
+    }, 1900); // "something "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles3[5]);
+    }, 2400); // "to do. "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles3[6]);
+    }, 3000); // "Fine, "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles3[7]);
+    }, 3400); // "here’s a "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles3[8]);
+    }, 3900); // "cat video "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles3[9]);
+    }, 4500); // "you can "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles3[10]);
+    }, 4800); // "watch. "
+
+    setTimeout(() => {
+      playAudio4();
+      addSubtitles4();
+    }, 12000);
+  }
+
+  function addSubtitles2() {
+    setTimeout(() => {
+      setSubtitle1(subtitles2[0]);
+    }, 100); // "You're "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[1]);
+    }, 400); // "still "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[2]);
+    }, 700); // "here? "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[3]);
+    }, 1200); // "I must admit, "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[4]);
+    }, 1800); // "I wasn’t "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[5]);
+    }, 2300); // "expecting "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[6]);
+    }, 2700); // "that. "
+
+    setTimeout(() => {
+      setSubtitle1(subtitles2[7]);
+    }, 3200); // "This "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[8]);
+    }, 3500); // "is awkward... "
+
+    setTimeout(() => {
+      setSubtitle1(subtitles2[9]);
+    }, 4300); // "I mean, "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[10]);
+    }, 5000); // "there’s really "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[11]);
+    }, 5600); // "nothing "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[12]);
+    }, 6000); // "here "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[13]);
+    }, 6400); // "for you. "
+
+    setTimeout(() => {
+      setSubtitle1(subtitles2[14]);
+    }, 7200); // "Maybe "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[15]);
+    }, 7600); // "you should "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[16]);
+    }, 8100); // "consider "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[17]);
+    }, 8600); // "leaving "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[18]);
+    }, 9200); // "before "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[19]);
+    }, 9700); // "things get, "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[20]);
+    }, 10400); // "well, "
+
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles2[21]);
+    }, 10800); // "complicated."
+
+    setTimeout(() => {
+      playAudio3();
+      addSubtitles3();
+    }, 17000);
+  }
+
+  function addSubtitlesHumming1() {
+    setTimeout(() => {
+      setSubtitle1("Hmm..");
+    }, 100);
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + " Mhmm..");
+    }, 500);
+    setTimeout(() => {
+      setSubtitle1("Hm, Mhmm..");
+    }, 900);
+    setTimeout(() => {
+      setSubtitle1("Hmm..");
+    }, 1200);
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + " Mhmm..");
+    }, 1500);
+
+    setTimeout(() => {
+      playAudio2();
+      addSubtitles2();
+    }, 10000);
   }
 
   function addSubtitles1() {
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[0]);
-    }, 100);
+    }, 100); // "Wait... "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[1]);
-    }, 1300);
+    }, 1300); // "what "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[2]);
-    }, 1500);
+    }, 1500); // "are "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[3]);
-    }, 1700);
+    }, 1700); // "you doing "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[4]);
-    }, 2100);
+    }, 2000); // "here? "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[5]);
-    }, 3200);
+    }, 3000); // "This "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[6]);
-    }, 3500);
+    }, 3400); // "isn't "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[7]);
-    }, 3800);
+    }, 3700); // "a place "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[8]);
-    }, 4300);
+    }, 4200); // "for visitors. "
+
     setTimeout(() => {
-      setSubtitle1((prev) => prev + subtitles1[9]);
-    }, 5300);
+      setSubtitle1(subtitles1[9]);
+    }, 5300); // "Actually, "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[10]);
-    }, 5600);
+    }, 5800); // "this isn't "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[11]);
-    }, 6100);
+    }, 6100); // "even "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[12]);
-    }, 6400);
+    }, 6700); // "a place "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[13]);
-    }, 6800);
+    }, 7000); // "at all. "
 
     setTimeout(() => {
       setSubtitle1(subtitles1[14]);
-    }, 8000);
+    }, 8000); // "But, "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[15]);
-    }, 8200);
+    }, 8800); // "since "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[16]);
-    }, 8800);
+    }, 9000); // "you've stumbled "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[17]);
-    }, 9200);
+    }, 9500); // "in, "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[18]);
-    }, 9800);
+    }, 10200); // "I suppose "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[19]);
-    }, 10300);
+    }, 10700); // "you can "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[20]);
-    }, 11000);
+    }, 11000); // "stay "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[21]);
-    }, 11400);
+    }, 11600); // "for a moment. "
 
     setTimeout(() => {
       setSubtitle1(subtitles1[22]);
-    }, 13000);
+    }, 13000); // "Just "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[23]);
-    }, 13200);
+    }, 13200); // "don't "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[24]);
-    }, 13700);
+    }, 13600); // "get too comfortable, "
+
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[25]);
-    }, 14200);
+    }, 14500); // "okay?"
+
+    setTimeout(() => {
+      setSubtitle1("");
+    }, 1700); // ""
+
+    setTimeout(() => {
+      playAudioHumming1();
+      addSubtitlesHumming1();
+    }, 19000);
+
+    // setTimeout(() => {
+    //   setCanAddBodies(true);
+    //   setSubtitle1("");
+    // }, 20000);
   }
   // Function to handle user interaction to allow audio play
   function handleUserInteraction() {
     if (!hasClicked) {
       setHasClicked(true);
-      playAudio();
+      playAudio1();
       addSubtitles1();
     }
   }
@@ -172,7 +540,7 @@ const MatterComponent: React.FC = () => {
       document.removeEventListener("touchstart", handleUserInteraction);
       clearInterval(interval);
     };
-  }, []);
+  }, [hasClicked]);
 
   useEffect(() => {
     // Initialiazation
@@ -254,6 +622,7 @@ const MatterComponent: React.FC = () => {
 
     // Entities
     if (canAddBodies) {
+      console.log("YEEE");
       const videoPlayerBox = new VideoPlayerBox({
         world,
         renderWidth: render.options.width || window.innerWidth,
@@ -373,7 +742,7 @@ const MatterComponent: React.FC = () => {
       render.canvas.remove();
       render.textures = {};
     };
-  }, []);
+  }, [canAddBodies]);
 
   return (
     <>
@@ -381,13 +750,13 @@ const MatterComponent: React.FC = () => {
         <div className="absolute top-2 right-2 text-white">
           FPS: {fps.toFixed(0)}
         </div>
-        {!hasClicked && (
-          <div className="absolute inset-0 flex items-center justify-center text-white">
+        {!hasClicked && !canAddBodies && (
+          <div className="absolute inset-0 flex items-center justify-center text-white text-xl">
             {startText}
           </div>
         )}
-        {hasClicked && (
-          <div className="absolute inset-0 flex items-center justify-center text-white">
+        {hasClicked && !canAddBodies && (
+          <div className="absolute inset-0 flex items-center justify-center text-white sm:text-2xl md:text-3xl lg:text-4xl">
             {subtitle1}
           </div>
         )}
