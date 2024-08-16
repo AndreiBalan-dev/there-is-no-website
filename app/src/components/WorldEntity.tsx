@@ -130,6 +130,19 @@ const MatterComponent: React.FC = () => {
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles1[21]);
     }, 11400);
+
+    setTimeout(() => {
+      setSubtitle1(subtitles1[22]);
+    }, 13000);
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles1[23]);
+    }, 13200);
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles1[24]);
+    }, 13700);
+    setTimeout(() => {
+      setSubtitle1((prev) => prev + subtitles1[25]);
+    }, 14200);
   }
   // Function to handle user interaction to allow audio play
   function handleUserInteraction() {
