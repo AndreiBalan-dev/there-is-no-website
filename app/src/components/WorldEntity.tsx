@@ -1728,7 +1728,7 @@ const MatterComponent: React.FC = () => {
       renderRef.current = render;
       render.options.background = "#09090b";
 
-      const wallThickness = 50; // Thickness of the website box
+      const wallThickness = 400; // Thickness of the website box
       const width = render.options.width;
       const height = render.options.height;
       if (!width || !height) {
