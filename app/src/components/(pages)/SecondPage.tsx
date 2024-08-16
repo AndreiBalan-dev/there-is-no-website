@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import useSound from "use-sound";
+// @ts-ignore
 import swordSound from "../../assets/sword-slash.mp3";
+// @ts-ignore
 import sword from "../../assets/sword.png";
+// @ts-ignore
 import bombPotion from "../../assets/bomb.png";
 
 type Bomb = {
@@ -24,7 +27,7 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
   const [bombCount, setBombCount] = useState(0);
   const [slicedCount, setSlicedCount] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
-  const [firstLoad, setFirstLoad] = useState(true);
+  const [firstLoad, setFirstLoad] = useState(true); // Track if it's the first load
   const swordRef = useRef<HTMLDivElement>(null);
   const [playSwordSound] = useSound(swordSound);
 
@@ -32,20 +35,24 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
     playSwordSound();
   }, []);
 
+  // Handle starting the game
   useEffect(() => {
     const startGame = () => {
       setGameStarted(true);
-      setFirstLoad(false); // After the first load, set firstLoad to false
     };
 
     if (firstLoad) {
-      const timeoutId = setTimeout(startGame, 14000); // Wait 14 seconds only on first load
+      const timeoutId = setTimeout(() => {
+        startGame();
+        setFirstLoad(false); // Only wait on the first load
+      }, 14000);
       return () => clearTimeout(timeoutId);
     } else {
-      startGame(); // Start the game immediately after restarting
+      startGame(); // Immediately start the game after a reset
     }
   }, [firstLoad]);
 
+  // Handle bomb generation
   useEffect(() => {
     const generateBomb = () => {
       if (bombCount < 15) {
@@ -63,6 +70,7 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
     }
   }, [gameStarted, gameOver, bombCount]);
 
+  // Handle bomb movement
   useEffect(() => {
     const moveBombs = () => {
       setBombs((prevBombs) =>
@@ -79,6 +87,7 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
     }
   }, [gameStarted, gameOver]);
 
+  // Handle bomb checking and game reset
   useEffect(() => {
     const checkBombs = () => {
       bombs.forEach((bomb) => {
@@ -87,7 +96,10 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
           setBombCount(0);
           setSlicedCount(0);
           setBombs([]);
-          setGameStarted(false);
+          setTimeout(() => {
+            setGameOver(false);
+            setGameStarted(true); // Restart game immediately after game over
+          }, 1000); // Short delay before restarting the game
         }
       });
     };

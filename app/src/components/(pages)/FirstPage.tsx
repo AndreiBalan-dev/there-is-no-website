@@ -6,7 +6,6 @@ interface SorryComponentProps {
 
 const SorryComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
-  const [isComplete, setIsComplete] = useState(false);
   const correctKeys = "I AM REALLY SORRY".split("");
 
   const handleKeyPress = (event: KeyboardEvent) => {
@@ -14,7 +13,6 @@ const SorryComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
     if (key === correctKeys[progress]) {
       setProgress(progress + 1);
       if (progress === correctKeys.length - 1) {
-        setIsComplete(true);
         onComplete();
       }
     } else {
