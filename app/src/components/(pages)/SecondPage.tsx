@@ -65,10 +65,7 @@ const SwordMiniGameComponent = () => {
     const checkBombs = () => {
       bombs.forEach((bomb) => {
         if (bomb.y > window.innerHeight) {
-          setGameOver(true);
-          setBombCount(0);
-          setSlicedCount(0);
-          setBombs([]);
+          resetGame();
         }
       });
     };
@@ -107,8 +104,6 @@ const SwordMiniGameComponent = () => {
       {gameOver && (
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
           <h1>Game Over</h1>
-          <p>Bombs Sliced: {slicedCount}</p>
-          <Button onClick={resetGame} variant={'outline'}>Restart</Button>
         </div>
       )}
 

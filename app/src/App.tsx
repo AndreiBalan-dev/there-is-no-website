@@ -7,10 +7,10 @@ import CookieClickerComponent from "./components/(pages)/ThirdPage";
 const App: React.FC = () => {
   return (
     <div className="dark flex justify-center dark:bg-background">
-      {/* <MatterComponent /> */}
+      <MatterComponent />
       {/* <SorryTyperComponent /> */}
       {/* <SwordMiniGameComponent /> */}
-      <CookieClickerComponent />
+      {/* CookieClickerComponent */}
     </div>
   );
 };
