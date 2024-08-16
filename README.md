@@ -1,6 +1,6 @@
 # There Is No Website
 
-**[Live Deployment](https://thereisnoweb.site/)**
+**[Live Deployment](https://thereisnoweb.site/)** (Best viewed on Desktop w/ Chromium based browsers)
 
 ![Hackathon Badge](https://img.shields.io/badge/Hackathon-Hackathon_with_Lewis_2024-blue)
 
