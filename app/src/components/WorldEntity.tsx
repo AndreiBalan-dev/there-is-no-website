@@ -581,8 +581,8 @@ const MatterComponent: React.FC = () => {
   function handleUserInteraction() {
     if (!hasClicked) {
       setHasClicked(true);
-      playAudio3();
-      addSubtitles3();
+      playAudio1();
+      addSubtitles1();
     }
   }
 
