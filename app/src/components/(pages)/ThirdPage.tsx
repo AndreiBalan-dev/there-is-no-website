@@ -11,6 +11,7 @@ const CookieClickerComponent = () => {
   useEffect(() => {
     if (isRunning) {
       const interval = setInterval(() => {
+        if (isVictory) { return };
         const currentTime = Date.now();
 
         clickTimes.current = clickTimes.current.filter(
@@ -24,7 +25,7 @@ const CookieClickerComponent = () => {
             return prev - 1;
           } else {
             clearInterval(interval);
-            if (cps >= 10) {
+            if (cps >= 8) {
               setIsVictory(true);
             } else {
               resetGame();
@@ -68,7 +69,7 @@ const CookieClickerComponent = () => {
         <div className="bg-card p-8 rounded-lg shadow-lg text-center">
           <h1 className="text-4xl font-bold text-card-foreground mb-4">Eh!</h1>
           <p className="text-lg text-muted-foreground">
-            You sure did maintain a CPS of 8. Fine, proceed!
+            You sure did maintain a CPS of {cps}. Fine, proceed!
           </p>
         </div>
       ) : (
