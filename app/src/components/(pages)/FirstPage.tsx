@@ -5,7 +5,7 @@ interface SorryComponentProps {
   onComplete: () => void;
 }
 
-const SorryTyperComponent: React.FC<SorryTyperComponentProps> = ({ onComplete }) => {
+const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
   const correctKeys = "I AM REALLY SORRY".split("");
 
