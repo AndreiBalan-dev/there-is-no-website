@@ -64,7 +64,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
         ref={inputRef}
         type="text"
         onChange={handleInputChange}
-        className="absolute opacity-0 h-full w-full sm:h-screen border-solid border-2"
+        className="absolute opacity-0 h-full w-full sm:h-screen border-solid cursor-default"
         aria-hidden="true"
         autoComplete="off"
       />
