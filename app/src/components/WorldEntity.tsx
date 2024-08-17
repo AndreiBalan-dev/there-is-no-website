@@ -2014,7 +2014,7 @@ const MatterComponent: React.FC = () => {
                   </div>
                   <button
                     onClick={handleEnableHints}
-                    className="mt-5 px-4 py-2 bg-blue-500 text-white rounded flex items-center space-x-2 hover:bg-blue-700"
+                    className="mt-5 px-4 py-2 bg-gray-800 text-white rounded flex items-center space-x-2 hover:bg-gray-900"
                   >
                     <FaLightbulb />
                     <span>Play With Hints</span>
