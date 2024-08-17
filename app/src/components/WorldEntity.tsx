@@ -2033,7 +2033,7 @@ const MatterComponent: React.FC = () => {
                 </div>
               )}
               {hasClicked && canAddBodies && !hasCollided && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full text-sm sm:text-base md:text-xl lg:text-2xl mt-6 sm:mt-6 md:mt-10 lg:mt-16">
+                <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full text-sm sm:text-base md:text-xl lg:text-2xl mt-6 sm:mt-6 md:mt-10 lg:mt-16 pointer-events-none">
                   {hintText5}
                 </div>
               )}
