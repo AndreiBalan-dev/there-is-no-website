@@ -67,6 +67,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
         className="absolute opacity-0 h-full w-full sm:h-screen border-solid cursor-default"
         aria-hidden="true"
         autoComplete="off"
+        autoCorrect="off"
       />
     </div>
   );
