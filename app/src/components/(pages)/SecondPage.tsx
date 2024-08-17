@@ -4,6 +4,7 @@ import useSound from "use-sound";
 import swordSound from "../../assets/sword-slash.mp3";
 import sword from "../../assets/sword.png";
 import bombPotion from "../../assets/bomb.png";
+import debounce from "lodash.debounce"; // You might need to install lodash.debounce
 
 type Bomb = {
   id: number;
@@ -31,7 +32,7 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
   useEffect(() => {
     console.log("Game loaded, playing sword sound...");
     playSwordSound();
-  }, []);
+  }, [playSwordSound]);
 
   // Handle starting the game
   useEffect(() => {
@@ -57,7 +58,11 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
     const generateBomb = () => {
       if (bombCount < 15) {
         const id = Math.random();
-        const x = Math.floor(Math.random() * (window.innerWidth - 10)) + 10;
+        const screenWidth = window.innerWidth;
+        const bombWidth = 24; // Adjust to the bomb's width
+        const minX = bombWidth;
+        const maxX = screenWidth - bombWidth;
+        const x = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
         const speed = 10 + Math.random() * 3;
         console.log(`Generating bomb with id: ${id}, x: ${x}, speed: ${speed}`);
         setBombs((prevBombs) => [...prevBombs, { id, x, y: 0, speed }]);
@@ -116,22 +121,23 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
     }
   }, [bombs, gameStarted, gameOver]);
 
-  const handleMouseMove = (event: React.MouseEvent) => {
+  // Debounced sword movement to optimize performance
+  const handleMouseMove = debounce((event: React.MouseEvent) => {
     if (swordRef.current) {
       swordRef.current.style.left = `${event.clientX}px`;
       swordRef.current.style.top = `${event.clientY}px`;
       console.log(`Mouse moved to x: ${event.clientX}, y: ${event.clientY}`);
     }
-  };
+  }, 16); // Debouncing to limit function calls
 
-  const handleTouchMove = (event: React.TouchEvent) => {
+  const handleTouchMove = debounce((event: React.TouchEvent) => {
     if (swordRef.current) {
       const touch = event.touches[0];
       swordRef.current.style.left = `${touch.clientX}px`;
       swordRef.current.style.top = `${touch.clientY}px`;
       console.log(`Touch moved to x: ${touch.clientX}, y: ${touch.clientY}`);
     }
-  };
+  }, 16); // Debouncing to limit function calls
 
   const handleSlice = (bombId: number) => {
     console.log(`Slicing bomb id: ${bombId}`);
