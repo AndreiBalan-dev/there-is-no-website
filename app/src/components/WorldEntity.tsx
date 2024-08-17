@@ -854,7 +854,7 @@ const MatterComponent: React.FC = () => {
       const subtitleElemCookie = document.querySelector("#modifyFirefoxCookie");
       subtitleElemCookie?.classList.remove("justify-center");
       subtitleElemCookie?.classList.add("justify-normal");
-      if (enableHints.current) setHintText4("Hint: Get 8 clicks per second!");
+      if (enableHints.current) setHintText4("Hint: Get 7 clicks per second!");
     }, 16000); // ""
 
     setTimeout(() => {
@@ -2095,7 +2095,7 @@ const MatterComponent: React.FC = () => {
 
         {triggeredSubtitleRef7.current && !swordFightComponentToggle && (
           <div className="flex flex-col items-center justify-center max-h-fit w-full mt-6 sm:mt-6 md:mt-10 lg:mt-16 pointer-events-none">
-            <div className="absolute inset-0 flex justify-center mt-6 sm:mt-6 md:mt-10 lg:mt-16 pointer-events-none text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+            <div className="absolute inset-0 flex justify-center mt-8 sm:mt-6 md:mt-10 lg:mt-16 pointer-events-none text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl">
               {triggeredAudioGlobal11 ? subtitle1 : subtitle6}
             </div>
             <div className="lg:mt-6 mt-4 text-white text-base sm:text-xl md:text-2xl lg:text-3xl max-w-fit">
