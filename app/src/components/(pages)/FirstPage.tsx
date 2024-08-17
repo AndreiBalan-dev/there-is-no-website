@@ -5,15 +5,14 @@ interface SorryComponentProps {
 }
 
 const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
-  const [userInput, setUserInput] = useState(""); // Accumulate user input
+  const [userInput, setUserInput] = useState("");
   const correctText = "I AM REALLY SORRY";
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleKeyPress = (event: KeyboardEvent) => {
     const key = event.key.toUpperCase();
+    console.log(key, "KEY PRESS");
     const nextInput = userInput + key;
-    console.log(nextInput);
-    console.log(key);
 
     if (correctText.startsWith(nextInput)) {
       setUserInput(nextInput);
@@ -27,10 +26,14 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let key = event.target.value.toUpperCase();
-    const nextInput = userInput + key;
 
-    console.log(nextInput + " INPUT CHANGE");
-    console.log(key + " INPUT CHANGE");
+    if (key.trim() === "") {
+      console.log("SPACE", "INPUT CHANGE");
+    } else {
+      console.log(key, "INPUT CHANGE");
+    }
+
+    const nextInput = userInput + key;
 
     if (correctText.startsWith(nextInput)) {
       setUserInput(nextInput);
@@ -38,7 +41,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
         onComplete();
       }
     } else {
-      setUserInput("");
+      setUserInput(""); // Reset if input doesn't match
     }
     event.target.value = "";
   };
@@ -75,7 +78,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
                   : "text-muted-foreground opacity-50"
               }`}
             >
-              {char !== " " ? char : <span className="px-2"> </span>}
+              {char}
             </span>
           ))}
         </h1>
@@ -85,6 +88,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
           onChange={handleInputChange}
           className="absolute opacity-0"
           aria-hidden="true"
+          autoComplete="off"
         />
       </div>
     </div>
