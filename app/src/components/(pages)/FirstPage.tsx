@@ -11,6 +11,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
 
   const handleKeyPress = (event: KeyboardEvent) => {
     const key = event.key.toUpperCase();
+
     if (key === correctKeys[progress]) {
       setProgress(progress + 1);
       if (progress === correctKeys.length - 1) {
@@ -23,6 +24,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const key = event.target.value.toUpperCase();
+
     if (key === correctKeys[progress]) {
       setProgress(progress + 1);
       if (progress === correctKeys.length - 1) {
@@ -31,7 +33,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
     } else {
       setProgress(0);
     }
-    event.target.value = ""; // Clear the input after checking
+    event.target.value = "";
   };
 
   useEffect(() => {
@@ -43,7 +45,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
 
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.focus(); // Ensure the input is focused for mobile users
+      inputRef.current.focus();
     }
   }, []);
 
@@ -63,7 +65,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
               {correctKeys[i] !== " " ? (
                 correctKeys[i]
               ) : (
-                <span className="px-4">{correctKeys[i]}</span>
+                <span className="px-4">_</span>
               )}
             </span>
           ))}
@@ -72,7 +74,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
           ref={inputRef}
           type="text"
           onChange={handleInputChange}
-          className="opacity-0 absolute" // Hidden but still focusable for mobile input
+          className="absolute opacity-0"
           aria-hidden="true"
         />
       </div>
