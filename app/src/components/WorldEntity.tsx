@@ -377,7 +377,7 @@ const MatterComponent: React.FC = () => {
   const triggeredAudioGlobal11 = useRef(false);
 
   function playAudio1() {
-    audioTextRef_1.current.volume = 0.6;
+    audioTextRef_1.current.volume = 0.75;
     audioTextRef_1.current
       .play()
       .catch((error) => console.error("Audio play error:", error));
@@ -390,14 +390,14 @@ const MatterComponent: React.FC = () => {
   }
 
   function playAudio2() {
-    audioTextRef_2.current.volume = 0.6;
+    audioTextRef_2.current.volume = 0.75;
     audioTextRef_2.current
       .play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio3() {
-    audioTextRef_3.current.volume = 0.6;
+    audioTextRef_3.current.volume = 0.75;
     audioTextRef_3.current
       .play()
       .catch((error) => console.error("Audio play error:", error));
@@ -410,70 +410,70 @@ const MatterComponent: React.FC = () => {
   }
 
   function playAudio4() {
-    audioTextRef_4.current.volume = 0.6;
+    audioTextRef_4.current.volume = 0.75;
     audioTextRef_4.current
       .play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio5() {
-    audioTextRef_5.current.volume = 0.6;
+    audioTextRef_5.current.volume = 0.75;
     audioTextRef_5.current
       .play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio6() {
-    audioTextRef_6.current.volume = 0.6;
+    audioTextRef_6.current.volume = 0.75;
     audioTextRef_6.current
       .play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio7() {
-    audioTextRef_7.current.volume = 0.6;
+    audioTextRef_7.current.volume = 0.75;
     audioTextRef_7.current
       .play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio8() {
-    audioTextRef_8.current.volume = 0.6;
+    audioTextRef_8.current.volume = 0.75;
     audioTextRef_8.current
       .play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio9() {
-    audioTextRef_9.current.volume = 0.6;
+    audioTextRef_9.current.volume = 0.75;
     audioTextRef_9.current
       .play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio10() {
-    audioTextRef_10.current.volume = 0.6;
+    audioTextRef_10.current.volume = 0.75;
     audioTextRef_10.current
       .play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio11() {
-    audioTextRef_11.current.volume = 0.6;
+    audioTextRef_11.current.volume = 0.75;
     audioTextRef_11.current
       .play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio12() {
-    audioTextRef_12.current.volume = 0.6;
+    audioTextRef_12.current.volume = 0.75;
     audioTextRef_12.current
       .play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio13() {
-    audioTextRef_13.current.volume = 0.6;
+    audioTextRef_13.current.volume = 0.75;
     audioTextRef_13.current
       .play()
       .catch((error) => console.error("Audio play error:", error));
