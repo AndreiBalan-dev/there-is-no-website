@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 interface SorryComponentProps {
   onComplete: () => void;
@@ -8,6 +7,7 @@ interface SorryComponentProps {
 const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
   const correctKeys = "I AM REALLY SORRY".split("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleKeyPress = (event: KeyboardEvent) => {
     const key = event.key.toUpperCase();
@@ -21,12 +21,31 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
     }
   };
 
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const key = event.target.value.toUpperCase();
+    if (key === correctKeys[progress]) {
+      setProgress(progress + 1);
+      if (progress === correctKeys.length - 1) {
+        onComplete();
+      }
+    } else {
+      setProgress(0);
+    }
+    event.target.value = ""; // Clear the input after checking
+  };
+
   useEffect(() => {
     window.addEventListener("keydown", handleKeyPress);
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
-  }, [handleKeyPress]);
+  }, [progress]);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus(); // Ensure the input is focused for mobile users
+    }
+  }, []);
 
   return (
     <div className="flex h-screen w-full items-center justify-center bg-background text-primary-foreground">
@@ -49,6 +68,13 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
             </span>
           ))}
         </h1>
+        <input
+          ref={inputRef}
+          type="text"
+          onChange={handleInputChange}
+          className="opacity-0 absolute" // Hidden but still focusable for mobile input
+          aria-hidden="true"
+        />
       </div>
     </div>
   );
