@@ -494,6 +494,8 @@ const MatterComponent: React.FC = () => {
   }
 
   function addSubtitles13() {
+    audioMusicRef_1.current.volume = 0.3;
+
     setTimeout(() => {
       setSubtitle1(subtitles13[0]);
     }, 100); // "And before "
@@ -523,6 +525,10 @@ const MatterComponent: React.FC = () => {
     }, 4000); // Clear the subtitle text
 
     setTimeout(() => {
+      audioMusicRef_1.current.volume = 1;
+    }, 4200);
+
+    setTimeout(() => {
       setSubtitle1("Made with love by");
     }, 10000);
     setTimeout(() => {
@@ -537,6 +543,7 @@ const MatterComponent: React.FC = () => {
   }
 
   function addSubtitles12() {
+    audioMusicRef_1.current.volume = 0.3;
     setTimeout(() => {
       setSubtitle1(subtitles12[0]);
     }, 100); // "Ha! "
@@ -598,13 +605,17 @@ const MatterComponent: React.FC = () => {
     }, 9200); // "destroyer of worlds!"
 
     setTimeout(() => {
+      audioMusicRef_1.current.volume = 1;
+    }, 10000);
+
+    setTimeout(() => {
       setSubtitle1("");
     }, 12000); // Clear the subtitle text
 
     setTimeout(() => {
       playAudio13();
       addSubtitles13();
-    }, 14000); // Clear the subtitle text
+    }, 14000);
   }
 
   function addSubtitles11() {
