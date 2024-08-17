@@ -1680,7 +1680,7 @@ const MatterComponent: React.FC = () => {
       setTimeout(() => {
         playAudio1();
         addSubtitles1();
-      }, 800);
+      }, 1400);
     }
   }
 
