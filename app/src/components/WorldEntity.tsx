@@ -59,9 +59,9 @@ const MatterComponent: React.FC = () => {
   const [subtitle4, setSubtitle4] = useState("");
   const [subtitle5, setSubtitle5] = useState("");
   const [subtitle6, setSubtitle6] = useState("");
-  const [subtitleEnd1, setSubtitleEnd1] = useState("");
-  const [subtitleEnd2, setSubtitleEnd2] = useState("");
-  const [subtitleEnd3, setSubtitleEnd3] = useState("");
+  // const [subtitleEnd1, setSubtitleEnd1] = useState("");
+  // const [subtitleEnd2, setSubtitleEnd2] = useState("");
+  // const [subtitleEnd3, setSubtitleEnd3] = useState("");
   const [hintText1, setHintText1] = useState("");
   const [hintText2, setHintText2] = useState("");
   const [hintText3, setHintText3] = useState("");
