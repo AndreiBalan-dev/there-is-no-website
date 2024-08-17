@@ -5,9 +5,11 @@
 ![Hackathon Badge](https://img.shields.io/badge/Hackathon-Hackathon_with_Lewis_2024-blue)
 
 ## :trophy: Hackathon Project - "Hackathon with Lewis" (Aug 9-16, 2024)
-**Fun Fact:** We did 98% of the project in the last 24h 💀🥳
 
-**Theme:** Functionally Dysfunctional
+**Fun Fact:** We had a whole week, but of course, we did 98% of the work in the last 24 hours. Procrastination? Nah, we just work better under pressure! 😎💥
+
+### Theme
+Functionally Dysfunctional
 
 ### Team Members:
 - **[Rudransh Joshi](https://linkedin.com/in/rudraxd/)**
