@@ -13,7 +13,7 @@ import { Render as RenderType, Engine as EngineType } from "matter-js";
 import { VideoPlayerBox } from "./(video-player)/VideoPlayerBox";
 import { VideoPlayButton } from "./(video-player)/VideoPlayButton";
 import { VideoHamburgerMenu } from "./(video-player)/VideoHamburgerMenu";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaLightbulb } from "react-icons/fa";
 import voice1 from "../assets/1.mp3";
 import voice2 from "../assets/2.mp3";
 import voice3 from "../assets/3.mp3";
@@ -41,6 +41,7 @@ const MatterComponent: React.FC = () => {
   const renderRef = useRef<RenderType | null>(null);
   const runnerRef = useRef<Runner | null>(null);
   const [hasClicked, setHasClicked] = useState(false);
+  const [enableHints, setEnableHints] = useState(false);
   const [startText, setStartText] = useState("Click anywhere to start");
   const [canAddBodies, setCanAddBodies] = useState(false);
   const [hasCollided, setHasCollided] = useState(false);
@@ -850,7 +851,7 @@ const MatterComponent: React.FC = () => {
     }, 14100); // "to bits."
 
     setTimeout(() => {
-      setHintText4("Hint: Get 8 clicks per second!");
+      if (enableHints) setHintText4("Hint: Get 8 clicks per second!");
     }, 16000); // ""
 
     setTimeout(() => {
@@ -947,7 +948,7 @@ const MatterComponent: React.FC = () => {
     }, 16000); // Clear the subtitle text
 
     setTimeout(() => {
-      setHintText3("Hint: Get a score of 15!");
+      if (enableHints) setHintText3("Hint: Get a score of 15!");
     }, 17000); // ""
   }
 
@@ -1148,7 +1149,7 @@ const MatterComponent: React.FC = () => {
     }, 18700); // "it this time."
 
     setTimeout(() => {
-      setHintText1("Hint: Break everything!");
+      if (enableHints) setHintText1("Hint: Break everything!");
     }, 20000);
 
     setTimeout(() => {
@@ -1254,9 +1255,10 @@ const MatterComponent: React.FC = () => {
     }, 17400); // "upside down."
 
     setTimeout(() => {
-      setHintText2(
-        'Hint: Type "I am really sorry" and maybe I\'ll forgive you..'
-      );
+      if (enableHints)
+        setHintText2(
+          'Hint: Type "I am really sorry" and maybe I\'ll forgive you..'
+        );
     }, 22000); // ""
 
     setTimeout(() => {
@@ -1266,7 +1268,6 @@ const MatterComponent: React.FC = () => {
 
   function addSubtitles4() {
     if (triggeredSubtitle4 === true) return;
-    console.log(triggeredSubtitle4);
     triggeredSubtitle4 = true;
     setTimeout(() => {
       setSubtitle2(subtitles4[0]);
@@ -1337,7 +1338,7 @@ const MatterComponent: React.FC = () => {
     }, 8000); // "to go. "
 
     setTimeout(() => {
-      setHintText1("Hint: Break everything!");
+      if (enableHints) setHintText1("Hint: Break everything!");
     }, 12000); // ""
   }
 
@@ -1387,9 +1388,10 @@ const MatterComponent: React.FC = () => {
     }, 6200); // "watch. "
 
     setTimeout(() => {
-      setHintText5(
-        "Hint: Seems like the video isn't loading? Try to drag stuff around maybe it'll work."
-      );
+      if (enableHints)
+        setHintText5(
+          "Hint: Seems like the video isn't loading? Try to drag stuff around maybe it'll work."
+        );
     }, 10000);
 
     setTimeout(() => {
@@ -1979,6 +1981,11 @@ const MatterComponent: React.FC = () => {
     }
   }
 
+  function handleEnableHints() {
+    setEnableHints(true);
+    console.log("I guess you need hints..");
+  }
+
   return (
     <>
       <div className="select-none">
@@ -2003,10 +2010,18 @@ const MatterComponent: React.FC = () => {
                     If you resize the window, refresh the website too!
                   </div>
                   <div className="text-base">
-                    Best viewed on Desktop with Chromium based browsers.
+                    Best viewed on Desktop with Chromium-based browsers.
                   </div>
+                  <button
+                    onClick={handleEnableHints}
+                    className="mt-5 px-4 py-2 bg-blue-500 text-white rounded flex items-center space-x-2 hover:bg-blue-700"
+                  >
+                    <FaLightbulb />
+                    <span>Play With Hints</span>
+                  </button>
                 </div>
               )}
+
               {hasClicked && !canAddBodies && (
                 <div className="absolute inset-0 flex items-center justify-center text-white text-lg sm:text-xl md:text-2xl lg:text-3xl">
                   {subtitle1}
