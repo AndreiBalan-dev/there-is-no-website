@@ -56,9 +56,9 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
       if (bombCount < 15) {
         const id = Math.random();
         const screenWidth = window.innerWidth;
-        const bombWidth = 24; // Adjust to the bomb's width
-        const minX = bombWidth;
-        const maxX = screenWidth - bombWidth;
+        const bombWidth = 150;
+        const minX = bombWidth / 2;
+        const maxX = screenWidth - bombWidth / 2;
         const x = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
         const speed = 3 + Math.random() * 3;
         setBombs((prevBombs) => [...prevBombs, { id, x, y: 0, speed }]);
@@ -111,7 +111,7 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
     };
 
     if (gameStarted && bombs.length > 0 && !gameOver) {
-      const checkInterval = setInterval(checkBombs, 2);
+      const checkInterval = setInterval(checkBombs, 4);
       return () => clearInterval(checkInterval);
     }
   }, [bombs, gameStarted, gameOver]);
