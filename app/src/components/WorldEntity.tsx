@@ -2039,7 +2039,7 @@ const MatterComponent: React.FC = () => {
                 hasCollided &&
                 !triggeredAudioGlobal5.current && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-6 sm:mt-6 md:mt-10 lg:mt-16">
-                    <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
+                    <div className="text-white text-base sm:text-2xl md:text-4xl lg:text-5xl max-w-fit">
                       {subtitle2}
                     </div>
 
