@@ -1162,7 +1162,7 @@ const MatterComponent: React.FC = () => {
 
     setTimeout(() => {
       setHintText1("Hint: Break everything!");
-    }, 20000); // "it this time."
+    }, 20000);
 
     setTimeout(() => {
       setSubtitle4("");
@@ -1398,6 +1398,12 @@ const MatterComponent: React.FC = () => {
     setTimeout(() => {
       setSubtitle1((prev) => prev + subtitles3[10]);
     }, 6200); // "watch. "
+
+    setTimeout(() => {
+      setHintText1(
+        "Hint: Seems like the video isn't loading? Try to drag stuff around maybe it'll work."
+      );
+    }, 10000);
 
     setTimeout(() => {
       setSubtitle1("");
