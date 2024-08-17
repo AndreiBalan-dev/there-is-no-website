@@ -25,7 +25,7 @@ There is one surprise at the end! So do visit the live deployment to try out.
 
 ## 🌟 Inspiration
 
-Inspired by the theme "Functionally Dysfunctional," we aimed to create a project that would challenge the traditional expectations of what a website should be. Instead of a typical, well-structured site, we built something that appears chaotic yet is still engaging and interactive, reflecting the theme in every aspect of the design and functionality.
+Inspired by the provided theme, we aimed to create a project that would challenge the traditional expectations of what a website should be. Instead of a typical, well-structured site, we built something that appears chaotic yet is still engaging and interactive, reflecting the theme in every aspect of the design and functionality.
 
 ## 🔧 Built With
 
