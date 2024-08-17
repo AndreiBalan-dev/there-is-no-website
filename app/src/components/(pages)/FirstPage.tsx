@@ -49,9 +49,15 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
     }
   }, []);
 
+  const handleTextClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
   return (
     <div className="flex h-screen w-full items-center justify-center bg-background text-primary-foreground">
-      <div className="space-y-4 text-center">
+      <div className="space-y-4 text-center" onClick={handleTextClick}>
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-widest">
           {[...Array(correctKeys.length)].map((_, i) => (
             <span
