@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import useSound from "use-sound";
 import swordSound from "../../assets/sword-slash.mp3";
 import sword from "../../assets/sword.png";
 import bombPotion from "../../assets/bomb.png";
+import throttle from "lodash.throttle";
 
 type Bomb = {
   id: number;
@@ -24,13 +25,13 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
   const [bombCount, setBombCount] = useState(0);
   const [slicedCount, setSlicedCount] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
-  const [firstLoad, setFirstLoad] = useState(true); // Track if it's the first load
+  const [firstLoad, setFirstLoad] = useState(true);
   const swordRef = useRef<HTMLDivElement>(null);
   const [playSwordSound] = useSound(swordSound);
 
   useEffect(() => {
     playSwordSound();
-  }, []);
+  }, [playSwordSound]);
 
   // Handle starting the game
   useEffect(() => {
@@ -41,11 +42,11 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
     if (firstLoad) {
       const timeoutId = setTimeout(() => {
         startGame();
-        setFirstLoad(false); // Only wait on the first load
+        setFirstLoad(false);
       }, 14000);
       return () => clearTimeout(timeoutId);
     } else {
-      startGame(); // Immediately start the game after a reset
+      startGame();
     }
   }, [firstLoad]);
 
@@ -54,8 +55,12 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
     const generateBomb = () => {
       if (bombCount < 15) {
         const id = Math.random();
-        const x = Math.floor(Math.random() * (window.innerWidth - 10)) + 10;
-        const speed = 10 + Math.random() * 3;
+        const screenWidth = window.innerWidth;
+        const bombWidth = 24; // Adjust to the bomb's width
+        const minX = bombWidth;
+        const maxX = screenWidth - bombWidth;
+        const x = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+        const speed = 3 + Math.random() * 3;
         setBombs((prevBombs) => [...prevBombs, { id, x, y: 0, speed }]);
         setBombCount((prevCount) => prevCount + 1);
       }
@@ -69,6 +74,8 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
 
   // Handle bomb movement
   useEffect(() => {
+    let animationFrameId: number;
+
     const moveBombs = () => {
       setBombs((prevBombs) =>
         prevBombs.map((bomb) => ({
@@ -76,15 +83,17 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
           y: bomb.y + bomb.speed,
         }))
       );
+      animationFrameId = requestAnimationFrame(moveBombs);
     };
 
     if (gameStarted && !gameOver) {
-      const moveInterval = setInterval(moveBombs, 16);
-      return () => clearInterval(moveInterval);
+      animationFrameId = requestAnimationFrame(moveBombs);
+      return () => cancelAnimationFrame(animationFrameId);
     }
   }, [gameStarted, gameOver]);
 
   // Handle bomb checking and game reset
+
   useEffect(() => {
     const checkBombs = () => {
       bombs.forEach((bomb) => {
@@ -95,38 +104,57 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
           setBombs([]);
           setTimeout(() => {
             setGameOver(false);
-            setGameStarted(true); // Restart game immediately after game over
-          }, 1000); // Short delay before restarting the game
+            setGameStarted(true);
+          }, 1000);
         }
       });
     };
 
     if (gameStarted && bombs.length > 0 && !gameOver) {
-      const checkInterval = setInterval(checkBombs, 16);
+      const checkInterval = setInterval(checkBombs, 2);
       return () => clearInterval(checkInterval);
     }
   }, [bombs, gameStarted, gameOver]);
 
-  const handleMouseMove = (event: React.MouseEvent) => {
-    if (swordRef.current) {
-      swordRef.current.style.left = `${event.clientX}px`;
-      swordRef.current.style.top = `${event.clientY}px`;
-    }
-  };
+  // Throttled sword movement to optimize performance
+  const handleMouseMove = useCallback(
+    throttle((event: React.MouseEvent) => {
+      if (swordRef.current) {
+        swordRef.current.style.left = `${event.clientX}px`;
+        swordRef.current.style.top = `${event.clientY}px`;
+      }
+    }, 16),
+    []
+  );
 
-  const handleSlice = (bombId: number) => {
-    setBombs((prevBombs) => prevBombs.filter((bomb) => bomb.id !== bombId));
-    setSlicedCount((prevCount) => prevCount + 1);
-    playSwordSound();
-    if (slicedCount + 1 >= 15) {
-      setGameOver(true);
-      onComplete();
-    }
-  };
+  const handleTouchMove = useCallback(
+    throttle((event: React.TouchEvent) => {
+      if (swordRef.current) {
+        const touch = event.touches[0];
+        swordRef.current.style.left = `${touch.clientX}px`;
+        swordRef.current.style.top = `${touch.clientY}px`;
+      }
+    }, 16),
+    []
+  );
+
+  const handleSlice = useCallback(
+    (bombId: number) => {
+      setBombs((prevBombs) => prevBombs.filter((bomb) => bomb.id !== bombId));
+      setSlicedCount((prevCount) => prevCount + 1);
+      playSwordSound();
+      if (slicedCount + 1 >= 15) {
+        setGameOver(true);
+        onComplete();
+      }
+    },
+    [playSwordSound, slicedCount, onComplete]
+  );
 
   return (
     <div
       onMouseMove={handleMouseMove}
+      onTouchMove={handleTouchMove}
       className="w-screen h-screen overflow-hidden relative cursor-none"
     >
       <div
@@ -143,6 +171,7 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
           animate={{ y: bomb.y }}
           transition={{ ease: "linear", duration: 0.016 }}
           onMouseEnter={() => handleSlice(bomb.id)}
+          onTouchStart={() => handleSlice(bomb.id)}
           className="absolute top-0 w-24 h-24 bg-center bg-no-repeat bg-cover"
           style={{
             left: bomb.x,

@@ -1,55 +1,73 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 interface SorryComponentProps {
   onComplete: () => void;
 }
 
 const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
-  const [progress, setProgress] = useState(0);
-  const correctKeys = "I AM REALLY SORRY".split("");
+  const [userInput, setUserInput] = useState("");
+  const correctText = "I AM REALLY SORRY";
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleKeyPress = (event: KeyboardEvent) => {
-    const key = event.key.toUpperCase();
-    if (key === correctKeys[progress]) {
-      setProgress(progress + 1);
-      if (progress === correctKeys.length - 1) {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let key = event.target.value.toUpperCase();
+
+    if (key.trim() === "") {
+      key = " ";
+    } else {
+    }
+
+    const nextInput = userInput + key;
+
+    if (correctText.startsWith(nextInput)) {
+      setUserInput(nextInput);
+      if (nextInput === correctText) {
         onComplete();
       }
     } else {
-      setProgress(0);
+      setUserInput("");
     }
+    event.target.value = "";
   };
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyPress);
-    return () => {
-      window.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [handleKeyPress]);
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
+  const handleTextClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-background text-primary-foreground">
-      <div className="space-y-4 text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-widest">
-          {[...Array(correctKeys.length)].map((_, i) => (
+    <div className="flex max-h-[80vh] sm:max-h-[95h] h-screen w-full items-center justify-center bg-background text-primary-foreground p-4">
+      <div className="space-y-4 text-center" onClick={handleTextClick}>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold tracking-widest leading-tight sm:leading-none">
+          {correctText.split("").map((char, i) => (
             <span
               key={i}
               className={`inline-block ${
-                progress > i
+                userInput.length > i
                   ? "text-primary"
                   : "text-muted-foreground opacity-50"
               }`}
             >
-              {correctKeys[i] !== " " ? (
-                correctKeys[i]
-              ) : (
-                <span className="px-4">{correctKeys[i]}</span>
-              )}
+              {char === " " ? <span className="px-2"> </span> : char}
             </span>
           ))}
         </h1>
       </div>
+      <input
+        ref={inputRef}
+        type="text"
+        onChange={handleInputChange}
+        className="absolute opacity-0 h-full w-full sm:h-screen border-solid cursor-default"
+        aria-hidden="true"
+        autoComplete="off"
+      />
     </div>
   );
 };

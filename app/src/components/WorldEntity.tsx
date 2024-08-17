@@ -1677,8 +1677,10 @@ const MatterComponent: React.FC = () => {
   function handleUserInteraction() {
     if (!hasClicked) {
       setHasClicked(true);
-      playAudio1();
-      addSubtitles1();
+      setTimeout(() => {
+        playAudio1();
+        addSubtitles1();
+      }, 800);
     }
   }
 
@@ -2028,7 +2030,7 @@ const MatterComponent: React.FC = () => {
                 </div>
               )}
               {hasClicked && canAddBodies && !hasCollided && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full text-sm sm:text-base md:text-xl lg:text-2xl mt-2 sm:mt-6 md:mt-10 lg:mt-16">
+                <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full text-sm sm:text-base md:text-xl lg:text-2xl mt-6 sm:mt-6 md:mt-10 lg:mt-16">
                   {hintText5}
                 </div>
               )}
@@ -2036,7 +2038,7 @@ const MatterComponent: React.FC = () => {
                 canAddBodies &&
                 hasCollided &&
                 !triggeredAudioGlobal5.current && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 sm:mt-6 md:mt-10 lg:mt-16">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-6 sm:mt-6 md:mt-10 lg:mt-16">
                     <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
                       {subtitle2}
                     </div>
@@ -2055,7 +2057,7 @@ const MatterComponent: React.FC = () => {
           triggeredAudioGlobal5.current &&
           !triggeredAudioGlobal6.current &&
           !triggeredAudio6 && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 sm:mt-6 md:mt-10 lg:mt-16">
+            <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-6 sm:mt-6 md:mt-10 lg:mt-16">
               <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-fit">
                 {subtitle3}
               </div>
@@ -2069,7 +2071,7 @@ const MatterComponent: React.FC = () => {
         {triggeredAudioGlobal6.current &&
           triggeredAudio6 &&
           !triggeredSubtitleRef7.current && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 sm:mt-6 md:mt-10 lg:mt-16">
+            <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-6 sm:mt-6 md:mt-10 lg:mt-16">
               <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl  max-w-fit">
                 {subtitle4}
               </div>
@@ -2081,11 +2083,11 @@ const MatterComponent: React.FC = () => {
           )}
 
         {triggeredSubtitleRef7.current && !swordFightComponentToggle && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-2 w-full mt-2 sm:mt-6 md:mt-10 lg:mt-16">
+          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-2 w-full mt-6 sm:mt-6 md:mt-10 lg:mt-16">
             <div className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl ">
               {triggeredAudioGlobal11 ? subtitle1 : subtitle6}
             </div>
-            <div className="lg:mt-20 mt-4 text-white text-base sm:text-xl md:text-2xl lg:text-3xl max-w-fit">
+            <div className="lg:mt-60 mt-4 text-white text-base sm:text-xl md:text-2xl lg:text-3xl max-w-fit">
               {hintText4}
             </div>
           </div>
@@ -2102,11 +2104,11 @@ const MatterComponent: React.FC = () => {
         )}
 
         {swordFightComponentToggle && !cookieClickerComponentToggle && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 sm:mt-6 md:mt-10 lg:mt-16">
-            <div className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl ">
+          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-[50px] sm:max-h-fit w-full mt-12 sm:mt-6 md:mt-10 lg:mt-16">
+            <div className="absolute inset-0 flex items-center justify-center text-white text-sm mt-20 sm:mt-4 sm:text-2xl md:text-3xl lg:text-4xl ">
               {subtitle5}
             </div>
-            <div className="mt-2 text-white text-sm sm:text-base md:text-xl lg:text-2xl max-w-fit">
+            <div className="mt-6 text-white text-sm sm:text-base md:text-xl lg:text-2xl max-w-fit">
               {hintText3}
             </div>
           </div>
