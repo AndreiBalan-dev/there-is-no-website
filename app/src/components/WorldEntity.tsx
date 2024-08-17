@@ -41,7 +41,7 @@ const MatterComponent: React.FC = () => {
   const renderRef = useRef<RenderType | null>(null);
   const runnerRef = useRef<Runner | null>(null);
   const [hasClicked, setHasClicked] = useState(false);
-  const [enableHints, setEnableHints] = useState(false);
+  const enableHints = useRef(false);
   const [startText, setStartText] = useState("Select your play mode below");
   const [canAddBodies, setCanAddBodies] = useState(false);
   const [hasCollided, setHasCollided] = useState(false);
@@ -851,7 +851,7 @@ const MatterComponent: React.FC = () => {
     }, 14100); // "to bits."
 
     setTimeout(() => {
-      if (enableHints) setHintText4("Hint: Get 8 clicks per second!");
+      if (enableHints.current) setHintText4("Hint: Get 8 clicks per second!");
     }, 16000); // ""
 
     setTimeout(() => {
@@ -948,7 +948,7 @@ const MatterComponent: React.FC = () => {
     }, 16000); // Clear the subtitle text
 
     setTimeout(() => {
-      if (enableHints) setHintText3("Hint: Get a score of 15!");
+      if (enableHints.current) setHintText3("Hint: Get a score of 15!");
     }, 17000); // ""
   }
 
@@ -1149,7 +1149,7 @@ const MatterComponent: React.FC = () => {
     }, 18700); // "it this time."
 
     setTimeout(() => {
-      if (enableHints) setHintText1("Hint: Break everything!");
+      if (enableHints.current) setHintText1("Hint: Break everything!");
     }, 20000);
 
     setTimeout(() => {
@@ -1255,7 +1255,7 @@ const MatterComponent: React.FC = () => {
     }, 17400); // "upside down."
 
     setTimeout(() => {
-      if (enableHints)
+      if (enableHints.current)
         setHintText2(
           'Hint: Type "I am really sorry" and maybe I\'ll forgive you..'
         );
@@ -1338,7 +1338,7 @@ const MatterComponent: React.FC = () => {
     }, 8000); // "to go. "
 
     setTimeout(() => {
-      if (enableHints) setHintText1("Hint: Break everything!");
+      if (enableHints.current) setHintText1("Hint: Break everything!");
     }, 12000); // ""
   }
 
@@ -1388,7 +1388,7 @@ const MatterComponent: React.FC = () => {
     }, 6200); // "watch. "
 
     setTimeout(() => {
-      if (enableHints)
+      if (enableHints.current)
         setHintText5(
           "Hint: Seems like the video isn't loading? Try to drag stuff around maybe it'll work."
         );
@@ -1674,7 +1674,10 @@ const MatterComponent: React.FC = () => {
     }, 19000);
   }
   // Function to handle user interaction to allow audio play
-  function handleUserInteraction() {
+  function handleUserInteraction(hints: boolean) {
+    if (hints) {
+      enableHints.current = true;
+    }
     if (!hasClicked) {
       setHasClicked(true);
       setTimeout(() => {
@@ -1694,7 +1697,6 @@ const MatterComponent: React.FC = () => {
         }
       });
     }, 1000);
-
     return () => {
       clearInterval(interval);
     };
@@ -1978,12 +1980,6 @@ const MatterComponent: React.FC = () => {
     }
   }
 
-  function handleEnableHints() {
-    setEnableHints(true);
-    console.log("I guess you need hints..");
-    handleUserInteraction();
-  }
-
   return (
     <>
       <div className="select-none">
@@ -2011,14 +2007,14 @@ const MatterComponent: React.FC = () => {
                     Best viewed on Desktop with Chromium-based browsers.
                   </div>
                   <button
-                    onClick={handleEnableHints}
+                    onClick={() => handleUserInteraction(true)}
                     className="mt-5 px-4 py-2 bg-gray-800 text-white rounded flex items-center space-x-2 hover:bg-gray-900"
                   >
                     <FaLightbulb />
                     <span>Play With Hints</span>
                   </button>
                   <button
-                    onClick={handleUserInteraction}
+                    onClick={() => handleUserInteraction(false)}
                     className="mt-5 px-4 py-2 bg-gray-800 text-white rounded flex items-center space-x-2 hover:bg-gray-900"
                   >
                     <FaRegLightbulb />
