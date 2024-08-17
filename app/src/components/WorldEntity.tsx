@@ -79,6 +79,7 @@ const MatterComponent: React.FC = () => {
   const [hintText2, setHintText2] = useState("");
   const [hintText3, setHintText3] = useState("");
   const [hintText4, setHintText4] = useState("");
+  const [hintText5, setHintText5] = useState("");
 
   let triggeredSubtitle4 = false;
   const bodiesWithCustomForce = new Set<Matter.Body>();
@@ -1400,7 +1401,7 @@ const MatterComponent: React.FC = () => {
     }, 6200); // "watch. "
 
     setTimeout(() => {
-      setHintText1(
+      setHintText5(
         "Hint: Seems like the video isn't loading? Try to drag stuff around maybe it'll work."
       );
     }, 10000);
@@ -1894,6 +1895,7 @@ const MatterComponent: React.FC = () => {
           hasCollidedGlobalRef.current = true;
           playAudio4();
           addSubtitles4();
+          setHintText5("");
         }
 
         event.pairs.forEach((pair) => {
@@ -2024,11 +2026,16 @@ const MatterComponent: React.FC = () => {
                   {subtitle1}
                 </div>
               )}
+              {hasClicked && canAddBodies && !hasCollided && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full text-sm sm:text-base md:text-xl lg:text-2xl mt-2 sm:mt-6 md:mt-10 lg:mt-16">
+                  {hintText5}
+                </div>
+              )}
               {hasClicked &&
                 canAddBodies &&
                 hasCollided &&
                 !triggeredAudioGlobal5.current && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 sm:mt-6 md:mt-10 lg:mt-16">
                     <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-fit">
                       {subtitle2}
                     </div>
@@ -2047,7 +2054,7 @@ const MatterComponent: React.FC = () => {
           triggeredAudioGlobal5.current &&
           !triggeredAudioGlobal6.current &&
           !triggeredAudio6 && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full">
+            <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 sm:mt-6 md:mt-10 lg:mt-16">
               <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-fit">
                 {subtitle3}
               </div>
@@ -2061,7 +2068,7 @@ const MatterComponent: React.FC = () => {
         {triggeredAudioGlobal6.current &&
           triggeredAudio6 &&
           !triggeredSubtitleRef7.current && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 lg:mt-20">
+            <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 sm:mt-6 md:mt-10 lg:mt-16">
               <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl  max-w-fit">
                 {subtitle4}
               </div>
@@ -2073,7 +2080,7 @@ const MatterComponent: React.FC = () => {
           )}
 
         {triggeredSubtitleRef7.current && !swordFightComponentToggle && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 lg:mt-20">
+          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 sm:mt-6 md:mt-10 lg:mt-16">
             <div className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl ">
               {triggeredAudioGlobal11 ? subtitle1 : subtitle6}
             </div>
@@ -2094,7 +2101,7 @@ const MatterComponent: React.FC = () => {
         )}
 
         {swordFightComponentToggle && !cookieClickerComponentToggle && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-20">
+          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 sm:mt-6 md:mt-10 lg:mt-16">
             <div className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl ">
               {subtitle5}
             </div>
