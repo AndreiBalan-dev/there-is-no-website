@@ -23,7 +23,13 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const key = event.target.value.toUpperCase();
+    let key = event.target.value.toUpperCase();
+
+    console.log(key);
+
+    if (key === " ") {
+      key = " ";
+    }
 
     if (key === correctKeys[progress]) {
       setProgress(progress + 1);
@@ -68,11 +74,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
                   : "text-muted-foreground opacity-50"
               }`}
             >
-              {correctKeys[i] !== " " ? (
-                correctKeys[i]
-              ) : (
-                <span className="px-4">_</span>
-              )}
+              {correctKeys[i]}
             </span>
           ))}
         </h1>
