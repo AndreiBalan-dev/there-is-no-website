@@ -43,7 +43,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
   };
 
   return (
-    <div className="flex border-2 h-max-[200px] sm:h-screen w-full items-center justify-center bg-background text-primary-foreground p-4">
+    <div className="flex max-h-[80vh] sm:max-h-[95h] h-screen w-full items-center justify-center bg-background text-primary-foreground p-4">
       <div className="space-y-4 text-center" onClick={handleTextClick}>
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold tracking-widest leading-tight sm:leading-none">
           {correctText.split("").map((char, i) => (
@@ -64,7 +64,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
         ref={inputRef}
         type="text"
         onChange={handleInputChange}
-        className="absolute opacity-0 h-max-[200px] sm:h-screen"
+        className="absolute opacity-0 h-full w-full sm:h-screen border-solid border-2"
         aria-hidden="true"
         autoComplete="off"
       />
