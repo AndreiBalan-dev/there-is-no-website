@@ -12,6 +12,8 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
   const handleKeyPress = (event: KeyboardEvent) => {
     const key = event.key.toUpperCase();
     const nextInput = userInput + key;
+    console.log(nextInput);
+    console.log(key);
 
     if (correctText.startsWith(nextInput)) {
       setUserInput(nextInput);
@@ -26,6 +28,9 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let key = event.target.value.toUpperCase();
     const nextInput = userInput + key;
+
+    console.log(nextInput + " INPUT CHANGE");
+    console.log(key + " INPUT CHANGE");
 
     if (correctText.startsWith(nextInput)) {
       setUserInput(nextInput);
