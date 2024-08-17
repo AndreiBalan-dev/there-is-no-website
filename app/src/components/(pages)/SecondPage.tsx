@@ -64,14 +64,12 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
         const maxX = screenWidth - bombWidth;
         const x = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
         const speed = 10 + Math.random() * 3;
-        console.log(`Generating bomb with id: ${id}, x: ${x}, speed: ${speed}`);
         setBombs((prevBombs) => [...prevBombs, { id, x, y: 0, speed }]);
         setBombCount((prevCount) => prevCount + 1);
       }
     };
 
     if (gameStarted && !gameOver) {
-      console.log("Starting bomb generation...");
       const bombInterval = setInterval(generateBomb, 1000);
       return () => clearInterval(bombInterval);
     }
@@ -83,14 +81,12 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
       setBombs((prevBombs) =>
         prevBombs.map((bomb) => {
           const newY = bomb.y + bomb.speed;
-          console.log(`Moving bomb id: ${bomb.id}, newY: ${newY}`);
           return { ...bomb, y: newY };
         })
       );
     };
 
     if (gameStarted && !gameOver) {
-      console.log("Starting bomb movement...");
       const moveInterval = setInterval(moveBombs, 16);
       return () => clearInterval(moveInterval);
     }
@@ -101,13 +97,11 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
     const checkBombs = () => {
       bombs.forEach((bomb) => {
         if (bomb.y > window.innerHeight) {
-          console.log(`Bomb id: ${bomb.id} missed! Triggering game over.`);
           setGameOver(true);
           setBombCount(0);
           setSlicedCount(0);
           setBombs([]);
           setTimeout(() => {
-            console.log("Restarting game after game over...");
             setGameOver(false);
             setGameStarted(true); // Restart game immediately after game over
           }, 1000); // Short delay before restarting the game
@@ -126,7 +120,6 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
     if (swordRef.current) {
       swordRef.current.style.left = `${event.clientX}px`;
       swordRef.current.style.top = `${event.clientY}px`;
-      console.log(`Mouse moved to x: ${event.clientX}, y: ${event.clientY}`);
     }
   }, 16); // Debouncing to limit function calls
 
@@ -135,17 +128,14 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
       const touch = event.touches[0];
       swordRef.current.style.left = `${touch.clientX}px`;
       swordRef.current.style.top = `${touch.clientY}px`;
-      console.log(`Touch moved to x: ${touch.clientX}, y: ${touch.clientY}`);
     }
   }, 16); // Debouncing to limit function calls
 
   const handleSlice = (bombId: number) => {
-    console.log(`Slicing bomb id: ${bombId}`);
     setBombs((prevBombs) => prevBombs.filter((bomb) => bomb.id !== bombId));
     setSlicedCount((prevCount) => prevCount + 1);
     playSwordSound();
     if (slicedCount + 1 >= 15) {
-      console.log("All bombs sliced, game complete!");
       setGameOver(true);
       onComplete();
     }

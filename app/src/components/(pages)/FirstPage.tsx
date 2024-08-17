@@ -14,9 +14,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
 
     if (key.trim() === "") {
       key = " ";
-      console.log("SPACE", "INPUT CHANGE");
     } else {
-      console.log(key, "INPUT CHANGE");
     }
 
     const nextInput = userInput + key;
@@ -45,9 +43,9 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
   };
 
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-background text-primary-foreground">
+    <div className="flex h-screen w-full items-center justify-center bg-background text-primary-foreground p-4">
       <div className="space-y-4 text-center" onClick={handleTextClick}>
-        <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold tracking-widest">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold tracking-widest leading-tight sm:leading-none">
           {correctText.split("").map((char, i) => (
             <span
               key={i}
