@@ -103,7 +103,7 @@ const CookieClickerComponent: React.FC<CookieClickerComponentProps> = ({
           <div className="text-muted-foreground text-center text-sm mt-4">
             {isRunning
               ? `Time left: ${timeLeft}s`
-              : "Think you've got the speed to keep up with 8 clicks per second? Go on, give it a whirl! Just remember, I’m watching... and quietly judging."}
+              : "Think you've got the speed to keep up with 7 clicks per second? Go on, give it a whirl! Just remember, I’m watching... and quietly judging."}
           </div>
         </>
       )}
