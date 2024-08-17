@@ -93,6 +93,7 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
   }, [gameStarted, gameOver]);
 
   // Handle bomb checking and game reset
+
   useEffect(() => {
     const checkBombs = () => {
       bombs.forEach((bomb) => {
@@ -110,7 +111,7 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
     };
 
     if (gameStarted && bombs.length > 0 && !gameOver) {
-      const checkInterval = setInterval(checkBombs, 16);
+      const checkInterval = setInterval(checkBombs, 2);
       return () => clearInterval(checkInterval);
     }
   }, [bombs, gameStarted, gameOver]);
