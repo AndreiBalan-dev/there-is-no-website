@@ -528,18 +528,18 @@ const MatterComponent: React.FC = () => {
       audioMusicRef_1.current.volume = 1;
     }, 4200);
 
-    setTimeout(() => {
-      setSubtitle1("Made with love by");
-    }, 10000);
-    setTimeout(() => {
-      setSubtitleEnd1((prev) => prev + "Balan Andrei");
-    }, 12000);
-    setTimeout(() => {
-      setSubtitleEnd2((prev) => prev + "Rudransh Joshi");
-    }, 14000);
-    setTimeout(() => {
-      setSubtitleEnd3((prev) => prev + "Andy Mai");
-    }, 16000);
+    // setTimeout(() => {
+    //   setSubtitle1("Made with love by");
+    // }, 10000);
+    // setTimeout(() => {
+    //   setSubtitleEnd1((prev) => prev + "Balan Andrei");
+    // }, 12000);
+    // setTimeout(() => {
+    //   setSubtitleEnd2((prev) => prev + "Rudransh Joshi");
+    // }, 14000);
+    // setTimeout(() => {
+    //   setSubtitleEnd3((prev) => prev + "Andy Mai");
+    // }, 16000);
   }
 
   function addSubtitles12() {
@@ -2165,7 +2165,7 @@ const MatterComponent: React.FC = () => {
         {rickRollComponentToggle && (
           <>
             <div className="flex flex-col items-center justify-center min-h-screen">
-              <div className="text-center">
+              {/* <div className="text-center">
                 <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl lg:mt-16 md:mt-20 mt-12">
                   {subtitleEnd1}
                 </div>
@@ -2175,7 +2175,7 @@ const MatterComponent: React.FC = () => {
                 <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl">
                   {subtitleEnd3}
                 </div>
-              </div>
+              </div> */}
               <div className="mt-8 flex justify-center">
                 <img
                   src={rickRollGif}
