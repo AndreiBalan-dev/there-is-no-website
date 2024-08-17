@@ -5,39 +5,35 @@ interface SorryComponentProps {
 }
 
 const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
-  const [progress, setProgress] = useState(0);
-  const correctKeys = "I AM REALLY SORRY".split("");
+  const [userInput, setUserInput] = useState(""); // Accumulate user input
+  const correctText = "I AM REALLY SORRY";
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleKeyPress = (event: KeyboardEvent) => {
     const key = event.key.toUpperCase();
+    const nextInput = userInput + key;
 
-    if (key === correctKeys[progress]) {
-      setProgress(progress + 1);
-      if (progress === correctKeys.length - 1) {
+    if (correctText.startsWith(nextInput)) {
+      setUserInput(nextInput);
+      if (nextInput === correctText) {
         onComplete();
       }
     } else {
-      setProgress(0);
+      setUserInput("");
     }
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let key = event.target.value.toUpperCase();
+    const nextInput = userInput + key;
 
-    console.log(key);
-
-    if (key === " ") {
-      key = " ";
-    }
-
-    if (key === correctKeys[progress]) {
-      setProgress(progress + 1);
-      if (progress === correctKeys.length - 1) {
+    if (correctText.startsWith(nextInput)) {
+      setUserInput(nextInput);
+      if (nextInput === correctText) {
         onComplete();
       }
     } else {
-      setProgress(0);
+      setUserInput("");
     }
     event.target.value = "";
   };
@@ -47,7 +43,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
-  }, [progress]);
+  }, [userInput]);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -65,16 +61,16 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
     <div className="flex h-screen w-full items-center justify-center bg-background text-primary-foreground">
       <div className="space-y-4 text-center" onClick={handleTextClick}>
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-widest">
-          {[...Array(correctKeys.length)].map((_, i) => (
+          {correctText.split("").map((char, i) => (
             <span
               key={i}
               className={`inline-block ${
-                progress > i
+                userInput.length > i
                   ? "text-primary"
                   : "text-muted-foreground opacity-50"
               }`}
             >
-              {correctKeys[i]}
+              {char !== " " ? char : <span className="px-2"> </span>}
             </span>
           ))}
         </h1>
