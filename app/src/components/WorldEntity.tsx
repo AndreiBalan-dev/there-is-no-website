@@ -2009,7 +2009,7 @@ const MatterComponent: React.FC = () => {
                   <div className="text-base">
                     If you resize the window, refresh the website too!
                   </div>
-                  <div className="text-base">
+                  <div className="text-base sm:text-sm">
                     Best viewed on Desktop with Chromium-based browsers.
                   </div>
                   <button
