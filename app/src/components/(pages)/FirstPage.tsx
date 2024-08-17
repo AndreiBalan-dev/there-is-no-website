@@ -9,25 +9,11 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
   const correctText = "I AM REALLY SORRY";
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleKeyPress = (event: KeyboardEvent) => {
-    const key = event.key.toUpperCase();
-    console.log(key, "KEY PRESS");
-    const nextInput = userInput + key;
-
-    if (correctText.startsWith(nextInput)) {
-      setUserInput(nextInput);
-      if (nextInput === correctText) {
-        onComplete();
-      }
-    } else {
-      setUserInput("");
-    }
-  };
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let key = event.target.value.toUpperCase();
 
     if (key.trim() === "") {
+      key = " ";
       console.log("SPACE", "INPUT CHANGE");
     } else {
       console.log(key, "INPUT CHANGE");
@@ -41,17 +27,10 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
         onComplete();
       }
     } else {
-      setUserInput(""); // Reset if input doesn't match
+      setUserInput("");
     }
     event.target.value = "";
   };
-
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyPress);
-    return () => {
-      window.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [userInput]);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -78,7 +57,7 @@ const SorryTyperComponent: React.FC<SorryComponentProps> = ({ onComplete }) => {
                   : "text-muted-foreground opacity-50"
               }`}
             >
-              {char}
+              {char === " " ? <span className="px-2"> </span> : char}
             </span>
           ))}
         </h1>
