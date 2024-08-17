@@ -1,11 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import useSound from "use-sound";
-// @ts-ignore
 import swordSound from "../../assets/sword-slash.mp3";
-// @ts-ignore
 import sword from "../../assets/sword.png";
-// @ts-ignore
 import bombPotion from "../../assets/bomb.png";
 
 type Bomb = {

@@ -13,35 +13,21 @@ import { Render as RenderType, Engine as EngineType } from "matter-js";
 import { VideoPlayerBox } from "./(video-player)/VideoPlayerBox";
 import { VideoPlayButton } from "./(video-player)/VideoPlayButton";
 import { VideoHamburgerMenu } from "./(video-player)/VideoHamburgerMenu";
-// @ts-ignore
+import { FaGithub } from "react-icons/fa";
 import voice1 from "../assets/1.mp3";
-// @ts-ignore
 import voice2 from "../assets/2.mp3";
-// @ts-ignore
 import voice3 from "../assets/3.mp3";
-// @ts-ignore
 import pop1 from "../assets/pop.mp3";
-// @ts-ignore
 import voice4 from "../assets/4.mp3";
-// @ts-ignore
 import humming1 from "../assets/humming.mp3";
-// @ts-ignore
 import voice5 from "../assets/5.mp3";
-// @ts-ignore
 import voice6 from "../assets/6.mp3";
-// @ts-ignore
 import voice7 from "../assets/7.mp3";
-// @ts-ignore
 import voice8 from "../assets/8.mp3";
-// @ts-ignore
 import voice9 from "../assets/9.mp3";
-// @ts-ignore
 import voice10 from "../assets/10.mp3";
-// @ts-ignore
 import voice11 from "../assets/11.mp3";
-// @ts-ignore
 import voice12 from "../assets/12.mp3";
-// @ts-ignore
 import voice13 from "../assets/13.mp3";
 import rickroll from "../assets/rickroll.mp3";
 import SorryComponent from "../components/(pages)/FirstPage";
@@ -2080,7 +2066,7 @@ const MatterComponent: React.FC = () => {
           )}
 
         {triggeredSubtitleRef7.current && !swordFightComponentToggle && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 sm:mt-6 md:mt-10 lg:mt-16">
+          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-2 w-full mt-2 sm:mt-6 md:mt-10 lg:mt-16">
             <div className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl ">
               {triggeredAudioGlobal11 ? subtitle1 : subtitle6}
             </div>
@@ -2128,7 +2114,7 @@ const MatterComponent: React.FC = () => {
           <>
             <div className="flex flex-col items-center justify-center min-h-screen">
               <div className="text-center">
-                <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl lg:mt-2 md:mt-4 mt-8">
+                <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl lg:mt-16 md:mt-20 mt-12">
                   {subtitleEnd1}
                 </div>
                 <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl">
@@ -2144,6 +2130,16 @@ const MatterComponent: React.FC = () => {
                   alt="Get Rick Rolled"
                   className="w-full max-w-xl h-auto rounded-lg"
                 />
+              </div>
+              <div className="mt-4">
+                <a
+                  href="https://github.com/AndreiBalan-dev/there-is-no-website"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-3xl hover:text-gray-400"
+                >
+                  <FaGithub />
+                </a>
               </div>
             </div>
           </>
