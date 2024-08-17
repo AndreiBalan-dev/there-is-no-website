@@ -1997,14 +1997,18 @@ const MatterComponent: React.FC = () => {
               {!hasClicked && !canAddBodies && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-xl">
                   <div>{startText}</div>
-                  <div className="text-base mt-5">
-                    Make sure your audio is on!
-                  </div>
-                  <div className="text-base">
-                    If you resize the window, refresh the website too!
+                  <div className="text-sm sm:text-base mt-5">
+                    - Make sure your audio is on.
                   </div>
                   <div className="text-sm sm:text-base">
-                    Best viewed on Desktop with Chromium-based browsers.
+                    - If you resize the window, refresh the website too.
+                  </div>
+                  <div className="text-sm sm:text-base">
+                    - Best viewed on Desktop.
+                  </div>
+                  <div className="text-base mt-5">
+                    - We <span className="font-bold">highly</span> recommend
+                    using Chrome!
                   </div>
                   <button
                     onClick={() => handleUserInteraction(true)}
