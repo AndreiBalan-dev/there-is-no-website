@@ -1677,8 +1677,10 @@ const MatterComponent: React.FC = () => {
   function handleUserInteraction() {
     if (!hasClicked) {
       setHasClicked(true);
-      playAudio1();
-      addSubtitles1();
+      setTimeout(() => {
+        playAudio1();
+        addSubtitles1();
+      }, 800);
     }
   }
 
