@@ -5,6 +5,7 @@
 ![Hackathon Badge](https://img.shields.io/badge/Hackathon-Hackathon_with_Lewis_2024-blue)
 
 ## :trophy: Hackathon Project - "Hackathon with Lewis" (Aug 9-16, 2024)
+**Fun Fact:** We did 98% of the project in the last 24h 💀🥳
 
 **Theme:** Functionally Dysfunctional
 
@@ -19,8 +20,6 @@
 
 This project was created during the "Hackathon with Lewis" event held from August 9-16, 2024.
 There is one surprise at the end! So do visit the live deployment to try out.
-
-**Fun Fact:** We did 98% of the stuffs in the last 24h 💀🥳
 
 ## 🔧 Built With
 
