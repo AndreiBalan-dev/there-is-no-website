@@ -1678,8 +1678,8 @@ const MatterComponent: React.FC = () => {
     if (!hasClicked) {
       setHasClicked(true);
       setTimeout(() => {
-        playAudio1();
-        addSubtitles1();
+        playAudio3();
+        addSubtitles3();
       }, 800);
     }
   }
@@ -2104,8 +2104,8 @@ const MatterComponent: React.FC = () => {
         )}
 
         {swordFightComponentToggle && !cookieClickerComponentToggle && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-2 sm:mt-6 md:mt-10 lg:mt-16">
-            <div className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl ">
+          <div className="absolute inset-0 flex flex-col items-center justify-center max-h-fit w-full mt-12 sm:mt-6 md:mt-10 lg:mt-16">
+            <div className="absolute inset-0 flex items-center justify-center text-white text-base mt-20 sm:mt-4 sm:text-2xl md:text-3xl lg:text-4xl ">
               {subtitle5}
             </div>
             <div className="mt-2 text-white text-sm sm:text-base md:text-xl lg:text-2xl max-w-fit">

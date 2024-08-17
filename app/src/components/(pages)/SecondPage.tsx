@@ -29,16 +29,19 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
   const [playSwordSound] = useSound(swordSound);
 
   useEffect(() => {
+    console.log("Game loaded, playing sword sound...");
     playSwordSound();
   }, []);
 
   // Handle starting the game
   useEffect(() => {
     const startGame = () => {
+      console.log("Game started");
       setGameStarted(true);
     };
 
     if (firstLoad) {
+      console.log("First load detected, starting game after delay...");
       const timeoutId = setTimeout(() => {
         startGame();
         setFirstLoad(false); // Only wait on the first load
@@ -56,12 +59,14 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
         const id = Math.random();
         const x = Math.floor(Math.random() * (window.innerWidth - 10)) + 10;
         const speed = 10 + Math.random() * 3;
+        console.log(`Generating bomb with id: ${id}, x: ${x}, speed: ${speed}`);
         setBombs((prevBombs) => [...prevBombs, { id, x, y: 0, speed }]);
         setBombCount((prevCount) => prevCount + 1);
       }
     };
 
     if (gameStarted && !gameOver) {
+      console.log("Starting bomb generation...");
       const bombInterval = setInterval(generateBomb, 1000);
       return () => clearInterval(bombInterval);
     }
@@ -71,14 +76,16 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
   useEffect(() => {
     const moveBombs = () => {
       setBombs((prevBombs) =>
-        prevBombs.map((bomb) => ({
-          ...bomb,
-          y: bomb.y + bomb.speed,
-        }))
+        prevBombs.map((bomb) => {
+          const newY = bomb.y + bomb.speed;
+          console.log(`Moving bomb id: ${bomb.id}, newY: ${newY}`);
+          return { ...bomb, y: newY };
+        })
       );
     };
 
     if (gameStarted && !gameOver) {
+      console.log("Starting bomb movement...");
       const moveInterval = setInterval(moveBombs, 16);
       return () => clearInterval(moveInterval);
     }
@@ -89,11 +96,13 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
     const checkBombs = () => {
       bombs.forEach((bomb) => {
         if (bomb.y > window.innerHeight) {
+          console.log(`Bomb id: ${bomb.id} missed! Triggering game over.`);
           setGameOver(true);
           setBombCount(0);
           setSlicedCount(0);
           setBombs([]);
           setTimeout(() => {
+            console.log("Restarting game after game over...");
             setGameOver(false);
             setGameStarted(true); // Restart game immediately after game over
           }, 1000); // Short delay before restarting the game
@@ -111,14 +120,26 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
     if (swordRef.current) {
       swordRef.current.style.left = `${event.clientX}px`;
       swordRef.current.style.top = `${event.clientY}px`;
+      console.log(`Mouse moved to x: ${event.clientX}, y: ${event.clientY}`);
+    }
+  };
+
+  const handleTouchMove = (event: React.TouchEvent) => {
+    if (swordRef.current) {
+      const touch = event.touches[0];
+      swordRef.current.style.left = `${touch.clientX}px`;
+      swordRef.current.style.top = `${touch.clientY}px`;
+      console.log(`Touch moved to x: ${touch.clientX}, y: ${touch.clientY}`);
     }
   };
 
   const handleSlice = (bombId: number) => {
+    console.log(`Slicing bomb id: ${bombId}`);
     setBombs((prevBombs) => prevBombs.filter((bomb) => bomb.id !== bombId));
     setSlicedCount((prevCount) => prevCount + 1);
     playSwordSound();
     if (slicedCount + 1 >= 15) {
+      console.log("All bombs sliced, game complete!");
       setGameOver(true);
       onComplete();
     }
@@ -127,6 +148,7 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
   return (
     <div
       onMouseMove={handleMouseMove}
+      onTouchMove={handleTouchMove}
       className="w-screen h-screen overflow-hidden relative cursor-none"
     >
       <div
@@ -143,6 +165,7 @@ const SwordMiniGameComponent: React.FC<SwordGameComponentProps> = ({
           animate={{ y: bomb.y }}
           transition={{ ease: "linear", duration: 0.016 }}
           onMouseEnter={() => handleSlice(bomb.id)}
+          onTouchStart={() => handleSlice(bomb.id)}
           className="absolute top-0 w-24 h-24 bg-center bg-no-repeat bg-cover"
           style={{
             left: bomb.x,
