@@ -13,7 +13,7 @@ import { Render as RenderType, Engine as EngineType } from "matter-js";
 import { VideoPlayerBox } from "./(video-player)/VideoPlayerBox";
 import { VideoPlayButton } from "./(video-player)/VideoPlayButton";
 import { VideoHamburgerMenu } from "./(video-player)/VideoHamburgerMenu";
-import { FaGithub, FaLightbulb } from "react-icons/fa";
+import { FaGithub, FaLightbulb, FaRegLightbulb } from "react-icons/fa";
 import voice1 from "../assets/1.mp3";
 import voice2 from "../assets/2.mp3";
 import voice3 from "../assets/3.mp3";
@@ -42,7 +42,7 @@ const MatterComponent: React.FC = () => {
   const runnerRef = useRef<Runner | null>(null);
   const [hasClicked, setHasClicked] = useState(false);
   const [enableHints, setEnableHints] = useState(false);
-  const [startText, setStartText] = useState("Click anywhere to start");
+  const [startText, setStartText] = useState("Select your play mode below");
   const [canAddBodies, setCanAddBodies] = useState(false);
   const [hasCollided, setHasCollided] = useState(false);
   const [sorryComponentToggle, setSorryComponentToggle] = useState(false);
@@ -1685,13 +1685,10 @@ const MatterComponent: React.FC = () => {
   }
 
   useEffect(() => {
-    document.addEventListener("click", handleUserInteraction);
-    document.addEventListener("touchstart", handleUserInteraction);
-
     const interval = setInterval(() => {
       setStartText((prev) => {
         if (prev.endsWith("...")) {
-          return "Click anywhere to start";
+          return "Select your play mode below";
         } else {
           return prev + ".";
         }
@@ -1699,8 +1696,6 @@ const MatterComponent: React.FC = () => {
     }, 1000);
 
     return () => {
-      document.removeEventListener("click", handleUserInteraction);
-      document.removeEventListener("touchstart", handleUserInteraction);
       clearInterval(interval);
     };
   }, [hasClicked]);
@@ -1986,6 +1981,7 @@ const MatterComponent: React.FC = () => {
   function handleEnableHints() {
     setEnableHints(true);
     console.log("I guess you need hints..");
+    handleUserInteraction();
   }
 
   return (
@@ -2020,6 +2016,13 @@ const MatterComponent: React.FC = () => {
                   >
                     <FaLightbulb />
                     <span>Play With Hints</span>
+                  </button>
+                  <button
+                    onClick={handleUserInteraction}
+                    className="mt-5 px-4 py-2 bg-gray-800 text-white rounded flex items-center space-x-2 hover:bg-gray-900"
+                  >
+                    <FaRegLightbulb />
+                    <span>Play Without Hints</span>
                   </button>
                 </div>
               )}
