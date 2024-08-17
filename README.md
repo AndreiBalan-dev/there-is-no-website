@@ -12,8 +12,8 @@
 Functionally Dysfunctional
 
 ### Team Members:
-- **[Rudransh Joshi](https://linkedin.com/in/rudraxd/)**
 - **[Andrei Balan](https://www.linkedin.com/in/andrei-balan-dev/)**
+- **[Rudransh Joshi](https://linkedin.com/in/rudraxd/)**
 - **[Andy Mai](https://www.linkedin.com/in/andy-m-883830231/)**
 
 ## 🚀 Project Overview
@@ -22,6 +22,10 @@ Functionally Dysfunctional
 
 This project was created during the "Hackathon with Lewis" event held from August 9-16, 2024.
 There is one surprise at the end! So do visit the live deployment to try out.
+
+## 🌟 Inspiration
+
+Inspired by the theme "Functionally Dysfunctional," we aimed to create a project that would challenge the traditional expectations of what a website should be. Instead of a typical, well-structured site, we built something that appears chaotic yet is still engaging and interactive, reflecting the theme in every aspect of the design and functionality.
 
 ## 🔧 Built With
 
@@ -70,9 +74,6 @@ There is one surprise at the end! So do visit the live deployment to try out.
 
    Visit `http://localhost:5173` to experience the website.
 
-## 🌟 Inspiration
-
-Inspired by the theme "Functionally Dysfunctional," we aimed to create a project that would challenge the traditional expectations of what a website should be. Instead of a typical, well-structured site, we built something that appears chaotic yet is still engaging and interactive, reflecting the theme in every aspect of the design and functionality.
 
 ## ✏ License
 
