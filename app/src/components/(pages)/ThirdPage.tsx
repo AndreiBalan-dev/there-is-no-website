@@ -33,7 +33,7 @@ const CookieClickerComponent: React.FC<CookieClickerComponentProps> = ({
             return prev - 1;
           } else {
             clearInterval(interval);
-            if (cps >= 8) {
+            if (cps >= 7) {
               setIsVictory(true);
               onComplete();
             } else {
