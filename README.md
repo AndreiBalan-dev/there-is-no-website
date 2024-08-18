@@ -12,7 +12,7 @@
 Functionally Dysfunctional
 
 ### Author
-- Created and maintained by **[Andrei Balan](https://www.linkedin.com/in/andrei-balan-dev/)**, the original creator of the website.
+- Created and maintained by **[Andrei Balan](https://www.linkedin.com/in/andrei-balan-dev/)**.
 
 ### Special thanks to:
 - **[Rudransh Joshi](https://linkedin.com/in/rudraxd/)** for contributing to the minigames and storyline.
