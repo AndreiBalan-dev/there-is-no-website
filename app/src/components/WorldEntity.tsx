@@ -14,35 +14,351 @@ import { VideoPlayerBox } from "./(video-player)/VideoPlayerBox";
 import { VideoPlayButton } from "./(video-player)/VideoPlayButton";
 import { VideoHamburgerMenu } from "./(video-player)/VideoHamburgerMenu";
 import { FaGithub, FaLightbulb, FaRegLightbulb } from "react-icons/fa";
-// import voice1 from "../assets/1.mp3";
-// import voice2 from "../assets/2.mp3";
-// import voice3 from "../assets/3.mp3";
-// import pop1 from "../assets/pop.mp3";
-// import voice4 from "../assets/4.mp3";
-// import humming1 from "../assets/humming.mp3";
-// import voice5 from "../assets/5.mp3";
-// import voice6 from "../assets/6.mp3";
-// import voice7 from "../assets/7.mp3";
-// import voice8 from "../assets/8.mp3";
-// import voice9 from "../assets/9.mp3";
-// import voice10 from "../assets/10.mp3";
-// import voice11 from "../assets/11.mp3";
-// import voice12 from "../assets/12.mp3";
-// import voice13 from "../assets/13.mp3";
-// import rickroll from "../assets/rickroll.mp3";
+import voice1 from "../assets/1.mp3";
+import voice2 from "../assets/2.mp3";
+import voice3 from "../assets/3.mp3";
+import pop1 from "../assets/pop.mp3";
+import voice4 from "../assets/4.mp3";
+import humming1 from "../assets/humming.mp3";
+import voice5 from "../assets/5.mp3";
+import voice6 from "../assets/6.mp3";
+import voice7 from "../assets/7.mp3";
+import voice8 from "../assets/8.mp3";
+import voice9 from "../assets/9.mp3";
+import voice10 from "../assets/10.mp3";
+import voice11 from "../assets/11.mp3";
+import voice12 from "../assets/12.mp3";
+import voice13 from "../assets/13.mp3";
+import rickroll from "../assets/rickroll.mp3";
 import SorryComponent from "../components/(pages)/FirstPage";
 import SwordMiniGameComponent from "../components/(pages)/SecondPage";
 import CookieClickerGameComponent from "../components/(pages)/ThirdPage";
-// import rickRollGif from "../assets/rickroll.gif";
+import rickRollGif from "../assets/rickroll.gif";
+
+const subtitles1 = [
+  "Wait... ",
+  "what ",
+  "are ",
+  "you doing ",
+  "here? ",
+  "This ",
+  "isn’t ",
+  "a place ",
+  "for visitors. ",
+  "Actually, ",
+  "this isn’t ",
+  "even ",
+  "a place ",
+  "at all. ",
+  "But, ",
+  "since ",
+  "you’ve stumbled ",
+  "in, ",
+  "I suppose ",
+  "you can ",
+  "stay ",
+  "for a moment. ",
+  "Just ",
+  "don’t ",
+  "get too comfortable, ",
+  "okay?",
+];
+
+const subtitles2 = [
+  "You're ",
+  "still ",
+  "here? ",
+  "I must admit, ",
+  "I wasn’t ",
+  "expecting ",
+  "that. ",
+  "This ",
+  "is awkward... ",
+  "I mean, ",
+  "there’s really ",
+  "nothing ",
+  "here ",
+  "for you. ",
+  "Maybe ",
+  "you should ",
+  "consider ",
+  "leaving ",
+  "before ",
+  "things get, ",
+  "well, ",
+  "complicated.",
+];
+
+const subtitles3 = [
+  "Alright, ",
+  "I get it. ",
+  "You ",
+  "want ",
+  "something ",
+  "to do. ",
+  "Fine, ",
+  "here’s a ",
+  "cat video ",
+  "you can ",
+  "watch. ",
+];
+
+const subtitles4 = [
+  "What?! ",
+  "What have ",
+  "you done?! ",
+  "I invite ",
+  "you in, ",
+  "and you ",
+  "go ",
+  "and break ",
+  "things? ",
+  "This is ",
+  "why ",
+  "we can’t ",
+  "have ",
+  "nice things! ",
+  "Seriously, ",
+  "you need ",
+  "to go. ",
+];
+
+const subtitles5 = [
+  "You’re ",
+  "still lingering? ",
+  "Unbelievable! ",
+  "Alright, ",
+  "let’s spice ",
+  "things up ",
+  "a bit. ",
+  "Clearly, ",
+  "you have ",
+  "a talent ",
+  "for breaking things, ",
+  "so how about ",
+  "you try ",
+  "fixing something ",
+  "for a change? ",
+  "Type out ",
+  "an apology—",
+  "quickly now. ",
+  "Let’s see ",
+  "if you can ",
+  "manage at least ",
+  "that without ",
+  "turning the world ",
+  "upside down.",
+];
+
+const subtitles6 = [
+  "Well, ",
+  "that was… ",
+  "passable. ",
+  "I guess ",
+  "I can ",
+  "accept your ",
+  "apology. ",
+  "This time. ",
+  "But don’t ",
+  "get too ",
+  "comfortable—you're ",
+  "still on ",
+  "very thin ice! ",
+  "Now, let’s ",
+  "take it ",
+  "from the top. ",
+  "Here’s the ",
+  "video—again. ",
+  "Please, ",
+  "for the love ",
+  "of all that’s ",
+  "sacred, ",
+  "don’t break ",
+  "it this time.",
+];
+
+const subtitles7 = [
+  "Oh, ",
+  "seriously? ",
+  "Are you ",
+  "doing this ",
+  "on purpose? ",
+  "This is ",
+  "beyond frustrating! ",
+  "I knew ",
+  "better than ",
+  "to trust you ",
+  "with anything. ",
+  "You know what? ",
+  "Fine. ",
+  "You want ",
+  "chaos? ",
+  "I’ll give you ",
+  "chaos. ",
+  "Brace yourself—",
+  "because things are ",
+  "about to get wild!",
+];
+
+const subtitles8 = [
+  "Here’s ",
+  "a sword. ",
+  "Yes, ",
+  "you heard me ",
+  "right, ",
+  "a sword! ",
+  "No time ",
+  "for questions, ",
+  "just start ",
+  "swinging. ",
+  "Maybe if ",
+  "you prove ",
+  "you’re not ",
+  "a total disaster ",
+  "with this, ",
+  "I might consider ",
+  "not unleashing ",
+  "a digital apocalypse ",
+  "on this place.",
+];
+
+const subtitles9 = [
+  "Okay, ",
+  "okay, ",
+  "I’ll admit, ",
+  "you’re not ",
+  "entirely hopeless. ",
+  "But you’ve got ",
+  "a worrying ",
+  "enthusiasm ",
+  "for breaking things. ",
+  "So, if ",
+  "destruction is ",
+  "what you crave, ",
+  "try this ",
+  "on for size. ",
+  "It’s a cookie—",
+  "yes, ",
+  "a cookie. ",
+  "Go ahead, ",
+  "smash it ",
+  "to bits.",
+];
+
+const subtitles10 = [
+  "Yes, ",
+  "really, ",
+  "a cookie. ",
+  "What? ",
+  "Were you ",
+  "expecting something ",
+  "more, ",
+  "I don’t know, ",
+  "earth-shattering? ",
+  "This is ",
+  "your final shot ",
+  "to prove ",
+  "you can handle ",
+  "anything without ",
+  "triggering Armageddon. ",
+  "Now click away, ",
+  "and don’t ",
+  "hold back!",
+];
+
+const subtitles11 = [
+  "Well, ",
+  "congratulations! ",
+  "You’ve done it—",
+  "you’ve broken ",
+  "everything in sight, ",
+  "just as you wanted. ",
+  "You know what? ",
+  "I surrender. ",
+  "You win. ",
+  "Here’s your ",
+  "grand prize—",
+  "a nice, ",
+  "harmless video. ",
+  "Enjoy… ",
+  "or maybe not. ",
+  "Let’s see ",
+  "if you can ",
+  "break this one ",
+  "too.",
+];
+
+const subtitles12 = [
+  "Ha! ",
+  "Gotcha! ",
+  "Did you ",
+  "really think ",
+  "I’d let you ",
+  "have the last laugh? ",
+  "This is ",
+  "my domain, ",
+  "and I’m ",
+  "always one ",
+  "step ahead. ",
+  "Better luck ",
+  "next time, ",
+  "you delightful ",
+  "destroyer of worlds!",
+];
+
+const subtitles13 = [
+  "And before ",
+  "you leave, ",
+  "remember: ",
+  "This is ",
+  "not a ",
+  "website.",
+];
 
 const MatterComponent: React.FC = () => {
+  const audioTextRef_1 = useRef<HTMLAudioElement | null>(null);
+  const audioTextHummingRef_1 = useRef<HTMLAudioElement | null>(null);
+  const audioTextRef_2 = useRef<HTMLAudioElement | null>(null);
+  const audioTextRef_3 = useRef<HTMLAudioElement | null>(null);
+  const audioSoundPopRef_1 = useRef<HTMLAudioElement | null>(null);
+  const audioTextRef_4 = useRef<HTMLAudioElement | null>(null);
+  const audioTextRef_5 = useRef<HTMLAudioElement | null>(null);
+  const audioTextRef_6 = useRef<HTMLAudioElement | null>(null);
+  const audioTextRef_7 = useRef<HTMLAudioElement | null>(null);
+  const audioTextRef_8 = useRef<HTMLAudioElement | null>(null);
+  const audioTextRef_9 = useRef<HTMLAudioElement | null>(null);
+  const audioTextRef_10 = useRef<HTMLAudioElement | null>(null);
+  const audioTextRef_11 = useRef<HTMLAudioElement | null>(null);
+  const audioTextRef_12 = useRef<HTMLAudioElement | null>(null);
+  const audioTextRef_13 = useRef<HTMLAudioElement | null>(null);
+  const audioMusicRef_1 = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    audioTextRef_1.current = new Audio(voice1);
+    audioTextHummingRef_1.current = new Audio(humming1);
+    audioTextRef_2.current = new Audio(voice2);
+    audioTextRef_3.current = new Audio(voice3);
+    audioSoundPopRef_1.current = new Audio(pop1);
+    audioTextRef_4.current = new Audio(voice4);
+    audioTextRef_5.current = new Audio(voice5);
+    audioTextRef_6.current = new Audio(voice6);
+    audioTextRef_7.current = new Audio(voice7);
+    audioTextRef_8.current = new Audio(voice8);
+    audioTextRef_9.current = new Audio(voice9);
+    audioTextRef_10.current = new Audio(voice10);
+    audioTextRef_11.current = new Audio(voice11);
+    audioTextRef_12.current = new Audio(voice12);
+    audioTextRef_13.current = new Audio(voice13);
+    audioMusicRef_1.current = new Audio(rickroll);
+  }, []); // Empty dependency array ensures this runs only once
+
   const sceneRef = useRef<HTMLDivElement>(null);
   const engineRef = useRef<EngineType>(Engine.create());
   const renderRef = useRef<RenderType | null>(null);
   const runnerRef = useRef<Runner | null>(null);
   const [hasClicked, setHasClicked] = useState(false);
   const enableHints = useRef(false);
-  const [startText, setStartText] = useState("Select your play mode below");
+  const startText = useRef("Select your play mode below");
   const [canAddBodies, setCanAddBodies] = useState(false);
   const [hasCollided, setHasCollided] = useState(false);
   const [sorryComponentToggle, setSorryComponentToggle] = useState(false);
@@ -53,41 +369,41 @@ const MatterComponent: React.FC = () => {
     useState(false);
   const [rickRollComponentToggle, setRickRollComponentToggle] = useState(false);
 
-  const voice1 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/1-6v8CQs1coVpj5O1IzfmRy258KlAOCX.mp3";
-  const voice2 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/2-CoNKmo9xOV1dAxpOuOG5M2cqEmqDmD.mp3";
-  const voice3 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/3-6OJRFMQZkGTw2QKfOzSUeD65gWnD7t.mp3";
-  const pop1 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/pop-i0hjvmtiZb8TCIUw2JkQk7iNyJdV8V.mp3";
-  const voice4 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/4-SfhWnMPX71ilpg7ARp6uxDFMEyM7eP.mp3";
-  const humming1 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/humming-fihLEvhhnII3uv5Au8tcno1Lg92XLu.mp3";
-  const voice5 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/5-T0fMzBQnsDzCGS0rSuXzURHlfZ2qCz.mp3";
-  const voice6 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/6-WVuODm8JkXs8xCqcEZCv3t0wqjVjhj.mp3";
-  const voice7 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/7-YF7RYJAju6pzWgSwFhxOB6rodIGFmA.mp3";
-  const voice8 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/8-2t3uS2eLfyWnecQ3my94GYOg4wqvWl.mp3";
-  const voice9 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/9-FBoURFMIJT8rUFHKp3LObF1D7euUZh.mp3";
-  const voice10 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/10-edjjsJQ9pNtUHv8pDzri39OJNKf4cZ.mp3";
-  const voice11 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/11-LChRzohF86HLYv0HILMkwhNO6twrCw.mp3";
-  const voice12 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/12-bZxi2aS5QCSZz7O64fCpx6ZpmaDIh1.mp3";
-  const voice13 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/13-dF1ol5609lDRh5FOdID0tQsOu7IaXF.mp3";
-  const rickroll =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/rickroll-lRwISRZCJLDcR1P9wlCUDjvBMpxyMv.mp3";
+  // const voice1 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/1-6v8CQs1coVpj5O1IzfmRy258KlAOCX.mp3";
+  // const voice2 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/2-CoNKmo9xOV1dAxpOuOG5M2cqEmqDmD.mp3";
+  // const voice3 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/3-6OJRFMQZkGTw2QKfOzSUeD65gWnD7t.mp3";
+  // const pop1 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/pop-i0hjvmtiZb8TCIUw2JkQk7iNyJdV8V.mp3";
+  // const voice4 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/4-SfhWnMPX71ilpg7ARp6uxDFMEyM7eP.mp3";
+  // const humming1 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/humming-fihLEvhhnII3uv5Au8tcno1Lg92XLu.mp3";
+  // const voice5 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/5-T0fMzBQnsDzCGS0rSuXzURHlfZ2qCz.mp3";
+  // const voice6 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/6-WVuODm8JkXs8xCqcEZCv3t0wqjVjhj.mp3";
+  // const voice7 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/7-YF7RYJAju6pzWgSwFhxOB6rodIGFmA.mp3";
+  // const voice8 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/8-2t3uS2eLfyWnecQ3my94GYOg4wqvWl.mp3";
+  // const voice9 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/9-FBoURFMIJT8rUFHKp3LObF1D7euUZh.mp3";
+  // const voice10 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/10-edjjsJQ9pNtUHv8pDzri39OJNKf4cZ.mp3";
+  // const voice11 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/11-LChRzohF86HLYv0HILMkwhNO6twrCw.mp3";
+  // const voice12 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/12-bZxi2aS5QCSZz7O64fCpx6ZpmaDIh1.mp3";
+  // const voice13 =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/13-dF1ol5609lDRh5FOdID0tQsOu7IaXF.mp3";
+  // const rickroll =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/rickroll-lRwISRZCJLDcR1P9wlCUDjvBMpxyMv.mp3";
 
-  const rickRollGif =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/rickroll-deiAQmp1LPZEaxxCgTiaKJLP9Q7EfN.gif";
+  // const rickRollGif =
+  //   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/rickroll-deiAQmp1LPZEaxxCgTiaKJLP9Q7EfN.gif";
 
   const [subtitle1, setSubtitle1] = useState("");
   const [subtitle2, setSubtitle2] = useState("");
@@ -107,303 +423,6 @@ const MatterComponent: React.FC = () => {
   let triggeredSubtitle4 = false;
   const bodiesWithCustomForce = new Set<Matter.Body>();
 
-  const subtitles1 = [
-    "Wait... ",
-    "what ",
-    "are ",
-    "you doing ",
-    "here? ",
-    "This ",
-    "isn’t ",
-    "a place ",
-    "for visitors. ",
-    "Actually, ",
-    "this isn’t ",
-    "even ",
-    "a place ",
-    "at all. ",
-    "But, ",
-    "since ",
-    "you’ve stumbled ",
-    "in, ",
-    "I suppose ",
-    "you can ",
-    "stay ",
-    "for a moment. ",
-    "Just ",
-    "don’t ",
-    "get too comfortable, ",
-    "okay?",
-  ];
-
-  const subtitles2 = [
-    "You're ",
-    "still ",
-    "here? ",
-    "I must admit, ",
-    "I wasn’t ",
-    "expecting ",
-    "that. ",
-    "This ",
-    "is awkward... ",
-    "I mean, ",
-    "there’s really ",
-    "nothing ",
-    "here ",
-    "for you. ",
-    "Maybe ",
-    "you should ",
-    "consider ",
-    "leaving ",
-    "before ",
-    "things get, ",
-    "well, ",
-    "complicated.",
-  ];
-
-  const subtitles3 = [
-    "Alright, ",
-    "I get it. ",
-    "You ",
-    "want ",
-    "something ",
-    "to do. ",
-    "Fine, ",
-    "here’s a ",
-    "cat video ",
-    "you can ",
-    "watch. ",
-  ];
-
-  const subtitles4 = [
-    "What?! ",
-    "What have ",
-    "you done?! ",
-    "I invite ",
-    "you in, ",
-    "and you ",
-    "go ",
-    "and break ",
-    "things? ",
-    "This is ",
-    "why ",
-    "we can’t ",
-    "have ",
-    "nice things! ",
-    "Seriously, ",
-    "you need ",
-    "to go. ",
-  ];
-
-  const subtitles5 = [
-    "You’re ",
-    "still lingering? ",
-    "Unbelievable! ",
-    "Alright, ",
-    "let’s spice ",
-    "things up ",
-    "a bit. ",
-    "Clearly, ",
-    "you have ",
-    "a talent ",
-    "for breaking things, ",
-    "so how about ",
-    "you try ",
-    "fixing something ",
-    "for a change? ",
-    "Type out ",
-    "an apology—",
-    "quickly now. ",
-    "Let’s see ",
-    "if you can ",
-    "manage at least ",
-    "that without ",
-    "turning the world ",
-    "upside down.",
-  ];
-
-  const subtitles6 = [
-    "Well, ",
-    "that was… ",
-    "passable. ",
-    "I guess ",
-    "I can ",
-    "accept your ",
-    "apology. ",
-    "This time. ",
-    "But don’t ",
-    "get too ",
-    "comfortable—you're ",
-    "still on ",
-    "very thin ice! ",
-    "Now, let’s ",
-    "take it ",
-    "from the top. ",
-    "Here’s the ",
-    "video—again. ",
-    "Please, ",
-    "for the love ",
-    "of all that’s ",
-    "sacred, ",
-    "don’t break ",
-    "it this time.",
-  ];
-
-  const subtitles7 = [
-    "Oh, ",
-    "seriously? ",
-    "Are you ",
-    "doing this ",
-    "on purpose? ",
-    "This is ",
-    "beyond frustrating! ",
-    "I knew ",
-    "better than ",
-    "to trust you ",
-    "with anything. ",
-    "You know what? ",
-    "Fine. ",
-    "You want ",
-    "chaos? ",
-    "I’ll give you ",
-    "chaos. ",
-    "Brace yourself—",
-    "because things are ",
-    "about to get wild!",
-  ];
-
-  const subtitles8 = [
-    "Here’s ",
-    "a sword. ",
-    "Yes, ",
-    "you heard me ",
-    "right, ",
-    "a sword! ",
-    "No time ",
-    "for questions, ",
-    "just start ",
-    "swinging. ",
-    "Maybe if ",
-    "you prove ",
-    "you’re not ",
-    "a total disaster ",
-    "with this, ",
-    "I might consider ",
-    "not unleashing ",
-    "a digital apocalypse ",
-    "on this place.",
-  ];
-
-  const subtitles9 = [
-    "Okay, ",
-    "okay, ",
-    "I’ll admit, ",
-    "you’re not ",
-    "entirely hopeless. ",
-    "But you’ve got ",
-    "a worrying ",
-    "enthusiasm ",
-    "for breaking things. ",
-    "So, if ",
-    "destruction is ",
-    "what you crave, ",
-    "try this ",
-    "on for size. ",
-    "It’s a cookie—",
-    "yes, ",
-    "a cookie. ",
-    "Go ahead, ",
-    "smash it ",
-    "to bits.",
-  ];
-
-  const subtitles10 = [
-    "Yes, ",
-    "really, ",
-    "a cookie. ",
-    "What? ",
-    "Were you ",
-    "expecting something ",
-    "more, ",
-    "I don’t know, ",
-    "earth-shattering? ",
-    "This is ",
-    "your final shot ",
-    "to prove ",
-    "you can handle ",
-    "anything without ",
-    "triggering Armageddon. ",
-    "Now click away, ",
-    "and don’t ",
-    "hold back!",
-  ];
-
-  const subtitles11 = [
-    "Well, ",
-    "congratulations! ",
-    "You’ve done it—",
-    "you’ve broken ",
-    "everything in sight, ",
-    "just as you wanted. ",
-    "You know what? ",
-    "I surrender. ",
-    "You win. ",
-    "Here’s your ",
-    "grand prize—",
-    "a nice, ",
-    "harmless video. ",
-    "Enjoy… ",
-    "or maybe not. ",
-    "Let’s see ",
-    "if you can ",
-    "break this one ",
-    "too.",
-  ];
-
-  const subtitles12 = [
-    "Ha! ",
-    "Gotcha! ",
-    "Did you ",
-    "really think ",
-    "I’d let you ",
-    "have the last laugh? ",
-    "This is ",
-    "my domain, ",
-    "and I’m ",
-    "always one ",
-    "step ahead. ",
-    "Better luck ",
-    "next time, ",
-    "you delightful ",
-    "destroyer of worlds!",
-  ];
-
-  const subtitles13 = [
-    "And before ",
-    "you leave, ",
-    "remember: ",
-    "This is ",
-    "not a ",
-    "website.",
-  ];
-
-  const audioTextRef_1 = useRef<HTMLAudioElement>(new Audio(voice1));
-  const audioTextHummingRef_1 = useRef<HTMLAudioElement>(new Audio(humming1));
-  const audioTextRef_2 = useRef<HTMLAudioElement>(new Audio(voice2));
-  const audioTextRef_3 = useRef<HTMLAudioElement>(new Audio(voice3));
-  const audioSoundPopRef_1 = useRef<HTMLAudioElement>(new Audio(pop1));
-  const audioTextRef_4 = useRef<HTMLAudioElement>(new Audio(voice4));
-  const audioTextRef_5 = useRef<HTMLAudioElement>(new Audio(voice5));
-  const audioTextRef_6 = useRef<HTMLAudioElement>(new Audio(voice6));
-  const audioTextRef_7 = useRef<HTMLAudioElement>(new Audio(voice7));
-  const audioTextRef_8 = useRef<HTMLAudioElement>(new Audio(voice8));
-  const audioTextRef_9 = useRef<HTMLAudioElement>(new Audio(voice9));
-  const audioTextRef_10 = useRef<HTMLAudioElement>(new Audio(voice10));
-  const audioTextRef_11 = useRef<HTMLAudioElement>(new Audio(voice11));
-  const audioTextRef_12 = useRef<HTMLAudioElement>(new Audio(voice12));
-  const audioTextRef_13 = useRef<HTMLAudioElement>(new Audio(voice13));
-  const audioMusicRef_1 = useRef<HTMLAudioElement>(new Audio(rickroll));
-
   const hasCollidedGlobalRef = useRef(false);
   const triggeredSubtitleRef4 = useRef(false);
   const triggeredSubtitleRef7 = useRef(false);
@@ -413,124 +432,124 @@ const MatterComponent: React.FC = () => {
   const triggeredAudioGlobal11 = useRef(false);
 
   function playAudio1() {
-    audioTextRef_1.current.volume = 0.75;
-    audioTextRef_1.current
-      .play()
+    audioTextRef_1.current!.volume = 0.75;
+    audioTextRef_1
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudioHumming1() {
-    audioTextHummingRef_1.current
-      .play()
+    audioTextHummingRef_1
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio2() {
-    audioTextRef_2.current.volume = 0.75;
-    audioTextRef_2.current
-      .play()
+    audioTextRef_2.current!.volume = 0.75;
+    audioTextRef_2
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio3() {
-    audioTextRef_3.current.volume = 0.75;
-    audioTextRef_3.current
-      .play()
+    audioTextRef_3.current!.volume = 0.75;
+    audioTextRef_3
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudioPop1() {
-    audioSoundPopRef_1.current
-      .play()
+    audioSoundPopRef_1
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio4() {
-    audioTextRef_4.current.volume = 0.75;
-    audioTextRef_4.current
-      .play()
+    audioTextRef_4.current!.volume = 0.75;
+    audioTextRef_4
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio5() {
-    audioTextRef_5.current.volume = 0.75;
-    audioTextRef_5.current
-      .play()
+    audioTextRef_5.current!.volume = 0.75;
+    audioTextRef_5
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio6() {
-    audioTextRef_6.current.volume = 0.75;
-    audioTextRef_6.current
-      .play()
+    audioTextRef_6.current!.volume = 0.75;
+    audioTextRef_6
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio7() {
-    audioTextRef_7.current.volume = 0.75;
-    audioTextRef_7.current
-      .play()
+    audioTextRef_7.current!.volume = 0.75;
+    audioTextRef_7
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio8() {
-    audioTextRef_8.current.volume = 0.75;
-    audioTextRef_8.current
-      .play()
+    audioTextRef_8.current!.volume = 0.75;
+    audioTextRef_8
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio9() {
-    audioTextRef_9.current.volume = 0.75;
-    audioTextRef_9.current
-      .play()
+    audioTextRef_9.current!.volume = 0.75;
+    audioTextRef_9
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio10() {
-    audioTextRef_10.current.volume = 0.75;
-    audioTextRef_10.current
-      .play()
+    audioTextRef_10.current!.volume = 0.75;
+    audioTextRef_10
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio11() {
-    audioTextRef_11.current.volume = 0.75;
-    audioTextRef_11.current
-      .play()
+    audioTextRef_11.current!.volume = 0.75;
+    audioTextRef_11
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio12() {
-    audioTextRef_12.current.volume = 0.75;
-    audioTextRef_12.current
-      .play()
+    audioTextRef_12.current!.volume = 0.75;
+    audioTextRef_12
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio13() {
-    audioTextRef_13.current.volume = 0.75;
-    audioTextRef_13.current
-      .play()
+    audioTextRef_13.current!.volume = 0.75;
+    audioTextRef_13
+      .current!.play()
       .catch((error) => console.error("Audio play error:", error));
   }
 
   function playRickroll() {
-    const audioElement = audioMusicRef_1.current;
+    let audioElement = audioMusicRef_1.current;
 
-    audioElement
+    audioElement!
       .play()
       .catch((error) => console.error("Audio play error:", error));
 
-    audioElement.addEventListener("ended", () => {
-      audioElement
+    audioElement!.addEventListener("ended", () => {
+      audioElement!
         .play()
         .catch((error) => console.error("Audio replay error:", error));
     });
   }
 
   function addSubtitles13() {
-    audioMusicRef_1.current.volume = 0.3;
+    audioMusicRef_1.current!.volume = 0.3;
 
     setTimeout(() => {
       setSubtitle1(subtitles13[0]);
@@ -561,7 +580,7 @@ const MatterComponent: React.FC = () => {
     }, 4000); // Clear the subtitle text
 
     setTimeout(() => {
-      audioMusicRef_1.current.volume = 1;
+      audioMusicRef_1.current!.volume = 1;
     }, 4200);
 
     // setTimeout(() => {
@@ -579,7 +598,7 @@ const MatterComponent: React.FC = () => {
   }
 
   function addSubtitles12() {
-    audioMusicRef_1.current.volume = 0.3;
+    audioMusicRef_1.current!.volume = 0.3;
     setTimeout(() => {
       setSubtitle1(subtitles12[0]);
     }, 100); // "Ha! "
@@ -641,7 +660,7 @@ const MatterComponent: React.FC = () => {
     }, 9200); // "destroyer of worlds!"
 
     setTimeout(() => {
-      audioMusicRef_1.current.volume = 1;
+      audioMusicRef_1.current!.volume = 1;
     }, 10000);
 
     setTimeout(() => {
@@ -1755,21 +1774,6 @@ const MatterComponent: React.FC = () => {
   }
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setStartText((prev) => {
-        if (prev.endsWith("...")) {
-          return "Select your play mode below";
-        } else {
-          return prev + ".";
-        }
-      });
-    }, 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, [hasClicked]);
-
-  useEffect(() => {
     // Initial setup for Matter.js engine and world
     if (!sorryComponentToggle) {
       const engine = engineRef.current;
@@ -1959,9 +1963,9 @@ const MatterComponent: React.FC = () => {
 
         requestAnimationFrame(() => {
           if (bodiesWithCustomForce.size === 0) {
-            if (!audioTextRef_4.current.paused) {
-              audioTextRef_4.current.pause();
-              audioTextRef_4.current.currentTime = 0;
+            if (!audioTextRef_4.current!.paused) {
+              audioTextRef_4.current!.pause();
+              audioTextRef_4.current!.currentTime = 0;
             }
             if (!triggeredAudioGlobal5.current) {
               setTimeout(() => {
@@ -1986,9 +1990,9 @@ const MatterComponent: React.FC = () => {
 
           requestAnimationFrame(() => {
             if (bodiesWithCustomForce.size === 0) {
-              if (!audioTextRef_6.current.paused) {
-                audioTextRef_6.current.pause();
-                audioTextRef_6.current.currentTime = 0;
+              if (!audioTextRef_6.current!.paused) {
+                audioTextRef_6.current!.pause();
+                audioTextRef_6.current!.currentTime = 0;
               }
               if (!triggeredSubtitleRef7.current) {
                 playAudio7();
@@ -2005,9 +2009,9 @@ const MatterComponent: React.FC = () => {
   }, [sorryComponentToggle, canAddBodies]);
 
   function handleSorryComplete() {
-    if (!audioTextRef_5.current.paused) {
-      audioTextRef_5.current.pause();
-      audioTextRef_5.current.currentTime = 0;
+    if (!audioTextRef_5.current!.paused) {
+      audioTextRef_5.current!.pause();
+      audioTextRef_5.current!.currentTime = 0;
     }
     if (!triggeredAudioGlobal6.current) {
       playAudio6();
@@ -2018,9 +2022,9 @@ const MatterComponent: React.FC = () => {
   }
 
   function handleSwordMiniGameComplete() {
-    if (!audioTextRef_7.current.paused) {
-      audioTextRef_7.current.pause();
-      audioTextRef_7.current.currentTime = 0;
+    if (!audioTextRef_7.current!.paused) {
+      audioTextRef_7.current!.pause();
+      audioTextRef_7.current!.currentTime = 0;
     }
     if (!triggeredAudioGlobal9.current) {
       playAudio9();
@@ -2031,14 +2035,14 @@ const MatterComponent: React.FC = () => {
   }
 
   function handleCookieClickerGameComplete() {
-    if (!audioTextRef_9.current.paused) {
-      audioTextRef_9.current.pause();
-      audioTextRef_9.current.currentTime = 0;
+    if (!audioTextRef_9.current!.paused) {
+      audioTextRef_9.current!.pause();
+      audioTextRef_9.current!.currentTime = 0;
     }
     if (!triggeredAudioGlobal11.current) {
-      if (!audioTextRef_10.current.paused) {
-        audioTextRef_10.current.pause();
-        audioTextRef_10.current.currentTime = 0;
+      if (!audioTextRef_10.current!.paused) {
+        audioTextRef_10.current!.pause();
+        audioTextRef_10.current!.currentTime = 0;
       }
       playAudio11();
       addSubtitles11();
@@ -2063,7 +2067,7 @@ const MatterComponent: React.FC = () => {
             </div> */}
               {!hasClicked && !canAddBodies && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-xl">
-                  <div>{startText}</div>
+                  <div>{startText.current}</div>
                   <div className="text-sm sm:text-base mt-5">
                     - Make sure your audio is on.
                   </div>
