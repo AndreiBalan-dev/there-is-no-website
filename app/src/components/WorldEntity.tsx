@@ -13,7 +13,12 @@ import { Render as RenderType, Engine as EngineType } from "matter-js";
 import { VideoPlayerBox } from "./(video-player)/VideoPlayerBox";
 import { VideoPlayButton } from "./(video-player)/VideoPlayButton";
 import { VideoHamburgerMenu } from "./(video-player)/VideoHamburgerMenu";
-import { FaGithub, FaLightbulb, FaRegLightbulb } from "react-icons/fa";
+import {
+  FaCoffee,
+  FaGithub,
+  FaLightbulb,
+  FaRegLightbulb,
+} from "react-icons/fa";
 import voice1 from "../assets/1.mp3";
 import voice2 from "../assets/2.mp3";
 import voice3 from "../assets/3.mp3";
@@ -529,15 +534,15 @@ const MatterComponent: React.FC = () => {
 
     setTimeout(() => {
       audioElement.volume = 1;
-    }, 10200);
+    }, 16200);
 
     setTimeout(() => {
       audioElement.volume = 0.3;
-    }, 13300);
+    }, 18300);
 
     setTimeout(() => {
       audioElement.volume = 1;
-    }, 18100);
+    }, 26100);
 
     audioElement
       .play()
@@ -935,8 +940,12 @@ const MatterComponent: React.FC = () => {
       const subtitleElemCookie = document.querySelector("#modifyFirefoxCookie");
       subtitleElemCookie?.classList.remove("justify-center");
       subtitleElemCookie?.classList.add("justify-normal");
-      if (enableHints.current) setHintText4("Hint: Get 7 clicks per second!");
     }, 16000); // ""
+
+    setTimeout(() => {
+      if (enableHints.current && !triggeredAudioGlobal11.current)
+        setHintText4("Hint: Get 7 clicks per second!");
+    }, 18000);
 
     setTimeout(() => {
       setSubtitle1("");
@@ -2208,16 +2217,16 @@ const MatterComponent: React.FC = () => {
           <>
             <div className="flex flex-col items-center justify-center min-h-screen">
               {/* <div className="text-center">
-                <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl lg:mt-16 md:mt-20 mt-12">
-                  {subtitleEnd1}
-                </div>
-                <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl">
-                  {subtitleEnd2}
-                </div>
-                <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl">
-                  {subtitleEnd3}
-                </div>
-              </div> */}
+        <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl lg:mt-16 md:mt-20 mt-12">
+          {subtitleEnd1}
+        </div>
+        <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+          {subtitleEnd2}
+        </div>
+        <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+          {subtitleEnd3}
+        </div>
+      </div> */}
               <div className="mt-8 flex justify-center">
                 <img
                   src={rickRollGif}
@@ -2225,7 +2234,7 @@ const MatterComponent: React.FC = () => {
                   className="w-full max-w-xl h-auto rounded-lg"
                 />
               </div>
-              <div className="mt-4">
+              <div className="mt-4 flex justify-center space-x-4">
                 <a
                   href="https://github.com/AndreiBalan-dev/there-is-no-website"
                   target="_blank"
@@ -2233,6 +2242,14 @@ const MatterComponent: React.FC = () => {
                   className="text-white text-3xl hover:text-gray-400"
                 >
                   <FaGithub />
+                </a>
+                <a
+                  href="https://buymeacoffee.com/balanandrev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-3xl hover:text-gray-400"
+                >
+                  <FaCoffee />
                 </a>
               </div>
             </div>
