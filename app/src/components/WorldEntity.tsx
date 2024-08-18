@@ -54,37 +54,38 @@ const MatterComponent: React.FC = () => {
   const [rickRollComponentToggle, setRickRollComponentToggle] = useState(false);
 
   const voice1 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/1-xkjB0geo9GIE5nHexJhjrU76NFljey.mp3";
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/1-6v8CQs1coVpj5O1IzfmRy258KlAOCX.mp3";
   const voice2 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/2-FCPBQ42qB7Tb7anTKtBR8QLWxDYb90.mp3";
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/2-CoNKmo9xOV1dAxpOuOG5M2cqEmqDmD.mp3";
   const voice3 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/3-zTasZfbQLdirNWO9dyxSbVAxiyiOOV.mp3";
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/3-6OJRFMQZkGTw2QKfOzSUeD65gWnD7t.mp3";
   const pop1 =
     "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/pop-i0hjvmtiZb8TCIUw2JkQk7iNyJdV8V.mp3";
   const voice4 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/4-fWZHV9oDbNPEBcFFkjiNsXAteJEaH2.mp3";
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/4-SfhWnMPX71ilpg7ARp6uxDFMEyM7eP.mp3";
   const humming1 =
     "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/humming-fihLEvhhnII3uv5Au8tcno1Lg92XLu.mp3";
   const voice5 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/5-fSuTf1kUqiN4cmcuNYohJNJc0GQJad.mp3";
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/5-T0fMzBQnsDzCGS0rSuXzURHlfZ2qCz.mp3";
   const voice6 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/6-BSkY6hPoFUY0ZEKdjbSjHvIG9wVDKs.mp3";
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/6-WVuODm8JkXs8xCqcEZCv3t0wqjVjhj.mp3";
   const voice7 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/7-KXfaYLs63Dc03TIb7EDyQyZ8IcLUgu.mp3";
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/7-YF7RYJAju6pzWgSwFhxOB6rodIGFmA.mp3";
   const voice8 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/8-ldyCK0pXhJHr2TAiBsrGFVUpQGvpBh.mp3";
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/8-2t3uS2eLfyWnecQ3my94GYOg4wqvWl.mp3";
   const voice9 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/9-Vju0jhkj0oZLMSY4ZjWw9h8LGfaT71.mp3";
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/9-FBoURFMIJT8rUFHKp3LObF1D7euUZh.mp3";
   const voice10 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/10-GCd0RmNXrZ0ulH3pflZXuVYquu0yfW.mp3";
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/10-edjjsJQ9pNtUHv8pDzri39OJNKf4cZ.mp3";
   const voice11 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/11-vzuCk8xqm9qWtLykJAAWNmh3Lh1VJU.mp3";
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/11-LChRzohF86HLYv0HILMkwhNO6twrCw.mp3";
   const voice12 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/12-GEN7H1byWCHhvAJBv4moYAmtOMFNq2.mp3";
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/12-bZxi2aS5QCSZz7O64fCpx6ZpmaDIh1.mp3";
   const voice13 =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/13-wGxcPCJHilL6iY24RtAsUoHEIoAMSb.mp3";
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/13-dF1ol5609lDRh5FOdID0tQsOu7IaXF.mp3";
   const rickroll =
-    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/rickroll-lRwISRZCJLDcR1P9wlCUDjvBMpxyMv.mp3";
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/rickroll-deiAQmp1LPZEaxxCgTiaKJLP9Q7EfN.gif";
+
   const rickRollGif =
     "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/rickroll-deiAQmp1LPZEaxxCgTiaKJLP9Q7EfN.gif";
 
