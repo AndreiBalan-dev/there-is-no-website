@@ -51,11 +51,11 @@ const dImg =
 const eImg =
   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/e-min-48MFLWrn9ThILAujSws79RtUEuh5GO.png";
 const oImg =
-  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/o-min-HwMTmeM100CrJeWfwgIWw43ubZY7QZ.png";
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/o-AUM5PmfrZJKW0jmNpNk6eqyzQD2qRh.png";
 const mImg =
   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/m-min-HwMTmeM100CrJeWfwgIWw43ubZY7QZ.png";
 const pImg =
-  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/p-min-TB0DXIVYxKUKBGqB1ycmIYIzHsKYnn.png";
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/p-pbI945GclLxnYUa7Fya3OnQ0yWfPqJ.png";
 const dotImg =
   "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/dot-min-4lm3TPE2Y1y4nJlwwzz0gIjLoEfAP1.png";
 const fourImg =
