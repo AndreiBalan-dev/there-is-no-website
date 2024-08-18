@@ -1,28 +1,77 @@
 import { Bodies, Composite, World, Body } from "matter-js";
-import cat from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/smallSizedCatImageShadow-min-vfDwIcMqalDdojt4XManM6oVab8IjF.png";
-// Import letter assets
-import fImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/f-min-ONnefclg8aEykZinPfe4TaU2mr2luL.png";
-import uImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/u-min-1NrxESXwcwqBCAX3mpr1mlP8pptSPy.png";
-import nImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/n-min-j6v9g9mhkvcJIn3gCXix0IWprfVipv.png";
-import yImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/y-min-vsg66EfJfJ0ltYY2Glk2jOD7vKblUI.png";
-import cImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/c-min-RJh0JOnJ7rLxtenkMmBileQJuTQUtF.png";
-import aImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/a-min-iK2MSegZfXlLefXaSqkAaPSwHnT2YP.png";
-import tImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/t-min-5zT4sVkM1w0jdfTjI4I6HEsSpqlz0I.png";
-import vImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/v-min-glYqZVEjDwjc6PGYVdIaCHDupazPFN.png";
-import iImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/i-min-nXs3Ss52KEycSn0ZR5ZJf62tEoUupC.png";
-import dImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/d-min-TpaWLnEYjhnmA6wbme5gEgWEDt26F3.png";
-import eImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/e-min-48MFLWrn9ThILAujSws79RtUEuh5GO.png";
-import oImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/o-min-HwMTmeM100CrJeWfwgIWw43ubZY7QZ.png";
-import mImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/m-min-HwMTmeM100CrJeWfwgIWw43ubZY7QZ.png";
-import pImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/p-min-TB0DXIVYxKUKBGqB1ycmIYIzHsKYnn.png";
-import dotImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/dot-min-4lm3TPE2Y1y4nJlwwzz0gIjLoEfAP1.png";
-import fourImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/4-min-awHdHnlsGsXlCf2UUZK9I9WkZgI3ve.png";
-// Import digit and separator placeholders
-import zeroImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/0-min-tPEvPN9rB1HznG7Mt67O8sK7Hooine.png";
-import oneImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/1-min-ZoIGLdKVJHxrVN9kHQaZWpcPFkxq9X.png";
-import twoImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/2-min-B3GXI5xz5WOkpenKPDeYo8yskCvJBW.png";
-import threeImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/3-min-trcxTSlqYR6ujcevBjz3K4oicnyzDz.png";
-import colonImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/colon-min-YNreViOQMZBSVve4dktpfyG7IPzNpt.png";
+// import cat from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/smallSizedCatImageShadow-min-vfDwIcMqalDdojt4XManM6oVab8IjF.png";
+// // Import letter assets
+// import fImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/f-min-ONnefclg8aEykZinPfe4TaU2mr2luL.png";
+// import uImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/u-min-1NrxESXwcwqBCAX3mpr1mlP8pptSPy.png";
+// import nImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/n-min-j6v9g9mhkvcJIn3gCXix0IWprfVipv.png";
+// import yImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/y-min-vsg66EfJfJ0ltYY2Glk2jOD7vKblUI.png";
+// import cImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/c-min-RJh0JOnJ7rLxtenkMmBileQJuTQUtF.png";
+// import aImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/a-min-iK2MSegZfXlLefXaSqkAaPSwHnT2YP.png";
+// import tImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/t-min-5zT4sVkM1w0jdfTjI4I6HEsSpqlz0I.png";
+// import vImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/v-min-glYqZVEjDwjc6PGYVdIaCHDupazPFN.png";
+// import iImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/i-min-nXs3Ss52KEycSn0ZR5ZJf62tEoUupC.png";
+// import dImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/d-min-TpaWLnEYjhnmA6wbme5gEgWEDt26F3.png";
+// import eImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/e-min-48MFLWrn9ThILAujSws79RtUEuh5GO.png";
+// import oImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/o-min-HwMTmeM100CrJeWfwgIWw43ubZY7QZ.png";
+// import mImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/m-min-HwMTmeM100CrJeWfwgIWw43ubZY7QZ.png";
+// import pImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/p-min-TB0DXIVYxKUKBGqB1ycmIYIzHsKYnn.png";
+// import dotImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/dot-min-4lm3TPE2Y1y4nJlwwzz0gIjLoEfAP1.png";
+// import fourImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/4-min-awHdHnlsGsXlCf2UUZK9I9WkZgI3ve.png";
+// // Import digit and separator placeholders
+// import zeroImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/0-min-tPEvPN9rB1HznG7Mt67O8sK7Hooine.png";
+// import oneImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/1-min-ZoIGLdKVJHxrVN9kHQaZWpcPFkxq9X.png";
+// import twoImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/2-min-B3GXI5xz5WOkpenKPDeYo8yskCvJBW.png";
+// import threeImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/3-min-trcxTSlqYR6ujcevBjz3K4oicnyzDz.png";
+// import colonImg from "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/colon-min-YNreViOQMZBSVve4dktpfyG7IPzNpt.png";
+
+const cat =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/smallSizedCatImageShadow-min-vfDwIcMqalDdojt4XManM6oVab8IjF.png";
+
+// Letter assets
+const fImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/f-min-ONnefclg8aEykZinPfe4TaU2mr2luL.png";
+const uImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/u-min-1NrxESXwcwqBCAX3mpr1mlP8pptSPy.png";
+const nImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/n-min-j6v9g9mhkvcJIn3gCXix0IWprfVipv.png";
+const yImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/y-min-vsg66EfJfJ0ltYY2Glk2jOD7vKblUI.png";
+const cImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/c-min-RJh0JOnJ7rLxtenkMmBileQJuTQUtF.png";
+const aImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/a-min-iK2MSegZfXlLefXaSqkAaPSwHnT2YP.png";
+const tImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/t-min-5zT4sVkM1w0jdfTjI4I6HEsSpqlz0I.png";
+const vImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/v-min-glYqZVEjDwjc6PGYVdIaCHDupazPFN.png";
+const iImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/i-min-nXs3Ss52KEycSn0ZR5ZJf62tEoUupC.png";
+const dImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/d-min-TpaWLnEYjhnmA6wbme5gEgWEDt26F3.png";
+const eImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/e-min-48MFLWrn9ThILAujSws79RtUEuh5GO.png";
+const oImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/o-min-HwMTmeM100CrJeWfwgIWw43ubZY7QZ.png";
+const mImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/m-min-HwMTmeM100CrJeWfwgIWw43ubZY7QZ.png";
+const pImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/p-min-TB0DXIVYxKUKBGqB1ycmIYIzHsKYnn.png";
+const dotImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/dot-min-4lm3TPE2Y1y4nJlwwzz0gIjLoEfAP1.png";
+const fourImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/4-min-awHdHnlsGsXlCf2UUZK9I9WkZgI3ve.png";
+
+// Digit and separator placeholders
+const zeroImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/0-min-tPEvPN9rB1HznG7Mt67O8sK7Hooine.png";
+const oneImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/1-min-ZoIGLdKVJHxrVN9kHQaZWpcPFkxq9X.png";
+const twoImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/2-min-B3GXI5xz5WOkpenKPDeYo8yskCvJBW.png";
+const threeImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/3-min-trcxTSlqYR6ujcevBjz3K4oicnyzDz.png";
+const colonImg =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/colon-min-YNreViOQMZBSVve4dktpfyG7IPzNpt.png";
 
 const letterTextures: { [key: string]: string } = {
   f: fImg,
