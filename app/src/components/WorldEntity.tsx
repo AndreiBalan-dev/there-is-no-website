@@ -1748,8 +1748,8 @@ const MatterComponent: React.FC = () => {
     if (!hasClicked) {
       setHasClicked(true);
       setTimeout(() => {
-        playAudio3();
-        addSubtitles3();
+        playAudio1();
+        addSubtitles1();
       }, 1400);
     }
   }
