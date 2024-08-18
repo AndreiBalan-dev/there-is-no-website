@@ -316,41 +316,41 @@ const subtitles13 = [
 ];
 
 const MatterComponent: React.FC = () => {
-  const audioTextRef_1 = useRef<HTMLAudioElement | null>(null);
-  const audioTextHummingRef_1 = useRef<HTMLAudioElement | null>(null);
-  const audioTextRef_2 = useRef<HTMLAudioElement | null>(null);
-  const audioTextRef_3 = useRef<HTMLAudioElement | null>(null);
-  const audioSoundPopRef_1 = useRef<HTMLAudioElement | null>(null);
+  // const audioTextRef_1 = useRef<HTMLAudioElement | null>(null);
+  // const audioTextHummingRef_1 = useRef<HTMLAudioElement | null>(null);
+  // const audioTextRef_2 = useRef<HTMLAudioElement | null>(null);
+  // const audioTextRef_3 = useRef<HTMLAudioElement | null>(null);
+  // const audioSoundPopRef_1 = useRef<HTMLAudioElement | null>(null);
   const audioTextRef_4 = useRef<HTMLAudioElement | null>(null);
   const audioTextRef_5 = useRef<HTMLAudioElement | null>(null);
   const audioTextRef_6 = useRef<HTMLAudioElement | null>(null);
   const audioTextRef_7 = useRef<HTMLAudioElement | null>(null);
-  const audioTextRef_8 = useRef<HTMLAudioElement | null>(null);
+  // const audioTextRef_8 = useRef<HTMLAudioElement | null>(null);
   const audioTextRef_9 = useRef<HTMLAudioElement | null>(null);
   const audioTextRef_10 = useRef<HTMLAudioElement | null>(null);
-  const audioTextRef_11 = useRef<HTMLAudioElement | null>(null);
-  const audioTextRef_12 = useRef<HTMLAudioElement | null>(null);
-  const audioTextRef_13 = useRef<HTMLAudioElement | null>(null);
-  const audioMusicRef_1 = useRef<HTMLAudioElement | null>(null);
+  // const audioTextRef_11 = useRef<HTMLAudioElement | null>(null);
+  // const audioTextRef_12 = useRef<HTMLAudioElement | null>(null);
+  // const audioTextRef_13 = useRef<HTMLAudioElement | null>(null);
+  // const audioMusicRef_1 = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    audioTextRef_1.current = new Audio(voice1);
-    audioTextHummingRef_1.current = new Audio(humming1);
-    audioTextRef_2.current = new Audio(voice2);
-    audioTextRef_3.current = new Audio(voice3);
-    audioSoundPopRef_1.current = new Audio(pop1);
+    //   audioTextRef_1.current = new Audio(voice1);
+    //   audioTextHummingRef_1.current = new Audio(humming1);
+    //   audioTextRef_2.current = new Audio(voice2);
+    //   audioTextRef_3.current = new Audio(voice3);
+    //   audioSoundPopRef_1.current = new Audio(pop1);
     audioTextRef_4.current = new Audio(voice4);
     audioTextRef_5.current = new Audio(voice5);
     audioTextRef_6.current = new Audio(voice6);
     audioTextRef_7.current = new Audio(voice7);
-    audioTextRef_8.current = new Audio(voice8);
+    //   audioTextRef_8.current = new Audio(voice8);
     audioTextRef_9.current = new Audio(voice9);
     audioTextRef_10.current = new Audio(voice10);
-    audioTextRef_11.current = new Audio(voice11);
-    audioTextRef_12.current = new Audio(voice12);
-    audioTextRef_13.current = new Audio(voice13);
-    audioMusicRef_1.current = new Audio(rickroll);
-  }, []); // Empty dependency array ensures this runs only once
+    //   audioTextRef_11.current = new Audio(voice11);
+    //   audioTextRef_12.current = new Audio(voice12);
+    //   audioTextRef_13.current = new Audio(voice13);
+    //   audioMusicRef_1.current = new Audio(rickroll);
+  }, []);
 
   const sceneRef = useRef<HTMLDivElement>(null);
   const engineRef = useRef<EngineType>(Engine.create());
@@ -432,124 +432,126 @@ const MatterComponent: React.FC = () => {
   const triggeredAudioGlobal11 = useRef(false);
 
   function playAudio1() {
-    audioTextRef_1.current!.volume = 0.75;
-    audioTextRef_1
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = new Audio(voice1);
+    myAudio.volume = 0.75;
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudioHumming1() {
-    audioTextHummingRef_1
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = new Audio(humming1);
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio2() {
-    audioTextRef_2.current!.volume = 0.75;
-    audioTextRef_2
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = new Audio(voice2);
+    myAudio.volume = 0.75;
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio3() {
-    audioTextRef_3.current!.volume = 0.75;
-    audioTextRef_3
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = new Audio(voice3);
+    myAudio.volume = 0.75;
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudioPop1() {
-    audioSoundPopRef_1
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = new Audio(pop1);
+    myAudio.volume = 0.75;
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio4() {
-    audioTextRef_4.current!.volume = 0.75;
-    audioTextRef_4
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = audioTextRef_4.current!;
+    myAudio.volume = 0.75;
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio5() {
-    audioTextRef_5.current!.volume = 0.75;
-    audioTextRef_5
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = audioTextRef_5.current!;
+    myAudio.volume = 0.75;
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio6() {
-    audioTextRef_6.current!.volume = 0.75;
-    audioTextRef_6
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = audioTextRef_6.current!;
+    myAudio.volume = 0.75;
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio7() {
-    audioTextRef_7.current!.volume = 0.75;
-    audioTextRef_7
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = audioTextRef_7.current!;
+    myAudio.volume = 0.75;
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio8() {
-    audioTextRef_8.current!.volume = 0.75;
-    audioTextRef_8
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = new Audio(voice8);
+    myAudio.volume = 0.75;
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio9() {
-    audioTextRef_9.current!.volume = 0.75;
-    audioTextRef_9
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = audioTextRef_9.current!;
+    myAudio.volume = 0.75;
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio10() {
-    audioTextRef_10.current!.volume = 0.75;
-    audioTextRef_10
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = audioTextRef_10.current!;
+    myAudio.volume = 0.75;
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio11() {
-    audioTextRef_11.current!.volume = 0.75;
-    audioTextRef_11
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = new Audio(voice11);
+    myAudio.volume = 0.75;
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio12() {
-    audioTextRef_12.current!.volume = 0.75;
-    audioTextRef_12
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = new Audio(voice12);
+    myAudio.volume = 0.75;
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playAudio13() {
-    audioTextRef_13.current!.volume = 0.75;
-    audioTextRef_13
-      .current!.play()
-      .catch((error) => console.error("Audio play error:", error));
+    let myAudio = new Audio(voice13);
+    myAudio.volume = 0.75;
+    myAudio.play().catch((error) => console.error("Audio play error:", error));
   }
 
   function playRickroll() {
-    let audioElement = audioMusicRef_1.current;
+    let audioElement = new Audio(rickroll);
 
-    audioElement!
+    setTimeout(() => {
+      audioElement.volume = 0.3;
+    }, 6100);
+
+    setTimeout(() => {
+      audioElement.volume = 1;
+    }, 10200);
+
+    setTimeout(() => {
+      audioElement.volume = 0.3;
+    }, 13300);
+
+    setTimeout(() => {
+      audioElement.volume = 1;
+    }, 18100);
+
+    audioElement
       .play()
       .catch((error) => console.error("Audio play error:", error));
 
     audioElement!.addEventListener("ended", () => {
-      audioElement!
+      audioElement
         .play()
         .catch((error) => console.error("Audio replay error:", error));
     });
   }
 
   function addSubtitles13() {
-    audioMusicRef_1.current!.volume = 0.3;
+    // audioMusicRef_1.current!.volume = 0.3;
 
     setTimeout(() => {
       setSubtitle1(subtitles13[0]);
@@ -579,9 +581,9 @@ const MatterComponent: React.FC = () => {
       setSubtitle1("");
     }, 4000); // Clear the subtitle text
 
-    setTimeout(() => {
-      audioMusicRef_1.current!.volume = 1;
-    }, 4200);
+    // setTimeout(() => {
+    //   audioMusicRef_1.current!.volume = 1;
+    // }, 4200);
 
     // setTimeout(() => {
     //   setSubtitle1("Made with love by");
@@ -598,7 +600,7 @@ const MatterComponent: React.FC = () => {
   }
 
   function addSubtitles12() {
-    audioMusicRef_1.current!.volume = 0.3;
+    // audioMusicRef_1.current!.volume = 0.3;
     setTimeout(() => {
       setSubtitle1(subtitles12[0]);
     }, 100); // "Ha! "
@@ -659,9 +661,9 @@ const MatterComponent: React.FC = () => {
       setSubtitle1(subtitles12[14]);
     }, 9200); // "destroyer of worlds!"
 
-    setTimeout(() => {
-      audioMusicRef_1.current!.volume = 1;
-    }, 10000);
+    // setTimeout(() => {
+    //   audioMusicRef_1.current!.volume = 1;
+    // }, 10000);
 
     setTimeout(() => {
       setSubtitle1("");
