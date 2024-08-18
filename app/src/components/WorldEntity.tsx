@@ -14,26 +14,26 @@ import { VideoPlayerBox } from "./(video-player)/VideoPlayerBox";
 import { VideoPlayButton } from "./(video-player)/VideoPlayButton";
 import { VideoHamburgerMenu } from "./(video-player)/VideoHamburgerMenu";
 import { FaGithub, FaLightbulb, FaRegLightbulb } from "react-icons/fa";
-import voice1 from "../assets/1.mp3";
-import voice2 from "../assets/2.mp3";
-import voice3 from "../assets/3.mp3";
-import pop1 from "../assets/pop.mp3";
-import voice4 from "../assets/4.mp3";
-import humming1 from "../assets/humming.mp3";
-import voice5 from "../assets/5.mp3";
-import voice6 from "../assets/6.mp3";
-import voice7 from "../assets/7.mp3";
-import voice8 from "../assets/8.mp3";
-import voice9 from "../assets/9.mp3";
-import voice10 from "../assets/10.mp3";
-import voice11 from "../assets/11.mp3";
-import voice12 from "../assets/12.mp3";
-import voice13 from "../assets/13.mp3";
-import rickroll from "../assets/rickroll.mp3";
+// import voice1 from "../assets/1.mp3";
+// import voice2 from "../assets/2.mp3";
+// import voice3 from "../assets/3.mp3";
+// import pop1 from "../assets/pop.mp3";
+// import voice4 from "../assets/4.mp3";
+// import humming1 from "../assets/humming.mp3";
+// import voice5 from "../assets/5.mp3";
+// import voice6 from "../assets/6.mp3";
+// import voice7 from "../assets/7.mp3";
+// import voice8 from "../assets/8.mp3";
+// import voice9 from "../assets/9.mp3";
+// import voice10 from "../assets/10.mp3";
+// import voice11 from "../assets/11.mp3";
+// import voice12 from "../assets/12.mp3";
+// import voice13 from "../assets/13.mp3";
+// import rickroll from "../assets/rickroll.mp3";
 import SorryComponent from "../components/(pages)/FirstPage";
 import SwordMiniGameComponent from "../components/(pages)/SecondPage";
 import CookieClickerGameComponent from "../components/(pages)/ThirdPage";
-import rickRollGif from "../assets/rickroll.gif";
+// import rickRollGif from "../assets/rickroll.gif";
 
 const MatterComponent: React.FC = () => {
   const sceneRef = useRef<HTMLDivElement>(null);
@@ -52,6 +52,41 @@ const MatterComponent: React.FC = () => {
   const [cookieClickerComponentToggle, setCookieClickerComponentToggle] =
     useState(false);
   const [rickRollComponentToggle, setRickRollComponentToggle] = useState(false);
+
+  const voice1 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/1-xkjB0geo9GIE5nHexJhjrU76NFljey.mp3";
+  const voice2 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/2-FCPBQ42qB7Tb7anTKtBR8QLWxDYb90.mp3";
+  const voice3 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/3-zTasZfbQLdirNWO9dyxSbVAxiyiOOV.mp3";
+  const pop1 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/pop-i0hjvmtiZb8TCIUw2JkQk7iNyJdV8V.mp3";
+  const voice4 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/4-fWZHV9oDbNPEBcFFkjiNsXAteJEaH2.mp3";
+  const humming1 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/humming-fihLEvhhnII3uv5Au8tcno1Lg92XLu.mp3";
+  const voice5 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/5-fSuTf1kUqiN4cmcuNYohJNJc0GQJad.mp3";
+  const voice6 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/6-BSkY6hPoFUY0ZEKdjbSjHvIG9wVDKs.mp3";
+  const voice7 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/7-KXfaYLs63Dc03TIb7EDyQyZ8IcLUgu.mp3";
+  const voice8 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/8-ldyCK0pXhJHr2TAiBsrGFVUpQGvpBh.mp3";
+  const voice9 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/9-Vju0jhkj0oZLMSY4ZjWw9h8LGfaT71.mp3";
+  const voice10 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/10-GCd0RmNXrZ0ulH3pflZXuVYquu0yfW.mp3";
+  const voice11 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/11-vzuCk8xqm9qWtLykJAAWNmh3Lh1VJU.mp3";
+  const voice12 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/12-GEN7H1byWCHhvAJBv4moYAmtOMFNq2.mp3";
+  const voice13 =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/13-wGxcPCJHilL6iY24RtAsUoHEIoAMSb.mp3";
+  const rickroll =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/rickroll-lRwISRZCJLDcR1P9wlCUDjvBMpxyMv.mp3";
+  const rickRollGif =
+    "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/rickroll-deiAQmp1LPZEaxxCgTiaKJLP9Q7EfN.gif";
 
   const [subtitle1, setSubtitle1] = useState("");
   const [subtitle2, setSubtitle2] = useState("");

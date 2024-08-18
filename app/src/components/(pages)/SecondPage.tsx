@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import useSound from "use-sound";
-import swordSound from "../../assets/sword-slash.mp3";
-import sword from "../../assets/sword.png";
-import bombPotion from "../../assets/bomb.png";
+const swordSound =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/sword-slash-X5ivh66nCre0JruF8XYww28fow9gxx.mp3";
+const sword =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/sword-min-7gWFp9Yyrq6SBAyHyt2YmUlxYh5MCV.png";
+const bombPotion =
+  "https://9zjdsl5ndfyscpqh.public.blob.vercel-storage.com/bomb-min-TB0DXIVYxKUKBGqB1ycmIYIzHsKYnn.png";
 import throttle from "lodash.throttle";
 
 type Bomb = {
