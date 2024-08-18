@@ -11,10 +11,10 @@
 ### Theme
 Functionally Dysfunctional
 
-### Created and maintained by **[Andrei Balan](https://www.linkedin.com/in/andrei-balan-dev/)**, the original creator of the website.
+### Author
+- Created and maintained by **[Andrei Balan](https://www.linkedin.com/in/andrei-balan-dev/)**, the original creator of the website.
 
 ### Special thanks to:
-
 - **[Rudransh Joshi](https://linkedin.com/in/rudraxd/)** for contributing to the minigames and storyline.
 - **[Andy Mai](https://www.linkedin.com/in/andy-m-883830231/)** for providing valuable assistance throughout the project.
 
