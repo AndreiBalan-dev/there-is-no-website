@@ -16,8 +16,6 @@ Functionally Dysfunctional
 
 ### Special thanks to:
 - **[Rudransh Joshi](https://linkedin.com/in/rudraxd/)** for contributing to the minigames and storyline.
-- **[Andy Mai](https://www.linkedin.com/in/andy-m-883830231/)** for providing valuable assistance throughout the project.
-
 
 ## 🚀 Project Overview
 
