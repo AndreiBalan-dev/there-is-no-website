@@ -2,6 +2,8 @@
 
 **[Live Deployment](https://thereisnoweb.site/)** (Tested on Desktop, with Chromium based browsers and Firefox)
 
+### Check out **[this LinkedIn post](https://www.linkedin.com/feed/update/urn:li:activity:7231095376777236481/)** to learn on how this project got viral for a few days.
+
 ![Hackathon Badge](https://img.shields.io/badge/Hackathon-Hackathon_with_Lewis_2024-blue)
 
 ## :trophy: Hackathon Project - "Hackathon with Lewis" (Aug 9-16, 2024)
